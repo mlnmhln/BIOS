@@ -1,0 +1,1690 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preload" as="image" href="assets/patients-digital-twin-clean.png">
+  <title>BIOS для пациентов — понимание здоровья на новом уровне</title>
+  <meta name="description" content="BIOS объединяет медицинские данные, помогает видеть динамику здоровья и формирует персональные ИИ-гипотезы.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap&amp;subset=cyrillic,latin" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#0f1424;
+      --text:#4d5771;
+      --muted:#7e879d;
+      --line:#e7e9f2;
+      --blue:#3f67f6;
+      --violet:#7045f3;
+      --violet-2:#8a65fa;
+      --lavender:#f3f1ff;
+      --green:#1faf78;
+      --coral:#f1644d;
+      --page:#fcfcff;
+      --white:#fff;
+      --wrap:min(1440px,calc(100% - 80px));
+      --ease:cubic-bezier(.22,.61,.36,1);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--ink);
+      background:
+        radial-gradient(900px 560px at 90% 8%,rgba(112,69,243,.06),transparent 68%),
+        radial-gradient(760px 520px at 2% 15%,rgba(63,103,246,.035),transparent 72%),
+        var(--page);
+      font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+      -webkit-font-smoothing:antialiased;
+    }
+    body.menu-open{overflow:hidden}
+    a{color:inherit;text-decoration:none}
+    button,input{font:inherit}
+    svg{display:block}
+    .wrap{width:var(--wrap);margin:0 auto}
+
+    .site-header{
+      position:relative;
+      z-index:20;
+      border-bottom:1px solid rgba(226,229,239,.86);
+      background:rgba(255,255,255,.76);
+      backdrop-filter:blur(18px);
+    }
+    .nav{
+      display:grid;
+      grid-template-columns:auto 1fr auto;
+      align-items:center;
+      min-height:104px;
+      gap:36px;
+    }
+    .brand{display:inline-flex;align-items:center;gap:13px;font-size:26px;font-weight:800}
+    .brand-mark{
+      display:grid;
+      width:44px;
+      height:44px;
+      place-items:center;
+      border-radius:8px;
+      color:#fff;
+      background:linear-gradient(145deg,#8c71fb,#5630e9);
+      box-shadow:0 9px 22px rgba(100,67,236,.24);
+    }
+    .brand-mark svg{width:28px;height:20px}
+    .brand-main-mark{display:block;width:30px;height:30px;flex:none}
+    .nav-links{display:flex;align-items:center;justify-content:center;gap:clamp(24px,3.1vw,52px)}
+    .nav-links a{
+      position:relative;
+      padding:39px 0 36px;
+      color:#273147;
+      font-size:15px;
+      font-weight:500;
+      white-space:nowrap;
+    }
+    .nav-links a:hover,.nav-links a[aria-current="page"]{color:#5731e9}
+    .nav-links a[aria-current="page"]::after{
+      content:"";
+      position:absolute;
+      right:0;
+      bottom:20px;
+      left:0;
+      height:2px;
+      background:#6540ef;
+    }
+    .nav-actions{display:flex;align-items:center;gap:14px}
+    .button{
+      display:inline-flex;
+      min-height:48px;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      border:1px solid transparent;
+      border-radius:8px;
+      padding:0 24px;
+      font-size:15px;
+      font-weight:600;
+      cursor:pointer;
+      transition:transform .25s var(--ease),box-shadow .25s var(--ease),border-color .25s var(--ease);
+    }
+    .button:hover{transform:translateY(-2px)}
+    .button-outline{border-color:#e2e5ee;background:rgba(255,255,255,.8)}
+    .button-outline:hover{border-color:#cfd3e2;box-shadow:0 10px 24px rgba(34,42,78,.08)}
+    .button-primary{
+      color:#fff;
+      background:linear-gradient(135deg,#7651f5,#5630e9);
+      box-shadow:0 13px 28px rgba(94,55,232,.22);
+    }
+    .button-primary:hover{box-shadow:0 17px 34px rgba(94,55,232,.3)}
+    .menu-button{
+      display:none;
+      width:46px;
+      height:46px;
+      border:1px solid var(--line);
+      border-radius:8px;
+      place-items:center;
+      color:var(--ink);
+      background:#fff;
+      cursor:pointer;
+    }
+    .menu-button svg{width:22px;height:22px}
+
+    .hero{overflow:hidden;padding:62px 0 76px}
+    .hero-grid{
+      position:relative;
+      display:grid;
+      grid-template-columns:minmax(440px,.82fr) minmax(560px,1.18fr);
+      min-height:790px;
+      align-items:center;
+      gap:24px;
+    }
+    .hero-copy{position:relative;z-index:2;padding:28px 0 18px}
+    .hero h1{
+      max-width:610px;
+      margin:0;
+      font-size:clamp(52px,4.4vw,74px);
+      font-weight:700;
+      line-height:1.16;
+      letter-spacing:0;
+    }
+    .gradient-text{
+      display:block;
+      color:transparent;
+      background:linear-gradient(97deg,#3967f6 2%,#8050f4 78%);
+      -webkit-background-clip:text;
+      background-clip:text;
+    }
+    .hero-lead{
+      max-width:570px;
+      margin:32px 0 0;
+      color:#4f5a74;
+      font-size:20px;
+      line-height:1.7;
+    }
+    .hero-actions{display:flex;align-items:center;gap:34px;margin-top:36px}
+    .hero-actions .button-primary{min-width:264px;min-height:70px;font-size:17px}
+    .text-link{display:inline-flex;align-items:center;gap:14px;font-weight:600}
+    .text-link i{
+      display:grid;
+      width:38px;
+      height:38px;
+      place-items:center;
+      border-radius:50%;
+      color:#5e39ea;
+      background:#f2efff;
+      font-style:normal;
+      transition:transform .25s var(--ease);
+    }
+    .text-link:hover i{transform:translateX(4px)}
+    .hero-proof{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:30px;margin-top:64px}
+    .proof-item{color:#344057;font-size:15px;line-height:1.55}
+    .proof-icon{
+      display:grid;
+      width:54px;
+      height:54px;
+      margin-bottom:17px;
+      place-items:center;
+      border-radius:50%;
+      color:#623ced;
+      background:radial-gradient(circle,#fff 25%,#efedff 100%);
+      box-shadow:0 10px 26px rgba(83,63,188,.08);
+    }
+    .proof-icon svg{width:28px;height:28px}
+    .hero-visual{
+      position:absolute;
+      inset:0;
+      z-index:1;
+      min-width:0;
+      pointer-events:none;
+      overflow:hidden;
+    }
+    .hero-visual::before{
+      content:"";
+      position:absolute;
+      inset:13% 4% 8% 4%;
+      border-radius:50%;
+      background:radial-gradient(circle,rgba(111,73,238,.12),rgba(111,73,238,.035) 45%,transparent 72%);
+      filter:blur(24px);
+    }
+    .patient-three-stage{
+      position:absolute;
+      top:1.5%;
+      right:-1%;
+      bottom:0;
+      width:60.5%;
+      min-width:650px;
+      pointer-events:auto;
+      perspective:1400px;
+    }
+    .patient-three-composition{
+      position:absolute;
+      inset:0;
+    }
+    .patient-three-canvas{
+      position:absolute;
+      inset:0;
+      z-index:1;
+      display:block;
+      width:100%;
+      height:100%;
+      touch-action:none;
+      cursor:grab;
+    }
+    .patient-three-canvas:active{cursor:grabbing}
+    .patient-three-fallback{position:absolute;inset:0;z-index:0;width:100%;height:100%;object-fit:cover;opacity:0;pointer-events:none}
+    .patient-three-composition.is-fallback .patient-three-fallback{opacity:1}
+    .patient-hero-photo{
+      position:absolute;
+      inset:0;
+      z-index:1;
+      display:block;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      object-position:center;
+      pointer-events:none;
+    }
+    .vector-panel{
+      position:absolute;
+      z-index:3;
+      pointer-events:none;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      width:174px;
+      min-height:144px;
+      padding:18px 20px;
+      border:1px solid rgba(128,105,238,.25);
+      border-radius:8px;
+      color:#6442df;
+      background:rgba(255,255,255,.58);
+      box-shadow:0 16px 36px rgba(83,66,172,.08),inset 0 1px 0 rgba(255,255,255,.8);
+      backdrop-filter:blur(8px);
+      --panel-rx:0deg;
+      --panel-ry:0deg;
+      animation:panelFloat 7s ease-in-out infinite;
+      transform-origin:center;
+    }
+    .vector-panel svg{width:100%;height:48px}
+    .vector-panel strong{display:block;margin-top:8px;font-size:11px;font-weight:600}
+    .vector-panel small{display:block;margin-top:3px;color:#7b8194;font-size:9px}
+    .panel-status{top:6.7%;left:14.5%;--panel-rx:1deg;--panel-ry:7deg}
+    .panel-analytics{top:8%;right:11.4%;--panel-rx:1deg;--panel-ry:-7deg;animation-delay:-1.4s}
+    .panel-memory{top:32.3%;left:8.5%;width:238px;min-height:146px;--panel-rx:1deg;--panel-ry:6deg;animation-delay:-2.8s}
+    .panel-hypothesis{top:34%;right:6.1%;width:178px;min-height:136px;--panel-rx:1deg;--panel-ry:-6deg;animation-delay:-4.2s}
+    @keyframes panelFloat{
+      0%,100%{transform:perspective(900px) rotateX(var(--panel-rx)) rotateY(var(--panel-ry)) translateY(0)}
+      50%{transform:perspective(900px) rotateX(var(--panel-rx)) rotateY(var(--panel-ry)) translateY(-4px)}
+    }
+
+    .sources{padding:72px 0 110px}
+    .sources-shell{
+      padding:70px 34px 52px;
+      border-radius:8px;
+      background:linear-gradient(135deg,rgba(250,250,255,.92),rgba(246,247,253,.78));
+      box-shadow:0 18px 70px rgba(56,63,105,.05);
+    }
+    .section-title{
+      max-width:900px;
+      margin:0 auto;
+      text-align:center;
+      font-size:clamp(38px,3.3vw,54px);
+      line-height:1.25;
+      font-weight:600;
+      letter-spacing:0;
+    }
+    .sources-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:20px;margin-top:66px}
+    .source-card{
+      display:grid;
+      min-height:292px;
+      place-items:center;
+      align-content:center;
+      gap:34px;
+      padding:28px 17px;
+      border:1px solid #e8e9f1;
+      border-radius:8px;
+      background:rgba(255,255,255,.7);
+      text-align:center;
+      transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s var(--ease);
+    }
+    .source-card:hover{
+      transform:translateY(-5px);
+      border-color:#d8d3f6;
+      box-shadow:0 18px 38px rgba(72,66,132,.09);
+    }
+    .source-icon{
+      display:grid;
+      width:82px;
+      height:82px;
+      place-items:center;
+      border-radius:50%;
+      color:#6b47ee;
+      background:radial-gradient(circle,#fff 18%,#efedff 100%);
+    }
+    .source-icon svg{width:42px;height:42px}
+    .source-card h3{margin:0;font-size:16px;line-height:1.65;font-weight:600}
+
+    .integrations{padding:0 0 110px}
+    .integrations-shell{
+      padding:68px 70px 40px;
+      border:1px solid #e7e8f1;
+      border-radius:8px;
+      background:linear-gradient(135deg,rgba(251,251,255,.96),rgba(247,248,254,.88));
+    }
+    .integrations-head{text-align:center}
+    .integrations-head h2{
+      margin:0;
+      font-size:clamp(38px,3.25vw,54px);
+      line-height:1.2;
+      font-weight:600;
+      letter-spacing:0;
+    }
+    .integrations-head p{margin:20px 0 0;color:#747d99;font-size:20px;line-height:1.5}
+    .integration-group{margin-top:42px}
+    .integration-group+.integration-group{margin-top:34px;padding-top:34px;border-top:1px solid #e6e8f1}
+    .integration-label{display:flex;align-items:center;gap:14px;margin:0 0 28px;font-size:18px;font-weight:600}
+    .integration-label svg{width:28px;height:28px;color:#7450eb;flex:none}
+    .integration-logos{display:grid;gap:18px}
+    .integration-logos.devices{grid-template-columns:repeat(11,minmax(0,1fr))}
+    .integration-logos.clinics{grid-template-columns:repeat(9,minmax(0,1fr))}
+    .integration-logo{
+      display:flex;
+      min-width:0;
+      height:102px;
+      align-items:center;
+      justify-content:center;
+      padding:14px 10px;
+      border:1px solid #ececf3;
+      border-radius:8px;
+      color:#101423;
+      background:#fff;
+      box-shadow:0 10px 24px rgba(54,57,101,.055);
+      text-align:center;
+      transition:transform .25s var(--ease),border-color .25s var(--ease),box-shadow .25s var(--ease);
+    }
+    .integration-logo:hover{transform:translateY(-3px);border-color:#dcd8f6;box-shadow:0 14px 30px rgba(72,62,145,.09)}
+    .integration-logo img{
+      display:block;
+      width:auto;
+      max-width:100%;
+      height:auto;
+      max-height:58px;
+      object-fit:contain;
+    }
+    .integration-logo img.logo-mark{width:56px;height:56px}
+    .integration-logo img.logo-wide{width:min(100%,118px);max-height:52px}
+    .integration-logo img.logo-oura{filter:invert(1)}
+    .integrations-trust{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:42px;color:#7b84a2;font-size:20px}
+    .integrations-trust svg{width:28px;height:28px;color:#7450eb}
+
+    .insights{padding:100px 0 120px}
+    .insights-grid{
+      display:grid;
+      grid-template-columns:minmax(540px,1fr) minmax(470px,.94fr);
+      align-items:center;
+      gap:clamp(72px,8vw,130px);
+    }
+    .device-stage{position:relative;min-height:700px}
+    .device{
+      position:absolute;
+      width:370px;
+      min-height:650px;
+      padding:34px 25px 28px;
+      overflow:hidden;
+      border:13px solid rgba(245,244,255,.98);
+      border-radius:42px;
+      background:linear-gradient(160deg,rgba(255,255,255,.98),rgba(248,248,254,.94));
+      box-shadow:0 26px 56px rgba(91,74,170,.11),inset 0 0 0 1px #e8e8f3;
+    }
+    .device-back{top:0;left:0;opacity:.82}
+    .device-front{right:0;bottom:0;z-index:2}
+    .app-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:42px}
+    .app-logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:20px}
+    .app-logo .brand-mark{width:26px;height:26px;border-radius:6px;box-shadow:none}
+    .app-logo .brand-mark svg{width:18px;height:14px}
+    .app-tools{display:flex;gap:18px;color:#202946}
+    .app-tools svg{width:19px;height:19px}
+    .app-title{margin:0 0 28px;font-size:23px;font-weight:700}
+    .health-label{display:flex;justify-content:space-between;color:#45506c;font-size:14px}
+    .health-label span{color:#7553ef;background:#f2efff;padding:3px 7px;border-radius:4px}
+    .score-ring{
+      display:grid;
+      width:220px;
+      height:220px;
+      margin:35px auto 42px;
+      place-items:center;
+      border-radius:50%;
+      background:conic-gradient(#7b5bf2 0 82%,#e8e5fb 82% 100%);
+      box-shadow:0 0 32px rgba(112,77,238,.08);
+    }
+    .score-ring::before{content:"";width:184px;height:184px;border-radius:50%;background:#fff}
+    .score-copy{position:absolute;text-align:center}
+    .score-copy strong{display:block;color:#5d39e5;font-size:46px;font-weight:500}
+    .score-copy span{color:#58617a;font-size:14px}
+    .risk-card{padding:21px 18px;border-radius:8px;background:#f8f8fd}
+    .risk-card strong{display:block;max-width:190px;font-size:17px;line-height:1.45}
+    .status{display:inline-block;margin-top:8px;padding:4px 7px;border-radius:4px;color:var(--green);background:#eaf9f3;font-size:11px}
+    .soft-rows{display:grid;gap:12px;margin-top:25px;opacity:.4}
+    .soft-row{height:13px;border-radius:3px;background:linear-gradient(90deg,#dedfec 42%,transparent 42%)}
+    .hypothesis-list{display:grid;gap:12px}
+    .hypothesis{
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:8px;
+      align-items:center;
+      min-height:84px;
+      padding:16px;
+      border:1px solid #ececf4;
+      border-radius:8px;
+      background:#fff;
+    }
+    .hypothesis strong{font-size:16px;line-height:1.3}
+    .hypothesis small{display:block;margin-top:7px;color:#7d859a;font-size:12px}
+    .hypothesis b{color:#6f47ef;font-size:21px;font-weight:500}
+    .hypothesis .new{align-self:start;color:var(--coral);background:#fff0ec;padding:5px 8px;border-radius:4px;font-size:11px;font-weight:500}
+    .app-button{width:100%;min-height:52px;margin-top:20px;border:0;border-radius:8px;color:#fff;background:linear-gradient(135deg,#7450f4,#542de7);font-weight:600}
+    .insights-copy h2{margin:0;font-size:clamp(42px,3.7vw,60px);line-height:1.18;font-weight:600}
+    .insights-lead{margin:30px 0 0;color:#56617a;font-size:20px;line-height:1.55}
+    .benefits{display:grid;gap:30px;margin-top:54px}
+    .benefit{display:grid;grid-template-columns:52px 1fr;align-items:center;gap:20px;color:#58627a;font-size:18px;line-height:1.45}
+    .benefit-icon{
+      display:grid;
+      width:52px;
+      height:52px;
+      place-items:center;
+      border-radius:50%;
+      color:#6841eb;
+      background:#f1efff;
+    }
+    .benefit-icon svg{width:27px;height:27px}
+
+    .security{padding:86px 0 112px}
+    .security-shell{
+      display:grid;
+      grid-template-columns:minmax(0,1fr) minmax(420px,.9fr);
+      min-height:540px;
+      align-items:center;
+      gap:70px;
+      padding:64px 72px;
+      overflow:hidden;
+      border-radius:8px;
+      background:
+        radial-gradient(520px 320px at 83% 48%,rgba(113,78,240,.13),transparent 72%),
+        linear-gradient(135deg,#fafaff,#f5f4ff);
+      box-shadow:0 22px 70px rgba(71,66,126,.06);
+    }
+    .security-copy h2{margin:0;font-size:clamp(38px,3vw,52px);line-height:1.2;font-weight:600}
+    .security-copy>p{margin:23px 0 0;color:#59637c;font-size:20px;line-height:1.55}
+    .security-list{display:grid;gap:22px;margin-top:48px}
+    .security-point{display:grid;grid-template-columns:40px 1fr;align-items:center;gap:16px;color:#59637c;font-size:18px;line-height:1.4}
+    .security-check{
+      display:grid;
+      width:40px;
+      height:40px;
+      place-items:center;
+      border-radius:50%;
+      color:#623cf0;
+      background:#efedff;
+    }
+    .security-check svg{width:20px;height:20px}
+    .security-visual{position:relative;display:grid;min-height:390px;place-items:center}
+    .security-orbits{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+    .security-orbits ellipse{fill:none;stroke:#8d78f2;stroke-width:1.3;opacity:.42}
+    .security-orbits circle{fill:#8063ee;filter:drop-shadow(0 0 9px rgba(112,75,239,.42))}
+    .shield-visual{
+      position:relative;
+      display:grid;
+      width:250px;
+      height:290px;
+      place-items:center;
+      filter:drop-shadow(0 25px 24px rgba(93,68,210,.18));
+    }
+    .shield-visual::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      clip-path:polygon(50% 0,91% 17%,87% 68%,50% 100%,13% 68%,9% 17%);
+      background:linear-gradient(150deg,rgba(255,255,255,.9),rgba(173,158,250,.72));
+      box-shadow:inset 0 0 0 12px rgba(255,255,255,.38);
+    }
+    .lock-visual{
+      position:relative;
+      width:108px;
+      height:96px;
+      margin-top:35px;
+      border-radius:18px;
+      background:linear-gradient(150deg,#7957f6,#4e29dd);
+      box-shadow:0 18px 30px rgba(73,43,208,.25),inset 0 1px 0 rgba(255,255,255,.3);
+    }
+    .lock-visual::before{
+      content:"";
+      position:absolute;
+      top:-66px;
+      left:25px;
+      width:58px;
+      height:72px;
+      border:13px solid #6742eb;
+      border-bottom:0;
+      border-radius:36px 36px 0 0;
+    }
+    .lock-visual::after{
+      content:"";
+      position:absolute;
+      top:34px;
+      left:48px;
+      width:13px;
+      height:31px;
+      border-radius:9px;
+      background:linear-gradient(#c8bcff 0 45%,#ac9cf8 45%);
+      clip-path:polygon(50% 0,100% 35%,72% 49%,72% 100%,28% 100%,28% 49%,0 35%);
+    }
+
+    .care{padding:92px 0 118px}
+    .care-head{text-align:center}
+    .care-head h2{margin:0;font-size:clamp(40px,3.4vw,56px);line-height:1.2;font-weight:600}
+    .care-head p{margin:24px 0 0;color:#66708a;font-size:20px}
+    .care-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:26px;margin-top:66px}
+    .care-card{
+      min-height:430px;
+      padding:42px 32px;
+      border:1px solid #e6e8f0;
+      border-radius:8px;
+      background:rgba(255,255,255,.7);
+      transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s var(--ease);
+    }
+    .care-card:hover{transform:translateY(-5px);border-color:#d7d2f6;box-shadow:0 20px 44px rgba(64,62,110,.08)}
+    .care-icon{
+      display:grid;
+      width:78px;
+      height:78px;
+      place-items:center;
+      border-radius:50%;
+      color:#6742ec;
+      background:radial-gradient(circle,#fff 18%,#efedff 100%);
+    }
+    .care-icon svg{width:39px;height:39px}
+    .care-card h3{margin:32px 0 0;font-size:25px;line-height:1.45;font-weight:600}
+    .care-card p{margin:26px 0 0;color:#606a82;font-size:17px;line-height:1.7}
+
+    .start{padding:44px 0 104px}
+    .start-shell{
+      display:grid;
+      grid-template-columns:minmax(0,1fr) minmax(360px,.7fr);
+      align-items:center;
+      gap:70px;
+      min-height:390px;
+      padding:68px 78px;
+      border-radius:8px;
+      background:
+        radial-gradient(500px 260px at 85% 48%,rgba(111,75,239,.13),transparent 74%),
+        linear-gradient(135deg,#f9f9ff,#f3f2ff);
+      box-shadow:0 20px 60px rgba(70,64,126,.05);
+    }
+    .start-copy h2{margin:0;font-size:clamp(40px,3.4vw,58px);line-height:1.25;font-weight:600}
+    .start-copy p{max-width:700px;margin:28px 0 0;color:#67718a;font-size:20px;line-height:1.65}
+    .start-action{text-align:center}
+    .start-action .button{width:100%;min-height:82px;font-size:22px}
+    .start-action p{margin:22px 0 0;color:#727b92;font-size:17px}
+
+    .site-footer{padding:20px 0 70px}
+    .footer-shell{
+      padding:62px 64px 36px;
+      border-radius:8px;
+      background:rgba(249,249,255,.82);
+      box-shadow:0 18px 60px rgba(70,64,126,.04);
+    }
+    .footer-grid{display:grid;grid-template-columns:1.25fr repeat(3,.8fr);gap:70px}
+    .footer-brand .brand{font-size:25px}
+    .footer-brand p{max-width:350px;margin:32px 0 0;color:#59637c;font-size:16px;line-height:1.65}
+    .socials{display:flex;gap:14px;margin-top:34px}
+    .social{
+      display:grid;
+      width:54px;
+      height:54px;
+      place-items:center;
+      border:1px solid #e3e5ee;
+      border-radius:50%;
+      color:#6542eb;
+      background:#fff;
+    }
+    .social svg{width:25px;height:25px}
+    .footer-column h3{margin:10px 0 30px;font-size:18px;font-weight:600}
+    .footer-column nav{display:grid;gap:23px}
+    .footer-column a{color:#5c6680;font-size:16px;line-height:1.35}
+    .footer-column a:hover{color:#5d37e8}
+    .footer-bottom{display:flex;justify-content:space-between;gap:24px;margin-top:54px;padding-top:30px;border-top:1px solid #e3e5ed;color:#616b83;font-size:15px}
+    .footer-heart{color:#6641ec}
+
+    .reveal{opacity:0;transform:translateY(24px);transition:opacity .75s var(--ease),transform .75s var(--ease)}
+    .reveal.is-visible{opacity:1;transform:none}
+
+    @media (max-width:1180px){
+      :root{--wrap:min(100% - 48px,1180px)}
+      .nav-links{gap:22px}
+      .nav-links a:nth-last-child(-n+2){display:none}
+      .hero-grid{grid-template-columns:minmax(390px,.9fr) minmax(480px,1.1fr);min-height:720px}
+      .hero-proof{gap:18px}
+      .sources-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+      .source-card{min-height:250px}
+      .integrations-shell{padding-right:44px;padding-left:44px}
+      .integration-logos{grid-template-columns:none!important;grid-auto-flow:column;grid-auto-columns:112px;overflow-x:auto;padding:0 2px 12px;scroll-snap-type:x proximity;scrollbar-width:none}
+      .integration-logos::-webkit-scrollbar{display:none}
+      .integration-logo{scroll-snap-align:start}
+      .insights-grid{grid-template-columns:minmax(500px,1fr) minmax(380px,.8fr);gap:56px}
+      .device{width:340px;min-height:620px}
+      .device-stage{min-height:670px}
+      .care-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .care-card{min-height:350px}
+      .footer-grid{grid-template-columns:1.1fr repeat(3,.8fr);gap:38px}
+    }
+    @media (max-width:920px){
+      :root{--wrap:min(100% - 40px,760px)}
+      .nav{grid-template-columns:1fr auto;min-height:82px}
+      .nav-links,.nav-actions{display:none}
+      .menu-button{display:grid}
+      .nav-links.is-open{
+        position:fixed;
+        inset:82px 0 0;
+        display:flex;
+        flex-direction:column;
+        align-items:flex-start;
+        justify-content:flex-start;
+        gap:0;
+        padding:28px 24px;
+        background:#fff;
+      }
+      .nav-links.is-open a,.nav-links.is-open a:nth-last-child(-n+2){display:block;width:100%;padding:18px 0;border-bottom:1px solid var(--line)}
+      .nav-links.is-open a::after{display:none}
+      .hero{padding-top:42px}
+      .hero-grid{grid-template-columns:1fr;min-height:0}
+      .hero-copy{text-align:center}
+      .hero h1,.hero-lead{margin-right:auto;margin-left:auto}
+      .hero-actions{justify-content:center}
+      .hero-proof{text-align:left}
+      .hero-visual{position:relative;inset:auto;min-height:650px;order:2}
+      .patient-three-stage{top:0;right:50%;bottom:0;width:min(100%,720px);min-width:0;transform:translateX(50%)}
+      .sources{padding-top:30px}
+      .sources-shell{padding:56px 24px 32px}
+      .sources-grid{grid-template-columns:repeat(2,minmax(0,1fr));margin-top:46px}
+      .insights{padding-top:70px}
+      .insights-grid{grid-template-columns:1fr}
+      .device-stage{width:min(100%,620px);margin:0 auto}
+      .insights-copy{max-width:700px;margin:0 auto;text-align:center}
+      .benefits{width:min(100%,620px);margin-right:auto;margin-left:auto;text-align:left}
+      .security-shell{grid-template-columns:1fr;padding:58px 46px;text-align:center}
+      .security-list{width:min(100%,600px);margin-right:auto;margin-left:auto;text-align:left}
+      .security-visual{min-height:360px}
+      .care-grid{gap:20px}
+      .start-shell{grid-template-columns:1fr;text-align:center}
+      .start-copy p{margin-right:auto;margin-left:auto}
+      .start-action{width:min(100%,520px);margin:0 auto}
+      .footer-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    }
+    @media (max-width:620px){
+      :root{--wrap:calc(100% - 32px)}
+      .brand{font-size:22px}.brand-mark{width:38px;height:38px}
+      .hero{padding:32px 0 52px}
+      .hero h1{font-size:40px;line-height:1.16}
+      .hero-lead{font-size:17px;line-height:1.6}
+      .hero-actions{flex-direction:column;gap:20px}
+      .hero-actions .button-primary{width:100%;min-width:0}
+      .hero-proof{grid-template-columns:1fr;gap:25px;margin-top:46px}
+      .proof-item{display:grid;grid-template-columns:54px 1fr;align-items:center;gap:16px}
+      .proof-icon{margin:0}
+      .hero-visual{min-height:480px}
+      .patient-three-stage{width:128%}
+      .vector-panel{width:130px;min-height:88px;padding:11px}
+      .vector-panel svg{height:34px}
+      .panel-status{top:13%;left:12%}.panel-analytics{top:14%;right:12%}
+      .panel-memory{top:40%;left:11.5%;width:148px;min-height:96px}.panel-hypothesis{top:41%;right:11.2%;width:136px;min-height:92px}
+      .sources{padding-bottom:76px}
+      .sources-shell{padding:44px 16px 18px}
+      .section-title{font-size:32px}
+      .sources-grid{grid-template-columns:1fr;gap:12px;margin-top:36px}
+      .source-card{grid-template-columns:66px 1fr;min-height:112px;gap:18px;padding:20px;text-align:left}
+      .source-icon{width:66px;height:66px}.source-icon svg{width:34px;height:34px}
+      .source-card h3{font-size:15px}
+      .integrations{padding-bottom:76px}
+      .integrations-shell{padding:42px 18px 30px}
+      .integrations-head h2{font-size:32px}
+      .integrations-head p{margin-top:14px;font-size:16px}
+      .integration-group{margin-top:34px}
+      .integration-group+.integration-group{margin-top:25px;padding-top:25px}
+      .integration-label{margin-bottom:20px;font-size:16px}
+      .integration-label svg{width:24px;height:24px}
+      .integration-logos{grid-auto-columns:104px;gap:12px}
+      .integration-logo{height:90px;padding:12px 8px}
+      .integrations-trust{align-items:flex-start;margin-top:28px;font-size:16px;text-align:center}
+      .insights{padding:70px 0 90px}
+      .device-stage{min-height:590px;transform:scale(.82);transform-origin:top center;margin-bottom:-40px}
+      .device{width:320px;min-height:590px;padding:30px 20px 24px}
+      .device-back{left:-36px}.device-front{right:-36px}
+      .score-ring{width:190px;height:190px}.score-ring::before{width:158px;height:158px}
+      .insights-copy h2{font-size:36px}
+      .insights-lead{font-size:17px}
+      .benefit{grid-template-columns:46px 1fr;gap:15px;font-size:16px}
+      .benefit-icon{width:46px;height:46px}
+      .security{padding:52px 0 76px}
+      .security-shell{gap:34px;min-height:0;padding:40px 20px}
+      .security-copy h2{font-size:34px}
+      .security-copy>p{font-size:17px}
+      .security-list{gap:18px;margin-top:34px}
+      .security-point{grid-template-columns:36px 1fr;gap:13px;font-size:15px}
+      .security-check{width:36px;height:36px}
+      .security-visual{min-height:290px}
+      .shield-visual{width:190px;height:220px}
+      .lock-visual{transform:scale(.78)}
+      .care{padding:70px 0 82px}
+      .care-head h2{font-size:34px}.care-head p{font-size:17px;line-height:1.55}
+      .care-grid{grid-template-columns:1fr;gap:14px;margin-top:40px}
+      .care-card{display:grid;grid-template-columns:62px 1fr;column-gap:18px;min-height:0;padding:24px}
+      .care-icon{grid-row:1 / span 2;width:62px;height:62px}.care-icon svg{width:31px;height:31px}
+      .care-card h3{margin:2px 0 0;font-size:20px}.care-card p{margin:10px 0 0;font-size:15px}
+      .start{padding:34px 0 76px}
+      .start-shell{gap:38px;min-height:0;padding:44px 22px}
+      .start-copy h2{font-size:34px}.start-copy p{font-size:17px}
+      .start-action .button{min-height:66px;font-size:18px}.start-action p{font-size:14px}
+      .site-footer{padding-bottom:30px}
+      .footer-shell{padding:40px 24px 28px}
+      .footer-grid{grid-template-columns:1fr;gap:34px}
+      .footer-brand p{margin-top:22px}
+      .socials{margin-top:24px}
+      .footer-column h3{margin:0 0 18px}
+      .footer-column nav{gap:15px}
+      .footer-bottom{flex-direction:column;margin-top:38px;padding-top:24px}
+    }
+    /* Match the visual scale and rhythm of the main page. */
+    :root{
+      --ink:#101319;
+      --text:#5c636e;
+      --muted:#8a909b;
+      --line:#e9ebef;
+      --page:#fcfcfd;
+      --wrap:min(1320px,calc(100% - 80px));
+    }
+    body{
+      background:radial-gradient(1100px 600px at 78% 12%,rgba(124,77,255,.06),transparent 60%),radial-gradient(900px 500px at 20% 8%,rgba(47,91,255,.04),transparent 55%),linear-gradient(180deg,#fcfcfd 0%,#f7f8fa 100%);
+    }
+    .site-header{border-bottom:0;background:rgba(252,252,253,.88)}
+    .nav{min-height:82px;gap:24px}
+    .brand{gap:11px;font-size:23px}
+    .brand-mark{width:30px;height:30px;border-radius:7px;box-shadow:0 7px 18px rgba(100,67,236,.2)}
+    .brand-mark svg{width:21px;height:15px}
+    .nav-links{gap:38px}
+    .nav-links a{padding:31px 0 30px;color:#3c424c}
+    .nav-links a[aria-current="page"]::after{bottom:11px}
+    .button{border-radius:11px}
+    .button-outline{border-color:#e3e5eb;background:#fff}
+
+    .hero{padding:40px 0 68px}
+    .hero-grid{grid-template-columns:minmax(410px,.88fr) minmax(540px,1.12fr);min-height:650px;gap:24px}
+    .hero h1{font-size:clamp(42px,4.7vw,68px);line-height:1.06;font-weight:800}
+    .hero-lead{max-width:540px;margin-top:26px;font-size:18px;line-height:1.62}
+    .hero-actions{gap:24px;margin-top:32px}
+    .hero-actions .button-primary{min-width:230px;min-height:56px;font-size:16px}
+    .hero-proof{gap:22px;margin-top:48px}
+    .proof-item{font-size:14px}
+    .proof-icon{width:50px;height:50px;margin-bottom:14px}
+    .proof-icon svg{width:25px;height:25px}
+
+    .sources{padding:64px 0 96px}
+    .sources-shell{padding:52px 28px 38px}
+    .section-title,.integrations-head h2,.insights-copy h2,.security-copy h2,.care-head h2,.start-copy h2{font-size:clamp(36px,3.4vw,52px);line-height:1.08;font-weight:800}
+    .sources-grid{gap:16px;margin-top:48px}
+    .source-card{min-height:220px;gap:24px;padding:24px 14px}
+    .source-icon{width:68px;height:68px}
+    .source-icon svg{width:34px;height:34px}
+    .source-card h3{font-size:15px;line-height:1.5}
+
+    .integrations{padding-bottom:96px}
+    .integrations-shell{padding:48px 42px 32px}
+    .integrations-head p{margin-top:16px;font-size:18px}
+    .integration-group{margin-top:34px}
+    .integration-group+.integration-group{margin-top:28px;padding-top:28px}
+    .integration-label{margin-bottom:20px;font-size:16px}
+    .integration-label svg{width:24px;height:24px}
+    .integration-logos{gap:14px}
+    .integration-logo{height:90px}
+    .integrations-trust{margin-top:34px;font-size:17px}
+
+    .insights{padding:88px 0 96px}
+    .insights-grid{grid-template-columns:minmax(500px,1fr) minmax(420px,.9fr);gap:72px}
+    .device-stage{min-height:650px}
+    .device{width:340px;min-height:620px;padding:30px 22px 26px}
+    .insights-lead{margin-top:22px;font-size:18px;line-height:1.6}
+    .benefits{gap:22px;margin-top:40px}
+    .benefit{grid-template-columns:48px 1fr;gap:17px;font-size:16px}
+    .benefit-icon{width:48px;height:48px}
+    .benefit-icon svg{width:24px;height:24px}
+
+    .security{padding:80px 0 96px}
+    .security-shell{grid-template-columns:minmax(0,1fr) minmax(360px,.9fr);min-height:440px;gap:54px;padding:52px 56px}
+    .security-copy>p{margin-top:20px;font-size:18px;line-height:1.6}
+    .security-list{gap:18px;margin-top:34px}
+    .security-point{font-size:16px}
+    .security-visual{min-height:310px;transform:scale(.86)}
+    .bios-lock-art{
+      position:relative;
+      isolation:isolate;
+      display:grid;
+      min-height:320px;
+      place-items:center;
+      overflow:visible;
+    }
+    .bios-lock-glow{
+      position:absolute;
+      z-index:0;
+      width:78%;
+      aspect-ratio:1;
+      border-radius:50%;
+      background:radial-gradient(circle,rgba(111,76,243,.19) 0%,rgba(111,76,243,.08) 36%,transparent 69%);
+      filter:blur(18px);
+      animation:biosLockGlow 5.4s ease-in-out infinite;
+    }
+    .bios-lock-orbit{
+      position:absolute;
+      z-index:2;
+      width:min(98%,520px);
+      height:156px;
+      border:1.5px solid rgba(111,82,244,.34);
+      border-radius:50%;
+      box-shadow:inset 0 0 22px rgba(112,79,244,.025);
+    }
+    .bios-lock-orbit.one{transform:rotate(16deg);animation:biosOrbitOne 13s linear infinite}
+    .bios-lock-orbit.two{height:190px;transform:rotate(-18deg);animation:biosOrbitTwo 16s linear infinite}
+    .bios-lock-dot{
+      position:absolute;
+      width:12px;
+      height:12px;
+      border-radius:50%;
+      background:linear-gradient(145deg,#9b80ff,#6740ed);
+      box-shadow:0 0 15px rgba(103,64,237,.42);
+      animation:biosDotPulse 2.8s ease-in-out infinite;
+    }
+    .bios-lock-dot.a{top:50%;left:-6px}
+    .bios-lock-dot.b{top:50%;right:-6px;animation-delay:-1.2s}
+    .bios-lock-dot.c{top:-6px;left:29%;animation-delay:-.7s}
+    .bios-lock-dot.d{right:22%;bottom:-6px;animation-delay:-1.8s}
+    .bios-lock-shield{
+      position:relative;
+      z-index:1;
+      width:250px;
+      height:auto;
+      overflow:visible;
+      filter:drop-shadow(0 26px 32px rgba(88,62,205,.13));
+      animation:biosShieldBreathe 5.4s ease-in-out infinite;
+    }
+    .bios-lock-core{
+      position:absolute;
+      z-index:4;
+      width:142px;
+      height:auto;
+      overflow:visible;
+      filter:drop-shadow(0 20px 20px rgba(78,43,211,.25));
+      animation:biosLockFloat 4.2s ease-in-out infinite;
+    }
+    .bios-lock-highlight{animation:biosLockHighlight 3.4s ease-in-out infinite}
+    @keyframes biosOrbitOne{from{transform:rotate(16deg)}to{transform:rotate(376deg)}}
+    @keyframes biosOrbitTwo{from{transform:rotate(-18deg)}to{transform:rotate(-378deg)}}
+    @keyframes biosDotPulse{0%,100%{opacity:.68;transform:scale(.82)}50%{opacity:1;transform:scale(1.14)}}
+    @keyframes biosShieldBreathe{0%,100%{opacity:.82;transform:translateY(3px) scale(.985)}50%{opacity:1;transform:translateY(-3px) scale(1.02)}}
+    @keyframes biosLockFloat{0%,100%{transform:translateY(5px)}50%{transform:translateY(-7px)}}
+    @keyframes biosLockGlow{0%,100%{opacity:.65;transform:scale(.92)}50%{opacity:1;transform:scale(1.08)}}
+    @keyframes biosLockHighlight{0%,100%{opacity:.18}50%{opacity:.58}}
+
+    .care{padding:84px 0 96px}
+    .care-head p{margin-top:20px;font-size:18px}
+    .care-grid{gap:20px;margin-top:48px}
+    .care-card{min-height:320px;padding:30px 26px}
+    .care-icon{width:64px;height:64px}
+    .care-icon svg{width:32px;height:32px}
+    .care-card h3{margin-top:24px;font-size:21px;line-height:1.4}
+    .care-card p{margin-top:17px;font-size:16px;line-height:1.6}
+
+    .start{padding:32px 0 88px}
+    .start-shell{grid-template-columns:minmax(0,1fr) minmax(320px,.62fr);gap:52px;min-height:320px;padding:52px 58px}
+    .start-copy p{margin-top:22px;font-size:18px;line-height:1.6}
+    .start-action .button{min-height:64px;font-size:18px}
+    .start-action p{margin-top:16px;font-size:15px}
+    .site-footer{padding:16px 0 40px}
+    .footer-shell{padding:48px 48px 30px}
+    .footer-grid{gap:48px}
+    .footer-brand p{margin-top:24px;font-size:15px}
+    .footer-column h3{margin:6px 0 22px;font-size:16px}
+    .footer-column nav{gap:17px}
+    .footer-column a{font-size:14px}
+    .social{width:46px;height:46px}.social svg{width:21px;height:21px}
+
+    .how-start{padding:0 0 64px}
+    .how-start-shell{padding:42px;border:1px solid #e7e8f1;border-radius:8px;background:rgba(255,255,255,.82);box-shadow:0 18px 54px rgba(57,62,105,.05)}
+    .how-start-head{text-align:center}
+    .how-start-head h2{margin:0;font-size:clamp(32px,3vw,44px);line-height:1.12;font-weight:800}
+    .how-start-head p{max-width:760px;margin:16px auto 0;color:#737d98;font-size:17px;line-height:1.55}
+    .how-start-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-top:32px}
+    .how-start-step{min-height:142px;padding:20px;border:1px solid #ebeaf3;border-radius:8px;background:#fafaff}
+    .how-start-step span{display:grid;width:32px;height:32px;place-items:center;border-radius:50%;background:#eeebff;color:#6843ed;font-size:13px;font-weight:800}
+    .how-start-step h3{margin:17px 0 0;color:#20263a;font-size:15px;line-height:1.45;font-weight:600}
+    .sources-intro{max-width:850px;margin:18px auto 0;color:#737d98;font-size:17px;line-height:1.6;text-align:center}
+    .sources-grid{margin-top:38px}
+    .source-card{min-height:190px;gap:18px}
+
+    @media (max-width:1180px){
+      :root{--wrap:min(100% - 48px,1120px)}
+      .hero-grid{grid-template-columns:minmax(370px,.9fr) minmax(470px,1.1fr);min-height:610px}
+      .source-card{min-height:210px}
+      .insights-grid{grid-template-columns:minmax(470px,1fr) minmax(360px,.82fr);gap:48px}
+      .care-card{min-height:300px}
+      .how-start-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    }
+    @media (max-width:920px){
+      :root{--wrap:min(100% - 40px,760px)}
+      .nav{min-height:82px}
+      .hero{padding-top:38px}.hero-grid{grid-template-columns:1fr;min-height:0}
+      .hero-visual{min-height:600px}
+      .sources{padding-top:24px}
+      .how-start{padding-bottom:52px}
+      .how-start-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .insights-grid{grid-template-columns:1fr}
+      .security-shell{grid-template-columns:minmax(0,1fr);gap:24px}
+      .security-copy{display:contents}
+      .security-copy h2{order:1}
+      .security-copy>p{order:2;margin-top:-8px}
+      .security-visual{order:3;width:min(100%,360px);min-height:260px;justify-self:center;transform:none}
+      .security-list{order:4;margin-top:4px}
+      .start-shell{grid-template-columns:1fr}
+    }
+    @media (max-width:620px){
+      :root{--wrap:calc(100% - 32px)}
+      .brand{font-size:22px}.brand-mark{width:30px;height:30px}.brand-main-mark{width:28px;height:28px}
+      .hero{padding:30px 0 50px}.hero h1{font-size:40px;line-height:1.1}.hero-lead{font-size:16px}
+      .hero-visual{min-height:460px}
+      .section-title,.integrations-head h2,.insights-copy h2,.security-copy h2,.care-head h2,.start-copy h2{font-size:32px}
+      .sources,.integrations,.insights,.security,.care{padding-bottom:72px}
+      .source-card,.care-card{min-height:0}
+      .security-visual,.bios-lock-art{width:min(100%,280px);min-height:220px;transform:none}
+      .start{padding-bottom:72px}
+      .footer-shell{padding:36px 22px 28px}
+      html,body{width:100%;overflow-x:clip}
+      .site-header .nav{min-height:72px}.menu-button{width:42px;height:42px}
+      .nav-links.is-open{inset:72px 0 0;padding:18px 20px 30px}
+      .hero-copy,.integrations-head,.insights-copy,.security-copy,.care-head,.start-copy{min-width:0}
+      .hero h1,.section-title,.integrations-head h2,.insights-copy h2,.security-copy h2,.care-head h2,.start-copy h2{overflow-wrap:normal;word-break:normal;hyphens:none}
+      .hero h1{font-size:36px}.hero-copy{padding:8px 0}.hero-lead{margin-top:22px}
+      .hero-actions{width:100%;gap:16px}.hero-actions .button-primary{width:100%;min-width:0}.text-link{justify-content:center}
+      .hero-proof{gap:18px;margin-top:38px}.proof-item{grid-template-columns:50px 1fr;gap:14px}.proof-icon{width:50px;height:50px}
+      .hero-visual{min-height:430px}.patient-three-stage{width:118%}.vector-panel{width:120px;padding:9px}.panel-memory{width:138px}.panel-hypothesis{width:126px}
+      .how-start-shell{padding:32px 16px}.how-start-head h2{font-size:30px}.how-start-head p{font-size:15px}.how-start-grid{grid-template-columns:1fr;gap:9px;margin-top:25px}.how-start-step{display:grid;grid-template-columns:36px 1fr;align-items:center;gap:13px;min-height:0;padding:15px}.how-start-step h3{margin:0;font-size:14px}
+      .sources-shell,.integrations-shell{padding:34px 16px 26px}.sources-intro{margin-top:15px;font-size:15px}.sources-grid{margin-top:26px}.source-card{grid-template-columns:56px 1fr;gap:14px;padding:16px}.source-icon{width:56px;height:56px}.source-icon svg{width:28px;height:28px}
+      .integration-logos{grid-auto-columns:96px}.integration-logo{height:82px}.integrations-trust{gap:10px;font-size:14px}
+      .insights{padding-top:56px}.device-stage{min-height:510px;transform:scale(.74);margin-bottom:-112px}.device{width:320px}.device-back{left:-24px}.device-front{right:-24px}
+      .insights-copy{text-align:left}.benefits{gap:16px;margin-top:30px}.benefit{grid-template-columns:42px 1fr;gap:13px}.benefit-icon{width:42px;height:42px}
+      .security-shell{gap:18px;padding:34px 18px 28px;text-align:center}.security-copy>p{margin-top:-6px;font-size:16px}.security-list{margin-top:4px;text-align:left}.security-point{grid-template-columns:34px 1fr}.security-check{width:34px;height:34px}.bios-lock-orbit{width:100%;height:104px}.bios-lock-orbit.two{height:128px}.bios-lock-shield{width:160px}.bios-lock-core{width:92px}.bios-lock-dot{width:9px;height:9px}.bios-lock-glow{width:86%}
+      .care-grid{margin-top:32px}.care-card{grid-template-columns:54px 1fr;gap:14px;padding:20px 18px}.care-icon{width:54px;height:54px}.care-icon svg{width:27px;height:27px}
+      .start-shell{gap:28px;padding:38px 18px}.start-action{width:100%}.start-action .button{width:100%;min-height:58px}
+      .footer-shell{padding:34px 18px 26px}.footer-grid{gap:28px}.footer-column h3{margin-bottom:15px}.footer-bottom{gap:14px;font-size:13px}
+    }
+    @media (max-width:920px){
+      body.menu-open .site-header{background:#f8f8fd!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+      .nav-links.is-open{
+        z-index:1000!important;
+        width:100vw;
+        border-top:1px solid #e5e6ef;
+        background:linear-gradient(155deg,#fcfcff 0%,#f4f3fb 100%)!important;
+        box-shadow:0 24px 60px rgba(55,48,108,.14);
+        backdrop-filter:none!important;
+        -webkit-backdrop-filter:none!important;
+        opacity:1!important;
+        overflow-y:auto;
+        overscroll-behavior:contain;
+      }
+      .nav-links.is-open a{position:relative;z-index:1;background:transparent}
+    }
+    .burger,.menu-button{position:relative;color:#3c424c}
+    .burger span,.menu-button svg{display:none}
+    .burger::before,.burger::after,.menu-button::before,.menu-button::after{
+      content:"";
+      position:absolute;
+      top:50%;
+      left:50%;
+      width:22px;
+      height:2px;
+      border-radius:2px;
+      background:currentColor;
+      transform:translate(-50%,-50%);
+      transition:transform .22s var(--ease),box-shadow .22s var(--ease),opacity .18s ease;
+    }
+    .burger::before,.menu-button::before{box-shadow:0 -7px 0 currentColor,0 7px 0 currentColor}
+    .burger::after,.menu-button::after{opacity:0}
+    .burger[aria-expanded="true"]::before,.menu-button[aria-expanded="true"]::before{
+      box-shadow:none;
+      transform:translate(-50%,-50%) rotate(45deg);
+    }
+    .burger[aria-expanded="true"]::after,.menu-button[aria-expanded="true"]::after{
+      opacity:1;
+      transform:translate(-50%,-50%) rotate(-45deg);
+    }
+    @media (prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{animation:none!important;transition:none!important}
+      .reveal{opacity:1;transform:none}
+    }
+  </style>
+  <link rel="stylesheet" href="assets/bios-shell.css">
+</head>
+<body id="top">
+  <header class="bios-shell-header">
+    <div class="bios-shell-nav">
+      <a class="bios-shell-brand" href="index.html" aria-label="BIOS — главная">
+        <svg class="bios-shell-mark" viewBox="-120 -160 240 320" aria-hidden="true"><defs><linearGradient id="biosHeaderLogoGradient" x1="0" y1="-150" x2="0" y2="150" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#3b6bff"/><stop offset="1" stop-color="#9b6bff"/></linearGradient></defs><g fill="none" stroke="url(#biosHeaderLogoGradient)" stroke-width="20" stroke-linejoin="round"><polygon points="70,-48 35,-108.6 -35,-108.6 -70,-48 -35,12.6 35,12.6"/><polygon points="70,48 35,-12.6 -35,-12.6 -70,48 -35,108.6 35,108.6"/></g></svg>
+        <span>BIOS</span>
+      </a>
+      <nav class="bios-shell-menu" id="biosNav" aria-label="Основная навигация">
+        <a href="index.html">О BIOS</a>
+        <a href="patients.html" aria-current="page">Для пациентов</a>
+        <a href="clinics.html">Для клиник</a>
+        <a href="index.html#technology">Технологии</a>
+        <a href="index.html#security">Безопасность</a>
+        <a href="index.html#contacts">Контакты</a>
+      </nav>
+      <div class="bios-shell-actions">
+        <a class="bios-shell-primary" href="index.html#demo">Попробовать BIOS</a>
+        <a class="bios-shell-arrow" href="index.html#demo" aria-label="Перейти к демо">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
+        </a>
+        <button class="bios-shell-burger" id="biosMenuButton" type="button" aria-label="Открыть меню" aria-controls="biosNav" aria-expanded="false"></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="patient-title">
+      <div class="wrap hero-grid">
+        <div class="hero-copy reveal">
+          <h1 id="patient-title">Ваше здоровье — не набор <span class="gradient-text">отдельных анализов</span></h1>
+          <p class="hero-lead">BIOS собирает историю организма в единую Health Memory, чтобы видеть изменения во времени, выявлять возможные взаимосвязи и помогать вам принимать более точные решения вместе с врачом.</p>
+          <div class="hero-actions">
+            <button class="button button-primary" type="button" data-registration-placeholder>Получить ранний доступ</button>
+            <a class="text-link" href="#how-start">Как работает BIOS <i aria-hidden="true">→</i></a>
+          </div>
+
+          <div class="hero-proof" aria-label="Преимущества BIOS">
+            <div class="proof-item">
+              <span class="proof-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="5" cy="12" r="2"/><circle cx="12" cy="5" r="2"/><circle cx="19" cy="12" r="2"/><circle cx="12" cy="19" r="2"/><path d="m6.5 10.5 4-4m3 0 4 4m0 3-4 4m-3 0-4-4"/></svg></span>
+              <span>Научный подход<br>и клиническая база</span>
+            </div>
+            <div class="proof-item">
+              <span class="proof-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m12 3 7 3v5c0 4.8-2.8 8-7 10-4.2-2-7-5.2-7-10V6l7-3Z"/></svg></span>
+              <span>Конфиденциально<br>и безопасно</span>
+            </div>
+            <div class="proof-item">
+              <span class="proof-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 13a4 4 0 0 1 5-3.9A5 5 0 0 1 18.5 11 3.5 3.5 0 0 1 18 18H7a4 4 0 0 1-3-5Z"/><path d="m9 13 2 2 4-5"/></svg></span>
+              <span>152-ФЗ<br>и международные стандарты</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal" aria-label="Цифровой профиль здоровья BIOS">
+          <div class="patient-three-stage">
+            <div class="patient-three-composition" aria-hidden="true">
+              <img class="patient-hero-photo" src="assets/patients-digital-twin-clean.png" alt="">
+
+              <div class="vector-panel panel-status">
+              <svg viewBox="0 0 148 48" fill="none"><path d="M2 33 18 31l9-18 10 27 10-17 10 8 11-23 10 30 12-16 10 8 12-15 12 12 12-5" stroke="#7251e9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 43h144" stroke="#ddd8f8"/></svg>
+              <strong>Состояние</strong><small>Анализ данных в динамике</small>
+            </div>
+              <div class="vector-panel panel-analytics">
+              <svg viewBox="0 0 148 48" fill="none"><rect x="8" y="29" width="10" height="15" rx="2" fill="#b9a8f7"/><rect x="27" y="20" width="10" height="24" rx="2" fill="#987ef0"/><rect x="46" y="10" width="10" height="34" rx="2" fill="#7050e7"/><rect x="65" y="16" width="10" height="28" rx="2" fill="#8669ec"/><rect x="84" y="5" width="10" height="39" rx="2" fill="#5a34dc"/><rect x="103" y="22" width="10" height="22" rx="2" fill="#957bed"/><rect x="122" y="14" width="10" height="30" rx="2" fill="#7451e8"/></svg>
+              <strong>Глубокая аналитика</strong><small>Связи и устойчивые паттерны</small>
+            </div>
+              <div class="vector-panel panel-memory">
+              <svg viewBox="0 0 148 48" fill="none"><circle cx="30" cy="24" r="18" stroke="#ddd7fa" stroke-width="7"/><path d="M30 6a18 18 0 1 1-17 24" stroke="#7450e8" stroke-width="7" stroke-linecap="round"/><path d="M74 14h10l6 10-6 10H74l-6-10 6-10Zm21 0h10l6 10-6 10H95l-6-10 6-10Zm21 0h10l6 10-6 10h-10l-6-10 6-10Z" stroke="#8c72ee" stroke-width="2"/></svg>
+              <strong>Health Memory</strong><small>Единая память организма</small>
+            </div>
+              <div class="vector-panel panel-hypothesis">
+              <svg viewBox="0 0 148 48" fill="none" stroke="#7250e8" stroke-width="2"><circle cx="74" cy="24" r="6"/><circle cx="32" cy="13" r="5"/><circle cx="45" cy="39" r="5"/><circle cx="111" cy="10" r="5"/><circle cx="121" cy="37" r="5"/><path d="m37 15 31 7M49 37l20-10m11-6 26-9M80 27l36 9"/></svg>
+              <strong>ИИ-гипотезы</strong><small>Что проверить дальше</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="how-start" id="how-start" aria-labelledby="how-start-title">
+      <div class="wrap how-start-shell reveal">
+        <div class="how-start-head">
+          <h2 id="how-start-title">Как начать работу с BIOS</h2>
+          <p>Добавляйте данные постепенно: Health Memory становится полнее вместе с историей вашего здоровья.</p>
+        </div>
+        <div class="how-start-grid">
+          <article class="how-start-step"><span>1</span><h3>Создайте профиль</h3></article>
+          <article class="how-start-step"><span>2</span><h3>Добавьте доступные медицинские данные</h3></article>
+          <article class="how-start-step"><span>3</span><h3>BIOS построит первичный контекст</h3></article>
+          <article class="how-start-step"><span>4</span><h3>Узнайте, что уже известно и каких данных не хватает</h3></article>
+          <article class="how-start-step"><span>5</span><h3>Продолжайте пополнять Health Memory вместе с врачом</h3></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="sources" id="sources" aria-labelledby="sources-title">
+      <div class="wrap sources-shell reveal">
+        <h2 class="section-title" id="sources-title">BIOS собирает всё важное<br>и соединяет в единую картину</h2>
+        <p class="sources-intro">Каждый источник хранится с датой, происхождением и контекстом. BIOS отделяет медицинские факты от предположений.</p>
+        <div class="sources-grid">
+          <article class="source-card">
+            <span class="source-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="12" r="2.5"/><circle cx="12" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="m8 10 2.3-2.3m3.4 0L16 10m0 4-2.3 2.3m-3.4 0L8 14"/></svg></span>
+            <h3>Анализы и исследования</h3>
+          </article>
+          <article class="source-card">
+            <span class="source-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2h6v2m-6 6h6m-3-3v6m-4 3h8"/></svg></span>
+            <h3>История заболеваний<br>и назначений</h3>
+          </article>
+          <article class="source-card">
+            <span class="source-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21S4 16.5 4 9.5A4.5 4.5 0 0 1 12 6a4.5 4.5 0 0 1 8 3.5C20 16.5 12 21 12 21Z"/></svg></span>
+            <h3>Образ жизни и привычки</h3>
+          </article>
+          <article class="source-card">
+            <span class="source-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="18" rx="2"/><path d="M10 6h4m-4 12h4m-1-9-3 3h2l-1 3 3-4h-2l1-2Z"/></svg></span>
+            <h3>Данные с устройств<br>и приложений</h3>
+          </article>
+          <article class="source-card">
+            <span class="source-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 7 4v10l-7 4-7-4V7l7-4Z"/><circle cx="12" cy="12" r="3"/></svg></span>
+            <h3>Жалобы и симптомы</h3>
+          </article>
+          <article class="source-card">
+            <span class="source-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 5a4 4 0 0 0 0 8h2V5H8Zm8 0a4 4 0 0 1 0 8h-2V5h2ZM10 9h4m-2 4v5m-3 3h6"/><path d="M7 17c-2 0-3 1.4-3 3m13-3c2 0 3 1.4 3 3"/></svg></span>
+            <h3>Данные от врачей<br>и клиник</h3>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="integrations" id="integrations" aria-labelledby="integrations-title">
+      <div class="wrap integrations-shell reveal">
+        <div class="integrations-head">
+          <h2 id="integrations-title">Интеграции с тем, что важно для вашего здоровья</h2>
+          <p>Приложения, устройства и клиники. Все ваши данные в одном месте.</p>
+        </div>
+
+        <div class="integration-group">
+          <h3 class="integration-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m12 3 7 3v5c0 4.8-2.8 8-7 10-4.2-2-7-5.2-7-10V6l7-3Z"/><path d="M8 12h2l1.3-2.5L13 15l1.2-3H16"/></svg>
+            Устройства для здоровья
+          </h3>
+          <div class="integration-logos devices" aria-label="Поддерживаемые устройства и приложения">
+            <div class="integration-logo"><img class="logo-mark" src="assets/integration-logos/apple-health.png" alt="Apple Health"></div>
+            <div class="integration-logo"><img class="logo-wide" src="assets/integration-logos/whoop.svg" alt="WHOOP"></div>
+            <div class="integration-logo"><img class="logo-wide" src="assets/integration-logos/garmin.svg" alt="Garmin"></div>
+            <div class="integration-logo"><img class="logo-mark" src="assets/integration-logos/fitbit.svg" alt="Fitbit"></div>
+            <div class="integration-logo"><img class="logo-mark logo-oura" src="assets/integration-logos/oura.png" alt="Oura"></div>
+            <div class="integration-logo"><img class="logo-mark" src="assets/integration-logos/strava.svg" alt="Strava"></div>
+            <div class="integration-logo"><img class="logo-mark" src="assets/integration-logos/apple.svg" alt="Apple"></div>
+            <div class="integration-logo"><img class="logo-mark logo-oura" src="assets/integration-logos/oura.png" alt="Oura Ring"></div>
+            <div class="integration-logo"><img class="logo-wide" src="assets/integration-logos/samsung.svg" alt="Samsung Galaxy Watch"></div>
+            <div class="integration-logo"><img class="logo-mark" src="assets/integration-logos/googlefit.png" alt="Google Fit"></div>
+            <div class="integration-logo"><img class="logo-mark" src="assets/integration-logos/xiaomi.svg" alt="Xiaomi"></div>
+          </div>
+        </div>
+
+        <div class="integration-group">
+          <h3 class="integration-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M12 7v10M7 12h10"/></svg>
+            Клиники и лаборатории
+          </h3>
+          <div class="integration-logos clinics" aria-label="Поддерживаемые клиники и лаборатории">
+            <div class="integration-logo"><img class="logo-wide" src="assets/integration-logos/invitro.svg" alt="Инвитро"></div>
+            <div class="integration-logo"><img class="logo-wide" src="assets/integration-logos/cmd.svg" alt="CMD"></div>
+            <div class="integration-logo"><img class="logo-wide" src="assets/integration-logos/helix.svg" alt="Helix"></div>
+            <div class="integration-logo"><img class="logo-wide" src="assets/integration-logos/kdl.svg" alt="KDL"></div>
+            <div class="integration-logo"><img class="logo-wide" src="assets/integration-logos/labquest.svg" alt="LabQuest"></div>
+            <div class="integration-logo"><img class="logo-wide" src="assets/integration-logos/gemotest.svg" alt="Гемотест"></div>
+            <div class="integration-logo"><img class="logo-mark" src="assets/integration-logos/smclinic.svg" alt="СМ-Клиника"></div>
+            <div class="integration-logo"><img class="logo-mark" src="assets/integration-logos/medsi.svg" alt="МЕДСИ"></div>
+            <div class="integration-logo"><img class="logo-wide" src="assets/integration-logos/alfazdrav.webp" alt="Альфа-Центр Здоровья"></div>
+          </div>
+        </div>
+
+        <div class="integrations-trust">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3m-4 4v3"/></svg>
+          <span>Надёжно. Безопасно. Конфиденциально.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="insights" id="insights" aria-labelledby="insights-title">
+      <div class="wrap insights-grid">
+        <div class="device-stage reveal" aria-label="Пример интерфейса BIOS">
+          <article class="device device-back">
+            <div class="app-head">
+              <div class="app-logo"><span class="brand-mark"><svg viewBox="0 0 30 20" fill="none"><path d="M1 11h5l2-7 4 13 4-10 3 6 2-4h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>BIOS</div>
+              <div class="app-tools" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1l2-1.5-2-3.4-2.4 1A8 8 0 0 0 15 6l-.3-2.6h-4L10.4 6a8 8 0 0 0-1.5.9l-2.4-1-2 3.4 2 1.5a7 7 0 0 0 0 2.2l-2 1.5 2 3.4 2.4-1a8 8 0 0 0 1.5.9l.3 2.6h4l.3-2.6a8 8 0 0 0 1.5-.9l2.4 1 2-3.4-2-1.5c.1-.3.1-.7.1-1Z"/></svg></div>
+            </div>
+            <h3 class="app-title">Сегодня</h3>
+            <div class="health-label">Состояние <span>Обновлено</span></div>
+            <div class="score-ring"><div class="score-copy"><strong>82%</strong><span>Health Memory</span></div></div>
+            <div class="risk-card"><strong>Риск понижения энергии</strong><span class="status">Низкий</span></div>
+            <div class="soft-rows"><span class="soft-row"></span><span class="soft-row"></span></div>
+          </article>
+
+          <article class="device device-front">
+            <div class="app-head">
+              <div class="app-logo"><span class="brand-mark"><svg viewBox="0 0 30 20" fill="none"><path d="M1 11h5l2-7 4 13 4-10 3 6 2-4h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>BIOS</div>
+              <div class="app-tools" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1l2-1.5-2-3.4-2.4 1A8 8 0 0 0 15 6l-.3-2.6h-4L10.4 6a8 8 0 0 0-1.5.9l-2.4-1-2 3.4 2 1.5a7 7 0 0 0 0 2.2l-2 1.5 2 3.4 2.4-1a8 8 0 0 0 1.5.9l.3 2.6h4l.3-2.6a8 8 0 0 0 1.5-.9l2.4 1 2-3.4-2-1.5c.1-.3.1-.7.1-1Z"/></svg></div>
+            </div>
+            <h3 class="app-title">AI-гипотезы</h3>
+            <div class="hypothesis-list">
+              <div class="hypothesis"><div><strong>Дефицит витамина D</strong><small>Вероятность: 78%</small></div><span class="new">Новая</span></div>
+              <div class="hypothesis"><div><strong>Нарушение сна</strong><small>Вероятность: 61%</small></div><b>→</b></div>
+              <div class="hypothesis"><div><strong>Хроническое воспаление низкой степени</strong><small>Вероятность: 62%</small></div><b>→</b></div>
+              <div class="hypothesis"><div><strong>Дефицит железа</strong><small>Вероятность: 54%</small></div><b>→</b></div>
+            </div>
+            <button class="app-button" type="button">Смотреть все</button>
+          </article>
+        </div>
+
+        <div class="insights-copy reveal">
+          <h2 id="insights-title">ИИ-гипотезы и рекомендации, а не просто данные</h2>
+          <p class="insights-lead">BIOS не заменяет врача, а усиливает его и вас. Система выявляет скрытые взаимосвязи, формирует гипотезы и подсказывает, что проверить дальше.</p>
+          <div class="benefits">
+            <div class="benefit"><span class="benefit-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 4c-2 2-3 5-2 8 1 4 4 7 7 8m5-16c2 2 3 5 2 8-1 4-4 7-7 8M9 7c1 1 1 3 0 4m6-4c-1 1-1 3 0 4m-6 4h6"/></svg></span><span>Понимаем причины, а не маскируем симптомы</span></div>
+            <div class="benefit"><span class="benefit-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/></svg></span><span>Раннее выявление рисков и отклонений</span></div>
+            <div class="benefit"><span class="benefit-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="3"/><path d="M6 20a6 6 0 0 1 12 0M4 4l2 2m14-2-2 2M3 12h3m12 0h3"/></svg></span><span>Персонализированные рекомендации</span></div>
+            <div class="benefit"><span class="benefit-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="m7 16 3-4 3 2 4-6m-2 0h2v2"/></svg></span><span>Динамика вашего состояния во времени</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="security" id="security" aria-labelledby="security-title">
+      <div class="wrap security-shell reveal">
+        <div class="security-copy">
+          <h2 id="security-title">Ваши данные под надёжной защитой</h2>
+          <p>Мы соблюдаем строгие стандарты безопасности<br> и юридические требования.</p>
+          <div class="security-list">
+            <div class="security-point"><span class="security-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4 10-10"/></svg></span><span>Шифрование данных на всех уровнях</span></div>
+            <div class="security-point"><span class="security-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4 10-10"/></svg></span><span>Хранение в защищённых дата-центрах</span></div>
+            <div class="security-point"><span class="security-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4 10-10"/></svg></span><span>Соответствие 152-ФЗ и GDPR</span></div>
+            <div class="security-point"><span class="security-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4 10-10"/></svg></span><span>Вы контролируете свои данные</span></div>
+          </div>
+        </div>
+        <div class="security-visual bios-lock-art" aria-hidden="true">
+          <div class="bios-lock-glow"></div>
+          <div class="bios-lock-orbit one"><span class="bios-lock-dot a"></span><span class="bios-lock-dot b"></span></div>
+          <div class="bios-lock-orbit two"><span class="bios-lock-dot c"></span><span class="bios-lock-dot d"></span></div>
+          <svg class="bios-lock-shield" viewBox="0 0 240 300">
+            <defs>
+              <linearGradient id="patientShieldOuter" x1="42" y1="30" x2="204" y2="270" gradientUnits="userSpaceOnUse"><stop stop-color="#ffffff" stop-opacity=".82"/><stop offset=".55" stop-color="#d9d2ff" stop-opacity=".45"/><stop offset="1" stop-color="#9c88f7" stop-opacity=".3"/></linearGradient>
+              <linearGradient id="patientShieldInner" x1="120" y1="42" x2="120" y2="264" gradientUnits="userSpaceOnUse"><stop stop-color="#ffffff" stop-opacity=".4"/><stop offset="1" stop-color="#7253e9" stop-opacity=".16"/></linearGradient>
+            </defs>
+            <path d="M120 14 211 55v82c0 67-37 113-91 148-54-35-91-81-91-148V55l91-41Z" fill="url(#patientShieldOuter)" stroke="#fff" stroke-opacity=".74" stroke-width="3"/>
+            <path d="M120 43 185 72v63c0 48-25 84-65 113-40-29-65-65-65-113V72l65-29Z" fill="url(#patientShieldInner)" stroke="#8f78f1" stroke-opacity=".18"/>
+          </svg>
+          <svg class="bios-lock-core" viewBox="0 0 160 190">
+            <defs>
+              <linearGradient id="patientLockBody" x1="31" y1="76" x2="132" y2="173" gradientUnits="userSpaceOnUse"><stop stop-color="#7656f7"/><stop offset="1" stop-color="#4f28dd"/></linearGradient>
+              <linearGradient id="patientLockShackle" x1="43" y1="30" x2="118" y2="93" gradientUnits="userSpaceOnUse"><stop stop-color="#714ef0"/><stop offset="1" stop-color="#5530df"/></linearGradient>
+            </defs>
+            <path d="M43 87V60c0-38 74-38 74 0v29" fill="none" stroke="url(#patientLockShackle)" stroke-width="20" stroke-linecap="round"/>
+            <rect x="24" y="79" width="112" height="91" rx="20" fill="url(#patientLockBody)"/>
+            <path class="bios-lock-highlight" d="M38 91h84c-9 13-25 20-46 20-17 0-30-5-38-20Z" fill="#fff"/>
+            <path d="M80 108c-7 0-12 5-12 12 0 4 2 8 6 10l-2 23h16l-2-23c4-2 6-6 6-10 0-7-5-12-12-12Z" fill="#dcd4ff"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <section class="care" aria-labelledby="care-title">
+      <div class="wrap">
+        <div class="care-head reveal">
+          <h2 id="care-title">С BIOS вы и ваш врач — в одной команде</h2>
+          <p>Прозрачность, контекст и точные данные для лучших решений.</p>
+        </div>
+        <div class="care-grid">
+          <article class="care-card reveal">
+            <span class="care-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="14" height="18" rx="2"/><path d="M8 7h6M8 11h4M18 9h2v10H8v2m5-7 3 3 4-5"/></svg></span>
+            <h3>Больше времени<br>на важное</h3>
+            <p>Врач видит полную картину и фокусируется на решении ваших задач.</p>
+          </article>
+          <article class="care-card reveal">
+            <span class="care-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="2.4"/><circle cx="12" cy="5" r="2.4"/><circle cx="19" cy="12" r="2.4"/><circle cx="12" cy="19" r="2.4"/><path d="m6.7 10.3 3.6-3.6m3.4 0 3.6 3.6m0 3.4-3.6 3.6m-3.4 0-3.6-3.6"/></svg></span>
+            <h3>Точные решения<br>быстрее</h3>
+            <p>Данные в динамике и ИИ-анализ помогают не упустить важное.</p>
+          </article>
+          <article class="care-card reveal">
+            <span class="care-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 7 3v5c0 4.8-2.8 8-7 10-4.2-2-7-5.2-7-10V6l7-3Z"/></svg></span>
+            <h3>Контроль в ваших<br>руках</h3>
+            <p>Вы понимаете своё здоровье и участвуете в процессе.</p>
+          </article>
+          <article class="care-card reveal">
+            <span class="care-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 8c-2 0-3.5 1.5-3.5 3.5S6 15 8 15c3 0 5-6 8-6 2 0 3.5 1.5 3.5 3.5S18 16 16 16c-3 0-5-6-8-6Z"/></svg></span>
+            <h3>Непрерывная забота<br>о вас</h3>
+            <p>Мониторинг и напоминания помогают сохранить фокус на здоровье каждый день.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="start" aria-labelledby="start-title">
+      <div class="wrap start-shell reveal">
+        <div class="start-copy">
+          <h2 id="start-title">Начните путь к глубокому пониманию своего здоровья</h2>
+          <p>Создайте свой профиль и получите персональную оценку состояния уже сегодня.</p>
+        </div>
+        <div class="start-action">
+          <button class="button button-primary" type="button" data-registration-placeholder>Начать бесплатно</button>
+          <p>Это займёт меньше 2 минут</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bios-shell-footer" id="contacts">
+    <div class="bios-shell-footer-inner">
+      <div class="bios-shell-footer-grid">
+        <div class="bios-shell-footer-brand">
+          <div class="bios-shell-footer-brand-row">
+            <svg class="bios-shell-mark" viewBox="-120 -160 240 320" aria-hidden="true"><defs><linearGradient id="biosFooterLogoGradient" x1="0" y1="-150" x2="0" y2="150" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#3b6bff"/><stop offset="1" stop-color="#9b6bff"/></linearGradient></defs><g fill="none" stroke="url(#biosFooterLogoGradient)" stroke-width="20" stroke-linejoin="round"><polygon points="70,-48 35,-108.6 -35,-108.6 -70,-48 -35,12.6 35,12.6"/><polygon points="70,48 35,-12.6 -35,-12.6 -70,48 -35,108.6 35,108.6"/></g></svg>
+            <b>BIOS</b>
+          </div>
+          <div class="bios-shell-footer-tag">Health Intelligence Platform</div>
+          <p>AI-инфраструктура непрерывного управления здоровьем. Данные, искусственный интеллект и клиническая экспертиза в одной системе.</p>
+        </div>
+        <div class="bios-shell-footer-cols">
+          <div class="bios-shell-footer-col">
+            <h3>Платформа</h3>
+            <nav><a href="index.html#demo">Демо-анализ</a><a href="clinics.html">Для клиник</a><a href="patients.html">Для пациентов</a><a href="index.html#technology">Технологии</a></nav>
+          </div>
+          <div class="bios-shell-footer-col">
+            <h3>Компания</h3>
+            <nav><a href="index.html">О нас</a><a href="mailto:hello@bios.health?subject=Партнёрство с BIOS">Партнёрам</a><a href="index.html#security">Безопасность</a><a href="mailto:hello@bios.health?subject=Карьера в BIOS">Карьера</a></nav>
+          </div>
+          <div class="bios-shell-footer-col">
+            <h3>Контакты</h3>
+            <nav><a href="mailto:hello@bios.health">hello@bios.health</a><a href="tel:+74950000000">+7 495 000-00-00</a><a href="mailto:hello@bios.health?subject=Встреча с командой BIOS в Москве">Москва</a></nav>
+          </div>
+        </div>
+      </div>
+      <div class="bios-shell-footer-bottom">
+        <span>© 2026 BIOS — Health Intelligence Platform</span>
+        <span class="bios-shell-legal"><a href="mailto:hello@bios.health?subject=Политика конфиденциальности BIOS">Конфиденциальность</a><a href="mailto:hello@bios.health?subject=Условия использования BIOS">Условия использования</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- The original 3D hero remains archived in the initializer below and in assets:
+       three-r128.min.js, OBJLoader-r128.js, bios-anatomical-human-obj-data.js
+       and bios-anatomical-human.obj. -->
+  <script>
+    (function(){
+      const canvas=document.getElementById('patientThreeCanvas');
+      const composition=document.getElementById('patientThreeComposition');
+      if(!canvas||!composition||!window.THREE||!window.BIOS_ANATOMICAL_HUMAN_OBJ){
+        if(composition) composition.classList.add('is-fallback');
+        return;
+      }
+
+      let renderer;
+      try{
+        renderer=new THREE.WebGLRenderer({canvas:canvas,alpha:true,antialias:true,powerPreference:'high-performance'});
+      }catch(error){
+        composition.classList.add('is-fallback');
+        return;
+      }
+
+      renderer.setClearColor(0x000000,0);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+      renderer.outputEncoding=THREE.sRGBEncoding;
+      renderer.toneMapping=THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure=1.18;
+
+      const scene=new THREE.Scene();
+      const camera=new THREE.PerspectiveCamera(35,1,.1,60);
+      camera.position.set(0,.35,11.6);
+      camera.lookAt(0,-.15,0);
+
+      scene.add(new THREE.HemisphereLight(0xffffff,0x8172c9,1.62));
+      const keyLight=new THREE.DirectionalLight(0xffffff,2.15);
+      keyLight.position.set(-3.8,6.8,7.5);
+      scene.add(keyLight);
+      const rimLight=new THREE.DirectionalLight(0x8e79ff,2.7);
+      rimLight.position.set(4.8,3.2,-5.5);
+      scene.add(rimLight);
+      const fillLight=new THREE.PointLight(0xb8abff,1.55,18);
+      fillLight.position.set(0,-1.2,4.8);
+      scene.add(fillLight);
+
+      const world=new THREE.Group();
+      const humanGroup=new THREE.Group();
+      scene.add(world);
+      world.add(humanGroup);
+
+      const platformMaterial=new THREE.MeshPhysicalMaterial({
+        color:0xd9d2ff,
+        emissive:0x7862e8,
+        emissiveIntensity:.08,
+        roughness:.3,
+        metalness:.02,
+        transparent:true,
+        opacity:.29,
+        clearcoat:1,
+        clearcoatRoughness:.12
+      });
+      const platform=new THREE.Mesh(new THREE.CylinderGeometry(2.15,2.48,.24,96,1,false),platformMaterial);
+      platform.position.y=-2.93;
+      world.add(platform);
+
+      const platformRingMaterial=new THREE.MeshBasicMaterial({color:0x8b73f2,transparent:true,opacity:.24});
+      [1.72,2.14,2.48].forEach(function(radius,index){
+        const ring=new THREE.Mesh(new THREE.TorusGeometry(radius,.018+(index*.006),12,128),platformRingMaterial.clone());
+        ring.rotation.x=Math.PI/2;
+        ring.position.y=-2.79+(index*.025);
+        world.add(ring);
+      });
+
+      const orbitGroup=new THREE.Group();
+      world.add(orbitGroup);
+      const orbitSpecs=[
+        {radius:2.30,y:-1.95,tilt:.06,roll:.12},
+        {radius:2.54,y:-.78,tilt:-.09,roll:-.08},
+        {radius:2.38,y:.48,tilt:.08,roll:.09},
+        {radius:2.15,y:1.67,tilt:-.07,roll:-.06}
+      ];
+      const orbitNodes=[];
+      orbitSpecs.forEach(function(spec,index){
+        const material=new THREE.MeshBasicMaterial({color:index%2?0xa794ff:0x8067ef,transparent:true,opacity:.20});
+        const ring=new THREE.Mesh(new THREE.TorusGeometry(spec.radius,.012,8,144),material);
+        ring.rotation.set(Math.PI/2+spec.tilt,0,spec.roll);
+        ring.position.y=spec.y;
+        orbitGroup.add(ring);
+
+        const nodeMaterial=new THREE.MeshBasicMaterial({color:0x7b5bf0,transparent:true,opacity:.72});
+        const node=new THREE.Mesh(new THREE.SphereGeometry(.045+(index%2)*.012,18,18),nodeMaterial);
+        node.userData={radius:spec.radius,y:spec.y,angle:index*1.57,speed:(index%2?-.16:.13),tilt:spec.tilt};
+        orbitNodes.push(node);
+        orbitGroup.add(node);
+      });
+
+      const particlePositions=[];
+      for(let i=0;i<92;i++){
+        const angle=i*2.399963;
+        const radius=1.45+(i%11)*.115;
+        const y=-2.45+(i%23)*.215;
+        particlePositions.push(Math.cos(angle)*radius,y,Math.sin(angle)*radius*.58);
+      }
+      const particleGeometry=new THREE.BufferGeometry();
+      particleGeometry.setAttribute('position',new THREE.Float32BufferAttribute(particlePositions,3));
+      const particles=new THREE.Points(particleGeometry,new THREE.PointsMaterial({
+        color:0x8264ed,
+        size:.035,
+        transparent:true,
+        opacity:.30,
+        depthWrite:false
+      }));
+      world.add(particles);
+
+      function decodeBase64Text(value){
+        const binary=window.atob(value);
+        const bytes=new Uint8Array(binary.length);
+        for(let i=0;i<binary.length;i++) bytes[i]=binary.charCodeAt(i);
+        return new TextDecoder('utf-8').decode(bytes);
+      }
+
+      let modelReady=false;
+      const loader=new THREE.OBJLoader();
+      try{
+          const model=loader.parse(decodeBase64Text(window.BIOS_ANATOMICAL_HUMAN_OBJ));
+          const bodyMaterial=new THREE.MeshPhysicalMaterial({
+            color:0xd4ceff,
+            emissive:0x7159df,
+            emissiveIntensity:.16,
+            specular:0xffffff,
+            roughness:.22,
+            metalness:0,
+            transparent:true,
+            opacity:.72,
+            clearcoat:1,
+            clearcoatRoughness:.16,
+            side:THREE.DoubleSide
+          });
+          let meshCount=0;
+          model.traverse(function(object){
+            if(!object.isMesh) return;
+            meshCount+=1;
+            object.visible=true;
+            object.geometry.computeVertexNormals();
+            object.material=bodyMaterial.clone();
+            if(object.isSkinnedMesh) object.material.skinning=true;
+            object.castShadow=false;
+            object.receiveShadow=false;
+            object.frustumCulled=false;
+          });
+
+          const figureGroup=new THREE.Group();
+          figureGroup.add(model);
+
+          const glowModel=model.clone(true);
+          const glowMaterial=new THREE.MeshBasicMaterial({
+            color:0xa58fff,
+            transparent:true,
+            opacity:.13,
+            side:THREE.BackSide,
+            depthWrite:false,
+            blending:THREE.AdditiveBlending
+          });
+          glowModel.traverse(function(object){
+            if(object.isMesh){
+              object.material=glowMaterial.clone();
+              object.frustumCulled=false;
+            }
+          });
+          glowModel.scale.setScalar(1.012);
+          figureGroup.add(glowModel);
+
+          const wireModel=model.clone(true);
+          const wireMaterial=new THREE.MeshBasicMaterial({
+            color:0x8d77f2,
+            wireframe:true,
+            transparent:true,
+            opacity:.035,
+            depthWrite:false
+          });
+          wireModel.traverse(function(object){
+            if(object.isMesh){
+              object.material=wireMaterial.clone();
+              object.frustumCulled=false;
+            }
+          });
+          wireModel.scale.setScalar(1.002);
+          figureGroup.add(wireModel);
+
+          let figureBox=new THREE.Box3().setFromObject(figureGroup);
+          const figureSize=new THREE.Vector3();
+          figureBox.getSize(figureSize);
+          figureGroup.scale.setScalar(5.48/Math.max(figureSize.y,.001));
+          figureGroup.updateMatrixWorld(true);
+          figureBox=new THREE.Box3().setFromObject(figureGroup);
+          const figureCenter=new THREE.Vector3();
+          figureBox.getCenter(figureCenter);
+          figureGroup.position.x-=figureCenter.x;
+          figureGroup.position.z-=figureCenter.z;
+          figureGroup.position.y-=figureBox.min.y;
+
+          humanGroup.add(figureGroup);
+          humanGroup.position.y=-2.80;
+          composition.dataset.modelReady='true';
+          composition.dataset.modelType='anatomical-digital-human';
+          composition.dataset.modelAsset='bios-anatomical-human.obj';
+          composition.dataset.modelMeshes=String(meshCount);
+          composition.dataset.modelScale=figureGroup.scale.x.toFixed(3);
+          modelReady=true;
+      }catch(error){
+        composition.classList.add('is-fallback');
+      }
+
+      const reducedMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let active=true;
+      let dragging=false;
+      let lastPointerX=0;
+      let manualRotation=0;
+      let manualTarget=0;
+
+      canvas.addEventListener('pointerdown',function(event){
+        dragging=true;
+        lastPointerX=event.clientX;
+        canvas.setPointerCapture(event.pointerId);
+      });
+      canvas.addEventListener('pointermove',function(event){
+        if(!dragging) return;
+        manualTarget+=(event.clientX-lastPointerX)*.009;
+        lastPointerX=event.clientX;
+      });
+      function releasePointer(event){
+        dragging=false;
+        if(canvas.hasPointerCapture&&canvas.hasPointerCapture(event.pointerId)) canvas.releasePointerCapture(event.pointerId);
+      }
+      canvas.addEventListener('pointerup',releasePointer);
+      canvas.addEventListener('pointercancel',releasePointer);
+
+      function resize(){
+        const width=Math.max(1,canvas.clientWidth);
+        const height=Math.max(1,canvas.clientHeight);
+        const pixelRatio=renderer.getPixelRatio();
+        const targetWidth=Math.floor(width*pixelRatio);
+        const targetHeight=Math.floor(height*pixelRatio);
+        if(canvas.width!==targetWidth||canvas.height!==targetHeight){
+          renderer.setSize(width,height,false);
+          camera.aspect=width/height;
+          camera.updateProjectionMatrix();
+        }
+      }
+      if('ResizeObserver' in window) new ResizeObserver(resize).observe(canvas);
+      window.addEventListener('resize',resize,{passive:true});
+      resize();
+
+      if('IntersectionObserver' in window){
+        new IntersectionObserver(function(entries){active=entries[0].isIntersecting;},{threshold:.01}).observe(canvas);
+      }
+
+      const clock=new THREE.Clock();
+      let elapsed=0;
+      function render(){
+        window.requestAnimationFrame(render);
+        const delta=Math.min(clock.getDelta(),.05);
+        if(!active) return;
+        if(!reducedMotion) elapsed+=delta;
+        manualRotation+=(manualTarget-manualRotation)*Math.min(1,delta*7);
+        if(modelReady){
+          humanGroup.rotation.y=manualRotation+(reducedMotion?0:Math.sin(elapsed*.33)*.045);
+          humanGroup.position.y=-2.80+(reducedMotion?0:Math.sin(elapsed*.72)*.012);
+        }
+        orbitGroup.rotation.y=reducedMotion?0:Math.sin(elapsed*.24)*.06;
+        particles.rotation.y=reducedMotion?0:elapsed*.022;
+        orbitNodes.forEach(function(node){
+          if(!reducedMotion) node.userData.angle+=delta*node.userData.speed;
+          node.position.set(
+            Math.cos(node.userData.angle)*node.userData.radius,
+            node.userData.y+Math.sin(node.userData.angle)*node.userData.radius*Math.sin(node.userData.tilt),
+            Math.sin(node.userData.angle)*node.userData.radius
+          );
+        });
+        renderer.render(scene,camera);
+      }
+      render();
+    })();
+  </script>
+
+  <script>
+    (function(){
+      const menuButton=document.getElementById('biosMenuButton');
+      const nav=document.getElementById('biosNav');
+      function closeMenu(){
+        nav.classList.remove('is-open');
+        document.body.classList.remove('menu-open');
+        menuButton.setAttribute('aria-expanded','false');
+        menuButton.setAttribute('aria-label','Открыть меню');
+      }
+      menuButton.addEventListener('click',function(){
+        const open=!nav.classList.contains('is-open');
+        nav.classList.toggle('is-open',open);
+        document.body.classList.toggle('menu-open',open);
+        menuButton.setAttribute('aria-expanded',String(open));
+        menuButton.setAttribute('aria-label',open?'Закрыть меню':'Открыть меню');
+      });
+      nav.addEventListener('click',function(event){if(event.target.closest('a')) closeMenu();});
+      window.addEventListener('keydown',function(event){if(event.key==='Escape') closeMenu();});
+      window.addEventListener('resize',function(){if(window.innerWidth>1120) closeMenu();});
+
+      const items=document.querySelectorAll('.reveal');
+      if(!('IntersectionObserver' in window)){
+        items.forEach(function(item){item.classList.add('is-visible');});
+        return;
+      }
+      const observer=new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target);}
+        });
+      },{threshold:.12});
+      items.forEach(function(item){observer.observe(item);});
+    })();
+  </script>
+</body>
+</html>
