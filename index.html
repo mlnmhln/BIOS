@@ -115,7 +115,7 @@
   .btn-light{background:#fff;color:var(--ink);border:1.5px solid var(--line)}
   .btn-light:hover{transform:translateY(-2px);border-color:#d6d9e0;box-shadow:0 12px 26px rgba(16,19,25,.08)}
 
-  /* ---------- Video placeholder ---------- */
+  /* ---------- BIOS data flow ---------- */
   .video-block{display:flex;flex-direction:column;gap:18px}
   .video-wrap{position:relative;isolation:isolate}
   .video-wrap::before{
@@ -125,26 +125,57 @@
     filter:blur(46px);border-radius:40px;opacity:.9;
   }
   .video-card{
-    position:relative;aspect-ratio:16/10.4;border-radius:26px;overflow:hidden;
-    background:
-      radial-gradient(120% 120% at 30% 18%, #ffffff 0%, transparent 42%),
-      linear-gradient(150deg,var(--card-from) 0%, var(--card-to) 100%);
+    position:relative;aspect-ratio:16/10.4;border-radius:8px;overflow:hidden;
+    background:#f4f3ff;
     border:1px solid rgba(255,255,255,.7);
     box-shadow:0 30px 70px -28px rgba(60,60,120,.34), inset 0 1px 0 rgba(255,255,255,.8);
-    display:grid;place-items:center;
+    isolation:isolate;
   }
-  .hexmark{width:54%;max-width:330px;height:auto;display:block;filter:drop-shadow(0 24px 40px rgba(90,70,200,.32))}
-  .play{
-    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
-    width:74px;height:74px;border-radius:999px;background:#0d1016;
-    display:grid;place-items:center;cursor:pointer;
-    box-shadow:0 14px 34px rgba(13,16,22,.4);
-    transition:transform .2s;
+  .hero-flow-image{
+    position:absolute;z-index:-2;inset:0;width:100%;height:100%;
+    object-fit:cover;object-position:67% center;opacity:.9;
   }
-  .play:hover{transform:translate(-50%,-50%) scale(1.06)}
-  .play svg{width:24px;height:24px;margin-left:3px}
+  .video-card::after{
+    content:"";position:absolute;z-index:-1;inset:0;
+    background:linear-gradient(90deg,rgba(249,249,255,.96) 0%,rgba(249,249,255,.58) 38%,rgba(249,249,255,.08) 72%);
+  }
+  .hero-flow-sources{position:absolute;top:14%;left:5%;display:grid;gap:10px}
+  .hero-flow-chip{
+    display:inline-flex;width:max-content;min-height:32px;padding:0 12px;align-items:center;
+    border:1px solid rgba(103,83,221,.18);border-radius:8px;color:#495168;
+    background:rgba(255,255,255,.88);box-shadow:0 8px 20px rgba(76,69,143,.06);
+    font-size:11px;font-weight:600;opacity:0;transform:translateX(-12px);
+    animation:heroChip 7s var(--ease) infinite;
+  }
+  .hero-flow-chip:nth-child(2){animation-delay:.45s}
+  .hero-flow-chip:nth-child(3){animation-delay:.9s}
+  .hero-flow-chip:nth-child(4){animation-delay:1.35s}
+  .hero-flow-core{
+    position:absolute;right:5%;bottom:22%;display:grid;min-width:142px;min-height:66px;padding:12px 15px;
+    align-content:center;border:1px solid rgba(99,76,231,.2);border-radius:8px;
+    background:rgba(255,255,255,.9);box-shadow:0 16px 36px rgba(86,68,187,.12);
+    animation:heroCore 7s var(--ease) infinite;
+  }
+  .hero-flow-core small{color:#7b8395;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+  .hero-flow-core strong{margin-top:5px;font-size:14px}
+  .hero-flow-action{
+    position:absolute;right:6%;bottom:7%;display:flex;gap:7px;align-items:center;
+    color:#4332c9;font-size:11px;font-weight:700;opacity:0;transform:translateY(8px);
+    animation:heroAction 7s var(--ease) infinite;
+  }
+  .hero-flow-action svg{width:16px;height:16px}
+  .hero-flow-line{
+    position:absolute;left:27%;right:24%;bottom:31%;height:1px;
+    background:linear-gradient(90deg,rgba(59,107,255,0),rgba(59,107,255,.55),rgba(139,92,255,.8));
+    transform:scaleX(0);transform-origin:left;animation:heroLine 7s var(--ease) infinite;
+  }
+  .hero-flow-line::after{content:"";position:absolute;right:-4px;top:-3px;width:7px;height:7px;border-radius:50%;background:#7a58ee;box-shadow:0 0 0 6px rgba(122,88,238,.1)}
   .video-meta{display:flex;align-items:center;justify-content:space-between;padding:0 4px}
   .video-meta span{font-size:14.5px;color:var(--muted);font-weight:500}
+  @keyframes heroChip{0%,9%,100%{opacity:0;transform:translateX(-12px)}15%,74%{opacity:1;transform:none}84%{opacity:0;transform:translateX(8px)}}
+  @keyframes heroLine{0%,25%,100%{transform:scaleX(0);opacity:0}38%,78%{transform:scaleX(1);opacity:1}88%{opacity:0}}
+  @keyframes heroCore{0%,34%,100%{transform:translateY(7px);opacity:.65}48%,82%{transform:none;opacity:1;box-shadow:0 20px 44px rgba(86,68,187,.18)}}
+  @keyframes heroAction{0%,54%,100%{opacity:0;transform:translateY(8px)}68%,88%{opacity:1;transform:none}}
 
   /* ---------- Trust ---------- */
   .trust{padding-top:clamp(24px,3vw,36px);padding-bottom:clamp(12px,1.6vw,24px);border-top:1px solid var(--line-soft)}
@@ -507,7 +538,7 @@
     text-rendering:optimizeLegibility;overflow-x:hidden;
   }
 
-  .scrolly{position:relative;height:720vh}
+  .scrolly{position:relative;height:420vh}
   .sticky{position:sticky;top:0;height:100vh;overflow:hidden}
   .stage{position:relative;width:100%;height:100%}
 
@@ -587,8 +618,52 @@
   .hm-logo b{font-weight:800;font-size:26px;letter-spacing:.01em}
   .hm-logo .tag{font-size:12px;font-weight:500;letter-spacing:.14em;color:var(--muted);text-transform:none}
 
+  .hm-compact-story{
+    position:relative;
+    display:block;
+    padding:clamp(90px,9vw,132px) 0 clamp(88px,9vw,126px);
+    overflow:hidden;
+    border-top:1px solid #ececf2;
+    border-bottom:1px solid #ececf2;
+    background:
+      radial-gradient(700px 420px at 86% 20%,rgba(124,77,255,.075),transparent 68%),
+      radial-gradient(620px 380px at 10% 78%,rgba(47,91,255,.045),transparent 70%),
+      #fcfcfe;
+  }
+  .hm-compact-story[hidden]{display:none!important}
+  .hm-compact-head{display:grid;grid-template-columns:minmax(180px,.35fr) minmax(0,1fr);gap:clamp(38px,6vw,92px);align-items:start}
+  .hm-compact-head p{margin:10px 0 0;color:#5750df;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
+  .hm-compact-head h2{max-width:940px;margin:0;font-size:clamp(42px,4.8vw,70px);line-height:1.04;letter-spacing:0}
+  .hm-compact-head h2 span{display:block;color:transparent;background:linear-gradient(96deg,#3468ff,#9365fa);-webkit-background-clip:text;background-clip:text}
+  .hm-compact-steps{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:clamp(54px,6vw,82px);border-top:1px solid #dfe1e9;border-bottom:1px solid #dfe1e9}
+  .hm-compact-steps::before{content:"";position:absolute;top:-1px;left:0;width:75%;height:2px;background:linear-gradient(90deg,#3b6bff,#9365fa)}
+  .hm-compact-step{position:relative;min-height:252px;padding:34px 28px 32px}
+  .hm-compact-step+.hm-compact-step{border-left:1px solid #dfe1e9}
+  .hm-compact-step:nth-child(3){background:linear-gradient(160deg,rgba(245,243,255,.9),rgba(255,255,255,.3))}
+  .hm-compact-step b{display:grid;width:38px;height:38px;place-items:center;border:1px solid #d9d6f4;border-radius:8px;color:#5c50e7;background:#f8f7ff;font-size:12px}
+  .hm-compact-step h3{margin:30px 0 12px;font-size:clamp(18px,1.35vw,22px);line-height:1.35}
+  .hm-compact-step p{margin:0;color:#687083;font-size:14px;line-height:1.65}
+  .hm-compact-final{display:grid;grid-template-columns:58px minmax(0,1fr) auto;gap:22px;align-items:center;margin-top:48px}
+  .hm-compact-final-mark{width:52px;height:52px;filter:drop-shadow(0 12px 20px rgba(90,70,200,.16))}
+  .hm-compact-final p{margin:0;font-size:clamp(22px,2.4vw,34px);line-height:1.25;font-weight:750}
+  .hm-compact-final strong{color:transparent;background:linear-gradient(96deg,#3468ff,#9365fa);-webkit-background-clip:text;background-clip:text;font-size:clamp(24px,2.3vw,34px);white-space:nowrap}
   @media (max-width:760px) and (orientation:portrait){
-    .scrolly{height:780vh}
+    .hm-compact-story{padding:74px 0 84px}
+    .hm-compact-head{grid-template-columns:1fr;gap:15px}
+    .hm-compact-head p{margin:0}
+    .hm-compact-head h2{font-size:34px;line-height:1.12}
+    .hm-compact-steps{grid-template-columns:1fr;margin-top:38px}
+    .hm-compact-steps::before{width:100%}
+    .hm-compact-step{display:grid;grid-template-columns:38px 1fr;column-gap:15px;min-height:0;padding:22px 0;border-bottom:1px solid #e8e9ef}
+    .hm-compact-step+.hm-compact-step{border-left:0}
+    .hm-compact-step:last-child{border-bottom:0}
+    .hm-compact-step b{grid-row:1 / span 2;width:32px;height:32px}
+    .hm-compact-step h3{margin:1px 0 7px;font-size:17px}
+    .hm-compact-step p{font-size:14px;line-height:1.55}
+    .hm-compact-final{grid-template-columns:44px 1fr;gap:15px;margin-top:34px}
+    .hm-compact-final-mark{width:42px;height:42px}
+    .hm-compact-final p{font-size:20px}
+    .hm-compact-final strong{grid-column:2;font-size:24px;white-space:normal}
     .headline{top:46%;width:calc(100% - 32px)}
     .headline h1{font-size:32px;line-height:1.12}
     .cue{bottom:5%}
@@ -653,7 +728,7 @@
   .bridge-scroll i{display:block;width:1px;height:44px;background:linear-gradient(180deg,rgba(154,161,172,.34),rgba(154,161,172,0));
     animation:cuemove 2s var(--ease) infinite}
   .bridge-demo{--bridge-y:0vh;--bridge-scale:1;--bridge-opacity:1;--bridge-icon-y:0px;
-    min-height:210svh;margin-top:clamp(-500px,-34vh,-340px);padding:0;overflow:clip;
+    min-height:115svh;margin-top:0;padding:0;overflow:clip;
     background:
       radial-gradient(760px 560px at 50% 30%, rgba(255,255,255,.82), transparent 62%),
       radial-gradient(860px 620px at 84% 18%, rgba(124,77,255,.075), transparent 66%),
@@ -1332,7 +1407,7 @@
     .hero h1{margin-bottom:22px;font-size:38px;line-height:1.04;overflow-wrap:anywhere}
     .lede{margin-bottom:28px;font-size:16px;line-height:1.55}
     .cta{gap:10px}.btn{min-width:0;padding:15px 18px}
-    .video-card{border-radius:18px}.play{width:58px;height:58px}.hexmark{width:48%}
+    .video-card{border-radius:8px}.hero-flow-core{right:4%;min-width:126px}.hero-flow-sources{left:4%}
     .video-meta{padding:0}.video-meta span{font-size:12px}
     .trust{padding-top:20px}.trust-label{margin-bottom:28px;line-height:1.5}
     .logos{gap:24px 12px}.logos .logo{min-width:calc(50% - 12px);transform:scale(.9)}
@@ -1423,7 +1498,7 @@
         <a href="patients.html">Для пациентов</a>
         <a href="clinics.html">Для клиник</a>
         <a href="index.html#technology">Технологии</a>
-        <a href="index.html#security">Безопасность</a>
+        <a href="security.html">Безопасность</a>
         <a href="index.html#contacts">Контакты</a>
       </nav>
       <div class="bios-shell-actions">
@@ -1454,39 +1529,28 @@
         </div>
       </div>
 
-      <!-- right : video placeholder -->
+      <!-- right : BIOS data flow -->
       <div class="hero-right video-block">
         <div class="video-wrap">
-          <!-- Заглушка видео. Чтобы вставить реальное видео, замените содержимое .video-card
-               на <video src="..." poster="..."> или <iframe>, оставив .play при желании. -->
-          <div class="video-card">
-            <svg class="hexmark" viewBox="-120 -160 240 320" aria-hidden="true">
-              <defs>
-                <linearGradient id="gHex" x1="0" y1="-150" x2="0" y2="150" gradientUnits="userSpaceOnUse">
-                  <stop offset="0" stop-color="#5b8bff"/>
-                  <stop offset="0.5" stop-color="#6f6bff"/>
-                  <stop offset="1" stop-color="#a06bff"/>
-                </linearGradient>
-                <linearGradient id="gHexHi" x1="0" y1="-150" x2="0" y2="150" gradientUnits="userSpaceOnUse">
-                  <stop offset="0" stop-color="#cfe0ff"/>
-                  <stop offset="1" stop-color="#e6d6ff"/>
-                </linearGradient>
-              </defs>
-              <g fill="none" stroke-linejoin="round">
-                <polygon points="70,-48 35,-108.6 -35,-108.6 -70,-48 -35,12.6 35,12.6" stroke="url(#gHex)" stroke-width="22"/>
-                <polygon points="70,48 35,-12.6 -35,-12.6 -70,48 -35,108.6 35,108.6" stroke="url(#gHex)" stroke-width="22"/>
-                <polygon points="70,-48 35,-108.6 -35,-108.6 -70,-48 -35,12.6 35,12.6" stroke="url(#gHexHi)" stroke-width="6" opacity="0.6"/>
-                <polygon points="70,48 35,-12.6 -35,-12.6 -70,48 -35,108.6 35,108.6" stroke="url(#gHexHi)" stroke-width="6" opacity="0.6"/>
-              </g>
-            </svg>
-            <button class="play" aria-label="Смотреть видео">
-              <svg viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-            </button>
+          <div class="video-card" role="img" aria-label="Данные объединяются в цифровой профиль, Health Memory, гипотезу и действие">
+            <img class="hero-flow-image" src="assets/patients-digital-twin-clean.png" alt="">
+            <div class="hero-flow-sources" aria-hidden="true">
+              <span class="hero-flow-chip">Анализы</span>
+              <span class="hero-flow-chip">История</span>
+              <span class="hero-flow-chip">Сон и активность</span>
+              <span class="hero-flow-chip">Наблюдения врача</span>
+            </div>
+            <span class="hero-flow-line" aria-hidden="true"></span>
+            <div class="hero-flow-core" aria-hidden="true"><small>Единая память</small><strong>Health Memory</strong></div>
+            <div class="hero-flow-action" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14m-5-5 5 5-5 5"/></svg>
+              <span>Гипотеза → действие</span>
+            </div>
           </div>
         </div>
         <div class="video-meta">
-          <span>Смотрите, как работает BIOS</span>
-          <span>01:02 мин</span>
+          <span>Данные → профиль → Health Memory</span>
+          <span>Гипотеза → действие</span>
         </div>
       </div>
     </div>
@@ -1727,6 +1791,26 @@
         <div class="tag">Health Intelligence Platform</div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+<section class="hm-compact-story" id="health-memory" aria-labelledby="hm-compact-title" hidden aria-hidden="true">
+  <div class="wrap">
+    <div class="hm-compact-head">
+      <p>Health Memory</p>
+      <h2 id="hm-compact-title">У каждого человека своя история.<span>У каждого организма — своя память.</span></h2>
+    </div>
+    <div class="hm-compact-steps">
+      <article class="hm-compact-step"><b>01</b><div><h3>У организма есть история</h3><p>Состояние меняется во времени и зависит от контекста.</p></div></article>
+      <article class="hm-compact-step"><b>02</b><div><h3>Данные приходят из разных периодов и источников</h3><p>Анализы, симптомы, образ жизни и наблюдения врача складываются в одну картину.</p></div></article>
+      <article class="hm-compact-step"><b>03</b><div><h3>BIOS связывает их в Health Memory</h3><p>Источник, дата и контекст сохраняются для каждого наблюдения.</p></div></article>
+      <article class="hm-compact-step"><b>04</b><div><h3>Память позволяет видеть изменения и проверять гипотезы</h3><p>История помогает замечать динамику и определять, что стоит проверить дальше.</p></div></article>
+    </div>
+    <div class="hm-compact-final">
+      <svg class="hm-compact-final-mark" viewBox="-120 -160 240 320" aria-hidden="true"><defs><linearGradient id="hmCompactGradient" x1="0" y1="-150" x2="0" y2="150" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#3b6bff"/><stop offset="1" stop-color="#9b6bff"/></linearGradient></defs><g fill="none" stroke="url(#hmCompactGradient)" stroke-width="20" stroke-linejoin="round"><polygon points="70,-48 35,-108.6 -35,-108.6 -70,-48 -35,12.6 35,12.6"/><polygon points="70,48 35,-12.6 -35,-12.6 -70,48 -35,108.6 35,108.6"/></g></svg>
+      <p>Мы создаём цифровую память здоровья человека.</p>
+      <strong>Health Memory</strong>
     </div>
   </div>
 </section>
@@ -2156,7 +2240,7 @@
             <h3>Компания</h3>
             <a href="index.html">О нас</a>
             <a href="mailto:hello@bios.health?subject=Партнёрство с BIOS">Партнёрам</a>
-            <a href="index.html#security">Безопасность</a>
+            <a href="security.html">Безопасность</a>
             <a href="mailto:hello@bios.health?subject=Карьера в BIOS">Карьера</a>
           </div>
           <div class="bios-shell-footer-col">
@@ -2527,7 +2611,18 @@
     },{threshold:.3});
     els.forEach(function(e){io.observe(e);});
   }
+  var patternsSection=document.querySelector('[aria-labelledby="bios-patterns-title"]');
   var bridgeDemo=document.querySelector('.bridge-demo');
+  var demoStage=document.querySelector('.flow-stage');
+  if(patternsSection && bridgeDemo && demoStage){
+    patternsSection.insertAdjacentElement('afterend',bridgeDemo);
+    bridgeDemo.insertAdjacentElement('afterend',demoStage);
+  }
+  var accuracySection=document.querySelector('[aria-labelledby="bios-accuracy-title"]');
+  var securitySection=document.getElementById('security');
+  if(accuracySection && securitySection){
+    accuracySection.insertAdjacentElement('afterend',securitySection);
+  }
   var clamp=function(v,a,b){return Math.max(a,Math.min(b,v));};
   var bridgeTicking=false;
   function updateBridgeDemo(){

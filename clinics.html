@@ -157,6 +157,10 @@
     .dash-side-icon svg{width:22px;height:22px}
     .dash-main{min-height:576px;padding:32px 38px;border-radius:8px;background:rgba(255,255,255,.9);box-shadow:0 6px 28px rgba(63,67,110,.035)}
     .dash-title{margin:0 0 28px;font-size:18px;font-weight:600}
+    .dash-path{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:0 0 26px;border:1px solid #e7e5f3;border-radius:8px;overflow:hidden}
+    .dash-path span{display:flex;min-height:42px;padding:0 10px;align-items:center;justify-content:center;color:#6d7488;background:#fafaff;font-size:10px;font-weight:700;text-align:center}
+    .dash-path span+span{border-left:1px solid #e7e5f3}
+    .dash-path span:nth-child(2){color:#5e42de;background:#f3f0ff}
     .dash-summary{display:grid;grid-template-columns:.78fr 1.22fr;gap:30px}
     .score-pane h3,.hypotheses-pane h3{margin:0 0 24px;font-size:16px;font-weight:500}.score-pane h3{color:#6540ef}
     .score-ring{position:relative;display:grid;width:150px;height:150px;margin:0 auto;place-items:center;border-radius:50%;background:conic-gradient(#456ff4 0 24%,#7355f3 24% 46%,#b184f7 46% 52%,#ece8ff 52% 100%)}
@@ -543,6 +547,23 @@
       }
       .nav-links.is-open a{position:relative;z-index:1;background:transparent}
     }
+    @media(max-width:620px){
+      .clinic-dashboard{min-height:0;overflow:visible}
+      .dash-layout{grid-template-columns:1fr}
+      .dash-main{min-height:0}
+      .dash-summary{grid-template-columns:1fr}
+      .dash-path{grid-template-columns:1fr 1fr;margin-bottom:22px}
+      .dash-path span{min-height:38px;padding:0 7px;font-size:9px}
+      .dash-path span:nth-child(3){border-left:0;border-top:1px solid #e7e5f3}
+      .dash-path span:nth-child(4){border-top:1px solid #e7e5f3}
+      .hypotheses-pane{display:block}
+      .hypotheses-pane h3{margin-top:4px}
+      .hypothesis{gap:8px;padding:12px 10px}
+      .hypothesis strong{font-size:11px}
+      .hypothesis small{font-size:9px}
+      .risk{padding:5px 7px;font-size:8px}
+      .dash-chart{margin-top:28px}
+    }
     .burger,.menu-button{position:relative;color:#3c424c}
     .burger span,.menu-button svg{display:none}
     .burger::before,.burger::after,.menu-button::before,.menu-button::after{
@@ -583,7 +604,7 @@
         <a href="patients.html">Для пациентов</a>
         <a href="clinics.html" aria-current="page">Для клиник</a>
         <a href="index.html#technology">Технологии</a>
-        <a href="index.html#security">Безопасность</a>
+        <a href="security.html">Безопасность</a>
         <a href="index.html#contacts">Контакты</a>
       </nav>
       <div class="bios-shell-actions">
@@ -625,6 +646,7 @@
               </aside>
               <div class="dash-main">
                 <h2 class="dash-title">Сводка по пациенту</h2>
+                <div class="dash-path" aria-label="Рабочий маршрут врача"><span>Факты</span><span>Гипотеза</span><span>Что проверить</span><span>Решение врача</span></div>
                 <div class="dash-summary">
                   <div class="score-pane"><h3>Health Memory</h3><div class="score-ring"><div class="score-value"><strong>82%</strong><span>Health Score</span></div></div><p class="score-caption">Готовность данных</p></div>
                   <div class="hypotheses-pane"><h3>AI-гипотезы</h3><div class="hypothesis-list"><div class="hypothesis"><div><strong>Инсулинорезистентность</strong><small>Вероятность 72%</small></div><span class="risk high">Высокая</span></div><div class="hypothesis"><div><strong>Хроническое воспаление</strong><small>Вероятность 60%</small></div><span class="risk medium">Средняя</span></div><div class="hypothesis"><div><strong>Дефицит витамина D</strong><small>Вероятность 36%</small></div><span class="risk low">Низкая</span></div></div><a class="all-hypotheses" href="#solution">Показать все гипотезы</a></div>
@@ -767,44 +789,6 @@
       </div>
     </section>
 
-    <section class="security" id="security" aria-labelledby="security-title">
-      <div class="wrap security-shell reveal">
-        <div class="security-content">
-          <h2 id="security-title">Данные под надежной защитой</h2>
-          <p class="security-copy">Мы соблюдаем строгие стандарты безопасности и конфиденциальности.<br> Ваши данные и доверие находятся на высшем уровне.</p>
-          <div class="security-badges" aria-label="Стандарты безопасности BIOS">
-            <span class="security-badge"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m12 3 7 3v5c0 4.8-2.8 8-7 10-4.2-2-7-5.2-7-10V6l7-3Z"/><path d="m9 12 2 2 4-5"/></svg></i>152-ФЗ</span>
-            <span class="security-badge"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><path d="M12 14v3"/></svg></i>GDPR</span>
-            <span class="security-badge"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m12 3 7 3v5c0 4.8-2.8 8-7 10-4.2-2-7-5.2-7-10V6l7-3Z"/><path d="M9 12h6"/></svg></i>Шифрование AES-256</span>
-            <span class="security-badge"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><ellipse cx="12" cy="5" rx="7" ry="3"/><path d="M5 5v6c0 1.7 3.1 3 7 3s7-1.3 7-3V5"/><path d="M5 11v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></svg></i>Резервное копирование</span>
-          </div>
-        </div>
-        <div class="security-art bios-lock-art" aria-hidden="true">
-          <div class="bios-lock-glow"></div>
-          <div class="bios-lock-orbit one"><span class="bios-lock-dot a"></span><span class="bios-lock-dot b"></span></div>
-          <div class="bios-lock-orbit two"><span class="bios-lock-dot c"></span><span class="bios-lock-dot d"></span></div>
-          <svg class="bios-lock-shield" viewBox="0 0 240 300">
-            <defs>
-              <linearGradient id="clinicShieldOuter" x1="42" y1="30" x2="204" y2="270" gradientUnits="userSpaceOnUse"><stop stop-color="#ffffff" stop-opacity=".82"/><stop offset=".55" stop-color="#d9d2ff" stop-opacity=".45"/><stop offset="1" stop-color="#9c88f7" stop-opacity=".3"/></linearGradient>
-              <linearGradient id="clinicShieldInner" x1="120" y1="42" x2="120" y2="264" gradientUnits="userSpaceOnUse"><stop stop-color="#ffffff" stop-opacity=".4"/><stop offset="1" stop-color="#7253e9" stop-opacity=".16"/></linearGradient>
-            </defs>
-            <path d="M120 14 211 55v82c0 67-37 113-91 148-54-35-91-81-91-148V55l91-41Z" fill="url(#clinicShieldOuter)" stroke="#fff" stroke-opacity=".74" stroke-width="3"/>
-            <path d="M120 43 185 72v63c0 48-25 84-65 113-40-29-65-65-65-113V72l65-29Z" fill="url(#clinicShieldInner)" stroke="#8f78f1" stroke-opacity=".18"/>
-          </svg>
-          <svg class="bios-lock-core" viewBox="0 0 160 190">
-            <defs>
-              <linearGradient id="clinicLockBody" x1="31" y1="76" x2="132" y2="173" gradientUnits="userSpaceOnUse"><stop stop-color="#7656f7"/><stop offset="1" stop-color="#4f28dd"/></linearGradient>
-              <linearGradient id="clinicLockShackle" x1="43" y1="30" x2="118" y2="93" gradientUnits="userSpaceOnUse"><stop stop-color="#714ef0"/><stop offset="1" stop-color="#5530df"/></linearGradient>
-            </defs>
-            <path d="M43 87V60c0-38 74-38 74 0v29" fill="none" stroke="url(#clinicLockShackle)" stroke-width="20" stroke-linecap="round"/>
-            <rect x="24" y="79" width="112" height="91" rx="20" fill="url(#clinicLockBody)"/>
-            <path class="bios-lock-highlight" d="M38 91h84c-9 13-25 20-46 20-17 0-30-5-38-20Z" fill="#fff"/>
-            <path d="M80 108c-7 0-12 5-12 12 0 4 2 8 6 10l-2 23h16l-2-23c4-2 6-6 6-10 0-7-5-12-12-12Z" fill="#dcd4ff"/>
-          </svg>
-        </div>
-      </div>
-    </section>
-
     <section class="articles" id="articles" aria-labelledby="articles-title">
       <div class="wrap reveal">
         <div class="articles-head">
@@ -863,7 +847,7 @@
           </div>
           <div class="bios-shell-footer-col">
             <h3>Компания</h3>
-            <nav><a href="index.html">О нас</a><a href="mailto:hello@bios.health?subject=Партнёрство с BIOS">Партнёрам</a><a href="index.html#security">Безопасность</a><a href="mailto:hello@bios.health?subject=Карьера в BIOS">Карьера</a></nav>
+            <nav><a href="index.html">О нас</a><a href="mailto:hello@bios.health?subject=Партнёрство с BIOS">Партнёрам</a><a href="security.html">Безопасность</a><a href="mailto:hello@bios.health?subject=Карьера в BIOS">Карьера</a></nav>
           </div>
           <div class="bios-shell-footer-col">
             <h3>Контакты</h3>

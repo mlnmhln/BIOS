@@ -344,7 +344,7 @@
     .integration-label{display:flex;align-items:center;gap:14px;margin:0 0 28px;font-size:18px;font-weight:600}
     .integration-label svg{width:28px;height:28px;color:#7450eb;flex:none}
     .integration-logos{display:grid;gap:18px}
-    .integration-logos.devices{grid-template-columns:repeat(11,minmax(0,1fr))}
+    .integration-logos.devices{grid-template-columns:repeat(9,minmax(0,1fr))}
     .integration-logos.clinics{grid-template-columns:repeat(9,minmax(0,1fr))}
     .integration-logo{
       display:flex;
@@ -787,21 +787,24 @@
     .proof-icon svg{width:25px;height:25px}
 
     .sources{padding:64px 0 96px}
-    .sources-shell{padding:52px 28px 38px}
+    .sources-shell{padding:52px 0 38px;border-radius:0;background:transparent;box-shadow:none}
     .section-title,.integrations-head h2,.insights-copy h2,.security-copy h2,.care-head h2,.start-copy h2{font-size:clamp(36px,3.4vw,52px);line-height:1.08;font-weight:800}
     .sources-grid{gap:16px;margin-top:48px}
-    .source-card{min-height:220px;gap:24px;padding:24px 14px}
-    .source-icon{width:68px;height:68px}
-    .source-icon svg{width:34px;height:34px}
+    .source-card{min-height:158px;gap:14px;padding:20px 12px}
+    .source-icon{width:56px;height:56px}
+    .source-icon svg{width:28px;height:28px}
     .source-card h3{font-size:15px;line-height:1.5}
 
     .integrations{padding-bottom:96px}
-    .integrations-shell{padding:48px 42px 32px}
+    .integrations-shell{padding:48px 0 32px;border:0;background:transparent}
     .integrations-head p{margin-top:16px;font-size:18px}
     .integration-group{margin-top:34px}
     .integration-group+.integration-group{margin-top:28px;padding-top:28px}
     .integration-label{margin-bottom:20px;font-size:16px}
     .integration-label svg{width:24px;height:24px}
+    .integration-status-chip{margin-left:auto;padding:7px 10px;border:1px solid #ddd9f5;border-radius:8px;color:#5e4be0;background:#f8f7ff;font-size:11px;font-weight:700;letter-spacing:.04em}
+    .patient-imports{display:flex;flex-wrap:wrap;gap:10px}
+    .patient-import{display:inline-flex;min-height:42px;padding:0 14px;align-items:center;border:1px solid #e5e7ed;border-radius:8px;color:#4e5669;background:#fff;font-size:13px;font-weight:600}
     .integration-logos{gap:14px}
     .integration-logo{height:90px}
     .integrations-trust{margin-top:34px;font-size:17px}
@@ -900,6 +903,25 @@
     .care-card h3{margin-top:24px;font-size:21px;line-height:1.4}
     .care-card p{margin-top:17px;font-size:16px;line-height:1.6}
 
+    .faq{padding:72px 0 104px}
+    .faq-head{text-align:center}
+    .faq-head h2{margin:0;font-size:clamp(38px,4vw,58px);line-height:1.08;font-weight:800;letter-spacing:0}
+    .faq-head h2 span{color:#6547ed}
+    .faq-head p{margin:20px 0 0;color:#858da2;font-size:18px;line-height:1.55}
+    .faq-list{display:grid;gap:10px;margin-top:48px}
+    .faq-item{border:1px solid #e7e8f0;border-radius:8px;background:rgba(255,255,255,.82);box-shadow:0 8px 24px rgba(57,61,106,.035);overflow:hidden}
+    .faq-item summary{display:grid;grid-template-columns:54px 1fr;min-height:76px;align-items:center;padding:0 26px;cursor:pointer;list-style:none}
+    .faq-item summary::-webkit-details-marker{display:none}
+    .faq-item summary:focus-visible{outline:3px solid rgba(101,71,237,.24);outline-offset:-3px}
+    .faq-toggle{position:relative;display:block;width:44px;height:44px;border-radius:50%;color:#6547ed;background:#f5f3ff}
+    .faq-toggle::before,.faq-toggle::after{content:"";position:absolute;top:50%;left:50%;width:16px;height:2px;border-radius:2px;background:currentColor;transform:translate(-50%,-50%);transition:transform .22s var(--ease)}
+    .faq-toggle::after{transform:translate(-50%,-50%) rotate(90deg)}
+    .faq-item[open] .faq-toggle::after{transform:translate(-50%,-50%) rotate(0)}
+    .faq-question{display:flex;min-height:42px;padding-left:28px;align-items:center;border-left:1px solid #dddff0;color:#151a2c;font-size:18px;line-height:1.45;font-weight:500}
+    .faq-answer{margin:0;padding:0 30px 26px 109px;color:#626b80;font-size:15px;line-height:1.7}
+    .faq-answer a{color:#5d49e2;font-weight:600}
+    .faq-item[open]{border-color:#dbd8f3;box-shadow:0 14px 34px rgba(75,63,145,.07)}
+
     .start{padding:32px 0 88px}
     .start-shell{grid-template-columns:minmax(0,1fr) minmax(320px,.62fr);gap:52px;min-height:320px;padding:52px 58px}
     .start-copy p{margin-top:22px;font-size:18px;line-height:1.6}
@@ -914,26 +936,120 @@
     .footer-column a{font-size:14px}
     .social{width:46px;height:46px}.social svg{width:21px;height:21px}
 
-    .how-start{padding:0 0 64px}
-    .how-start-shell{padding:42px;border:1px solid #e7e8f1;border-radius:8px;background:rgba(255,255,255,.82);box-shadow:0 18px 54px rgba(57,62,105,.05)}
-    .how-start-head{text-align:center}
-    .how-start-head h2{margin:0;font-size:clamp(32px,3vw,44px);line-height:1.12;font-weight:800}
-    .how-start-head p{max-width:760px;margin:16px auto 0;color:#737d98;font-size:17px;line-height:1.55}
-    .how-start-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-top:32px}
-    .how-start-step{min-height:142px;padding:20px;border:1px solid #ebeaf3;border-radius:8px;background:#fafaff}
-    .how-start-step span{display:grid;width:32px;height:32px;place-items:center;border-radius:50%;background:#eeebff;color:#6843ed;font-size:13px;font-weight:800}
-    .how-start-step h3{margin:17px 0 0;color:#20263a;font-size:15px;line-height:1.45;font-weight:600}
+    .how-start{padding:0 0 82px}
+    .how-start-shell{
+      position:relative;
+      overflow:hidden;
+      padding:54px 54px 52px;
+      border:1px solid #ecebf5;
+      border-radius:8px;
+      background:linear-gradient(135deg,#fbfbff 0%,#f7f6fe 100%);
+      box-shadow:0 18px 54px rgba(57,62,105,.05);
+    }
+    .how-start-head{position:relative;z-index:2;max-width:720px;text-align:left}
+    .how-start-kicker{
+      display:inline-flex;
+      margin:0 0 19px;
+      padding:7px 13px;
+      border-radius:999px;
+      color:#6843ed;
+      background:#f1efff;
+      font-size:12px;
+      line-height:1;
+      font-weight:700;
+      text-transform:uppercase;
+    }
+    .how-start-head h2{margin:0;font-size:clamp(34px,2.65vw,40px);line-height:1.12;font-weight:800}
+    .how-start-head p{max-width:520px;margin:17px 0 0;color:#737d98;font-size:17px;line-height:1.55}
+    .how-start-art{position:absolute;z-index:1;top:35px;right:48px;width:270px;height:150px;color:#8a6df1;opacity:.48}
+    .how-start-art svg{display:block;width:100%;height:100%}
+    .how-start-grid{
+      position:relative;
+      z-index:2;
+      display:grid;
+      grid-template-columns:repeat(5,minmax(0,1fr));
+      gap:38px;
+      margin-top:74px;
+    }
+    .how-start-grid::before{
+      content:"";
+      position:absolute;
+      z-index:0;
+      top:99px;
+      left:5%;
+      right:5%;
+      height:1px;
+      background:repeating-linear-gradient(90deg,#d9d3f7 0 10px,transparent 10px 20px);
+    }
+    .how-start-step{
+      position:relative;
+      z-index:1;
+      min-height:338px;
+      padding:49px 17px 28px;
+      border:1px solid #ebeaf3;
+      border-radius:8px;
+      background:rgba(255,255,255,.86);
+      box-shadow:0 12px 32px rgba(63,63,112,.035);
+    }
+    .how-start-number{
+      position:absolute;
+      top:0;
+      left:50%;
+      display:grid;
+      width:50px;
+      height:50px;
+      place-items:center;
+      border:3px solid rgba(255,255,255,.92);
+      border-radius:50%;
+      color:#6945ec;
+      background:#f7f5ff;
+      box-shadow:0 0 0 1px #e8e4fb,0 8px 18px rgba(91,67,196,.08);
+      font-size:18px;
+      font-weight:500;
+      transform:translate(-50%,-50%);
+    }
+    .how-start-icon{
+      position:relative;
+      display:grid;
+      width:92px;
+      height:92px;
+      margin:0 auto 30px;
+      place-items:center;
+      border-radius:8px;
+      color:#7451ec;
+      background:linear-gradient(145deg,#fbfaff,#f0edff);
+      box-shadow:inset 0 1px 0 #fff,0 10px 26px rgba(91,66,188,.06);
+    }
+    .how-start-icon>svg{width:62px;height:62px}
+    .how-start-icon-badge{
+      position:absolute;
+      right:-7px;
+      bottom:-5px;
+      display:grid;
+      width:30px;
+      height:30px;
+      place-items:center;
+      border:3px solid #fff;
+      border-radius:50%;
+      color:#fff;
+      background:#6843ed;
+      box-shadow:0 8px 18px rgba(76,51,182,.22);
+    }
+    .how-start-icon-badge svg{width:15px;height:15px}
+    .how-start-step h3{margin:0;color:#20263a;font-size:16px;line-height:1.38;font-weight:700}
+    .how-start-step p{margin:13px 0 0;color:#737d98;font-size:13px;line-height:1.55}
     .sources-intro{max-width:850px;margin:18px auto 0;color:#737d98;font-size:17px;line-height:1.6;text-align:center}
     .sources-grid{margin-top:38px}
-    .source-card{min-height:190px;gap:18px}
+    .source-card{min-height:158px;gap:14px}
 
     @media (max-width:1180px){
       :root{--wrap:min(100% - 48px,1120px)}
       .hero-grid{grid-template-columns:minmax(370px,.9fr) minmax(470px,1.1fr);min-height:610px}
-      .source-card{min-height:210px}
+      .source-card{min-height:158px}
       .insights-grid{grid-template-columns:minmax(470px,1fr) minmax(360px,.82fr);gap:48px}
       .care-card{min-height:300px}
-      .how-start-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+      .how-start-shell{padding-right:40px;padding-left:40px}
+      .how-start-grid{gap:18px}
     }
     @media (max-width:920px){
       :root{--wrap:min(100% - 40px,760px)}
@@ -941,8 +1057,15 @@
       .hero{padding-top:38px}.hero-grid{grid-template-columns:1fr;min-height:0}
       .hero-visual{min-height:600px}
       .sources{padding-top:24px}
-      .how-start{padding-bottom:52px}
-      .how-start-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .how-start{padding-bottom:60px}
+      .how-start-shell{padding:44px 42px 46px}
+      .how-start-art{top:24px;right:24px;width:210px;height:120px;opacity:.26}
+      .how-start-grid{grid-template-columns:1fr;gap:16px;margin-top:46px;padding-left:24px}
+      .how-start-grid::before{top:0;right:auto;bottom:0;left:24px;width:1px;height:auto;background:repeating-linear-gradient(180deg,#d9d3f7 0 9px,transparent 9px 18px)}
+      .how-start-step{display:grid;grid-template-columns:92px 1fr;column-gap:22px;min-height:0;padding:24px 24px 24px 45px;align-items:center}
+      .how-start-number{top:50%;left:0;width:46px;height:46px;transform:translate(-50%,-50%)}
+      .how-start-icon{grid-row:1 / span 2;margin:0}
+      .how-start-step p{margin-top:8px}
       .insights-grid{grid-template-columns:1fr}
       .security-shell{grid-template-columns:minmax(0,1fr);gap:24px}
       .security-copy{display:contents}
@@ -972,13 +1095,15 @@
       .hero-actions{width:100%;gap:16px}.hero-actions .button-primary{width:100%;min-width:0}.text-link{justify-content:center}
       .hero-proof{gap:18px;margin-top:38px}.proof-item{grid-template-columns:50px 1fr;gap:14px}.proof-icon{width:50px;height:50px}
       .hero-visual{min-height:430px}.patient-three-stage{width:118%}.vector-panel{width:120px;padding:9px}.panel-memory{width:138px}.panel-hypothesis{width:126px}
-      .how-start-shell{padding:32px 16px}.how-start-head h2{font-size:30px}.how-start-head p{font-size:15px}.how-start-grid{grid-template-columns:1fr;gap:9px;margin-top:25px}.how-start-step{display:grid;grid-template-columns:36px 1fr;align-items:center;gap:13px;min-height:0;padding:15px}.how-start-step h3{margin:0;font-size:14px}
-      .sources-shell,.integrations-shell{padding:34px 16px 26px}.sources-intro{margin-top:15px;font-size:15px}.sources-grid{margin-top:26px}.source-card{grid-template-columns:56px 1fr;gap:14px;padding:16px}.source-icon{width:56px;height:56px}.source-icon svg{width:28px;height:28px}
+      .how-start-shell{padding:34px 18px 38px}.how-start-kicker{margin-bottom:15px}.how-start-head h2{font-size:30px}.how-start-head p{font-size:15px}.how-start-art{display:none}.how-start-grid{gap:12px;margin-top:36px;padding-left:18px}.how-start-grid::before{left:18px}.how-start-step{grid-template-columns:66px 1fr;column-gap:14px;padding:19px 14px 19px 34px}.how-start-number{width:38px;height:38px;font-size:15px}.how-start-icon{width:66px;height:66px}.how-start-icon>svg{width:43px;height:43px}.how-start-icon-badge{right:-5px;bottom:-4px;width:25px;height:25px}.how-start-icon-badge svg{width:12px;height:12px}.how-start-step h3{font-size:14px}.how-start-step p{font-size:12px}
+      .sources-shell,.integrations-shell{padding:34px 0 26px}.sources-intro{margin-top:15px;font-size:15px}.sources-grid{margin-top:26px}.source-card{grid-template-columns:56px 1fr;gap:14px;padding:16px}.source-icon{width:56px;height:56px}.source-icon svg{width:28px;height:28px}
+      .integration-label{flex-wrap:wrap}.integration-status-chip{margin-left:0}.patient-imports{display:grid;grid-template-columns:1fr 1fr}.patient-import{justify-content:center;text-align:center}
       .integration-logos{grid-auto-columns:96px}.integration-logo{height:82px}.integrations-trust{gap:10px;font-size:14px}
-      .insights{padding-top:56px}.device-stage{min-height:510px;transform:scale(.74);margin-bottom:-112px}.device{width:320px}.device-back{left:-24px}.device-front{right:-24px}
+      .insights{padding-top:56px}.device-stage{display:flex;min-height:590px;margin:0 auto 34px;align-items:flex-start;justify-content:center;transform:none}.device{width:min(100%,320px)}.device-back{display:none}.device-front{position:relative;right:auto;bottom:auto;min-height:590px}
       .insights-copy{text-align:left}.benefits{gap:16px;margin-top:30px}.benefit{grid-template-columns:42px 1fr;gap:13px}.benefit-icon{width:42px;height:42px}
       .security-shell{gap:18px;padding:34px 18px 28px;text-align:center}.security-copy>p{margin-top:-6px;font-size:16px}.security-list{margin-top:4px;text-align:left}.security-point{grid-template-columns:34px 1fr}.security-check{width:34px;height:34px}.bios-lock-orbit{width:100%;height:104px}.bios-lock-orbit.two{height:128px}.bios-lock-shield{width:160px}.bios-lock-core{width:92px}.bios-lock-dot{width:9px;height:9px}.bios-lock-glow{width:86%}
       .care-grid{margin-top:32px}.care-card{grid-template-columns:54px 1fr;gap:14px;padding:20px 18px}.care-icon{width:54px;height:54px}.care-icon svg{width:27px;height:27px}
+      .faq{padding:56px 0 76px}.faq-head h2{font-size:32px}.faq-head p{margin-top:14px;font-size:15px}.faq-list{margin-top:30px}.faq-item summary{grid-template-columns:42px 1fr;min-height:68px;padding:0 14px}.faq-toggle{width:36px;height:36px}.faq-question{min-height:38px;padding:14px 0 14px 14px;font-size:15px}.faq-answer{padding:0 16px 20px 70px;font-size:14px;line-height:1.6}
       .start-shell{gap:28px;padding:38px 18px}.start-action{width:100%}.start-action .button{width:100%;min-height:58px}
       .footer-shell{padding:34px 18px 26px}.footer-grid{gap:28px}.footer-column h3{margin-bottom:15px}.footer-bottom{gap:14px;font-size:13px}
     }
@@ -1042,7 +1167,7 @@
         <a href="patients.html" aria-current="page">Для пациентов</a>
         <a href="clinics.html">Для клиник</a>
         <a href="index.html#technology">Технологии</a>
-        <a href="index.html#security">Безопасность</a>
+        <a href="security.html">Безопасность</a>
         <a href="index.html#contacts">Контакты</a>
       </nav>
       <div class="bios-shell-actions">
@@ -1112,15 +1237,65 @@
     <section class="how-start" id="how-start" aria-labelledby="how-start-title">
       <div class="wrap how-start-shell reveal">
         <div class="how-start-head">
-          <h2 id="how-start-title">Как начать работу с BIOS</h2>
-          <p>Добавляйте данные постепенно: Health Memory становится полнее вместе с историей вашего здоровья.</p>
+          <p class="how-start-kicker">Как начать</p>
+          <h2 id="how-start-title">Начните за 5 простых шагов</h2>
+          <p>BIOS помогает вам лучше понять своё здоровье и двигаться к вашим целям.</p>
+        </div>
+        <div class="how-start-art" aria-hidden="true">
+          <svg viewBox="0 0 270 150" fill="none">
+            <ellipse cx="152" cy="72" rx="103" ry="40" stroke="currentColor" stroke-opacity=".26" transform="rotate(8 152 72)"/>
+            <ellipse cx="152" cy="72" rx="103" ry="40" stroke="currentColor" stroke-opacity=".18" transform="rotate(-24 152 72)"/>
+            <circle cx="152" cy="72" r="32" fill="currentColor" fill-opacity=".13"/>
+            <circle cx="152" cy="72" r="18" fill="currentColor" fill-opacity=".23"/>
+            <circle cx="55" cy="48" r="5" fill="currentColor" fill-opacity=".55"/>
+            <circle cx="236" cy="52" r="5" fill="currentColor" fill-opacity=".45"/>
+            <circle cx="215" cy="112" r="4" fill="currentColor" fill-opacity=".35"/>
+          </svg>
         </div>
         <div class="how-start-grid">
-          <article class="how-start-step"><span>1</span><h3>Создайте профиль</h3></article>
-          <article class="how-start-step"><span>2</span><h3>Добавьте доступные медицинские данные</h3></article>
-          <article class="how-start-step"><span>3</span><h3>BIOS построит первичный контекст</h3></article>
-          <article class="how-start-step"><span>4</span><h3>Узнайте, что уже известно и каких данных не хватает</h3></article>
-          <article class="how-start-step"><span>5</span><h3>Продолжайте пополнять Health Memory вместе с врачом</h3></article>
+          <article class="how-start-step">
+            <span class="how-start-number">1</span>
+            <span class="how-start-icon" aria-hidden="true">
+              <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round"><circle cx="32" cy="22" r="10"/><path d="M14 52c2-11 8-17 18-17s16 6 18 17"/></svg>
+              <span class="how-start-icon-badge"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 3v10M3 8h10"/></svg></span>
+            </span>
+            <h3>Создайте профиль.</h3>
+            <p>Это займёт всего несколько минут.</p>
+          </article>
+          <article class="how-start-step">
+            <span class="how-start-number">2</span>
+            <span class="how-start-icon" aria-hidden="true">
+              <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 15h12l5 6h15v30H16z"/><path d="M24 34h16M24 41h11"/><path d="m24 15 4-5h8l4 5"/></svg>
+              <span class="how-start-icon-badge"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 13V3M4.5 6.5 8 3l3.5 3.5"/></svg></span>
+            </span>
+            <h3>Добавьте доступные медицинские данные.</h3>
+            <p>Анализы, заключения, история болезней и другое.</p>
+          </article>
+          <article class="how-start-step">
+            <span class="how-start-number">3</span>
+            <span class="how-start-icon" aria-hidden="true">
+              <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="32" cy="32" rx="25" ry="10"/><ellipse cx="32" cy="32" rx="25" ry="10" transform="rotate(60 32 32)"/><ellipse cx="32" cy="32" rx="25" ry="10" transform="rotate(120 32 32)"/><circle cx="32" cy="32" r="7" fill="currentColor" fill-opacity=".18"/></svg>
+            </span>
+            <h3>BIOS построит первичный контекст.</h3>
+            <p>ИИ проанализирует данные и выявит важные связи.</p>
+          </article>
+          <article class="how-start-step">
+            <span class="how-start-number">4</span>
+            <span class="how-start-icon" aria-hidden="true">
+              <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m16 19 4 4 7-8M16 32l4 4 7-8M16 45l4 4 7-8M32 20h16M32 33h16M32 46h16"/></svg>
+            </span>
+            <h3>Вы увидите, что уже известно и чего не хватает.</h3>
+            <p>Прозрачные выводы и рекомендации.</p>
+          </article>
+          <article class="how-start-step">
+            <span class="how-start-number">5</span>
+            <span class="how-start-icon" aria-hidden="true">
+              <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 15h40v29H29l-10 8v-8h-7z"/><circle cx="24" cy="30" r="2" fill="currentColor" stroke="none"/><circle cx="32" cy="30" r="2" fill="currentColor" stroke="none"/><circle cx="40" cy="30" r="2" fill="currentColor" stroke="none"/></svg>
+              <span class="how-start-icon-badge"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="6" r="2.4"/><path d="M3.5 14c.5-3 2-4.5 4.5-4.5s4 1.5 4.5 4.5"/></svg></span>
+            </span>
+            <h3>Продолжайте пополнять Health Memory вместе с врачом.</h3>
+            <p>Это путь к более точным инсайтам и лучшим решениям.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -1167,8 +1342,23 @@
 
         <div class="integration-group">
           <h3 class="integration-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M6 3h9l4 4v14H6zM15 3v5h5M9 13h6M9 17h4"/></svg>
+            Доступно на старте
+            <span class="integration-status-chip">Доступно</span>
+          </h3>
+          <div class="patient-imports" aria-label="Способы добавить данные">
+            <span class="patient-import">Медицинские документы</span>
+            <span class="patient-import">PDF и файлы</span>
+            <span class="patient-import">История симптомов</span>
+            <span class="patient-import">Ручной ввод</span>
+          </div>
+        </div>
+
+        <div class="integration-group">
+          <h3 class="integration-label">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="m12 3 7 3v5c0 4.8-2.8 8-7 10-4.2-2-7-5.2-7-10V6l7-3Z"/><path d="M8 12h2l1.3-2.5L13 15l1.2-3H16"/></svg>
             Устройства для здоровья
+            <span class="integration-status-chip">Готовится</span>
           </h3>
           <div class="integration-logos devices" aria-label="Поддерживаемые устройства и приложения">
             <div class="integration-logo"><img class="logo-mark" src="assets/integration-logos/apple-health.png" alt="Apple Health"></div>
@@ -1177,8 +1367,6 @@
             <div class="integration-logo"><img class="logo-mark" src="assets/integration-logos/fitbit.svg" alt="Fitbit"></div>
             <div class="integration-logo"><img class="logo-mark logo-oura" src="assets/integration-logos/oura.png" alt="Oura"></div>
             <div class="integration-logo"><img class="logo-mark" src="assets/integration-logos/strava.svg" alt="Strava"></div>
-            <div class="integration-logo"><img class="logo-mark" src="assets/integration-logos/apple.svg" alt="Apple"></div>
-            <div class="integration-logo"><img class="logo-mark logo-oura" src="assets/integration-logos/oura.png" alt="Oura Ring"></div>
             <div class="integration-logo"><img class="logo-wide" src="assets/integration-logos/samsung.svg" alt="Samsung Galaxy Watch"></div>
             <div class="integration-logo"><img class="logo-mark" src="assets/integration-logos/googlefit.png" alt="Google Fit"></div>
             <div class="integration-logo"><img class="logo-mark" src="assets/integration-logos/xiaomi.svg" alt="Xiaomi"></div>
@@ -1189,6 +1377,7 @@
           <h3 class="integration-label">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M12 7v10M7 12h10"/></svg>
             Клиники и лаборатории
+            <span class="integration-status-chip">Через клинику</span>
           </h3>
           <div class="integration-logos clinics" aria-label="Поддерживаемые клиники и лаборатории">
             <div class="integration-logo"><img class="logo-wide" src="assets/integration-logos/invitro.svg" alt="Инвитро"></div>
@@ -1254,44 +1443,6 @@
       </div>
     </section>
 
-    <section class="security" id="security" aria-labelledby="security-title">
-      <div class="wrap security-shell reveal">
-        <div class="security-copy">
-          <h2 id="security-title">Ваши данные под надёжной защитой</h2>
-          <p>Мы соблюдаем строгие стандарты безопасности<br> и юридические требования.</p>
-          <div class="security-list">
-            <div class="security-point"><span class="security-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4 10-10"/></svg></span><span>Шифрование данных на всех уровнях</span></div>
-            <div class="security-point"><span class="security-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4 10-10"/></svg></span><span>Хранение в защищённых дата-центрах</span></div>
-            <div class="security-point"><span class="security-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4 10-10"/></svg></span><span>Соответствие 152-ФЗ и GDPR</span></div>
-            <div class="security-point"><span class="security-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4 10-10"/></svg></span><span>Вы контролируете свои данные</span></div>
-          </div>
-        </div>
-        <div class="security-visual bios-lock-art" aria-hidden="true">
-          <div class="bios-lock-glow"></div>
-          <div class="bios-lock-orbit one"><span class="bios-lock-dot a"></span><span class="bios-lock-dot b"></span></div>
-          <div class="bios-lock-orbit two"><span class="bios-lock-dot c"></span><span class="bios-lock-dot d"></span></div>
-          <svg class="bios-lock-shield" viewBox="0 0 240 300">
-            <defs>
-              <linearGradient id="patientShieldOuter" x1="42" y1="30" x2="204" y2="270" gradientUnits="userSpaceOnUse"><stop stop-color="#ffffff" stop-opacity=".82"/><stop offset=".55" stop-color="#d9d2ff" stop-opacity=".45"/><stop offset="1" stop-color="#9c88f7" stop-opacity=".3"/></linearGradient>
-              <linearGradient id="patientShieldInner" x1="120" y1="42" x2="120" y2="264" gradientUnits="userSpaceOnUse"><stop stop-color="#ffffff" stop-opacity=".4"/><stop offset="1" stop-color="#7253e9" stop-opacity=".16"/></linearGradient>
-            </defs>
-            <path d="M120 14 211 55v82c0 67-37 113-91 148-54-35-91-81-91-148V55l91-41Z" fill="url(#patientShieldOuter)" stroke="#fff" stroke-opacity=".74" stroke-width="3"/>
-            <path d="M120 43 185 72v63c0 48-25 84-65 113-40-29-65-65-65-113V72l65-29Z" fill="url(#patientShieldInner)" stroke="#8f78f1" stroke-opacity=".18"/>
-          </svg>
-          <svg class="bios-lock-core" viewBox="0 0 160 190">
-            <defs>
-              <linearGradient id="patientLockBody" x1="31" y1="76" x2="132" y2="173" gradientUnits="userSpaceOnUse"><stop stop-color="#7656f7"/><stop offset="1" stop-color="#4f28dd"/></linearGradient>
-              <linearGradient id="patientLockShackle" x1="43" y1="30" x2="118" y2="93" gradientUnits="userSpaceOnUse"><stop stop-color="#714ef0"/><stop offset="1" stop-color="#5530df"/></linearGradient>
-            </defs>
-            <path d="M43 87V60c0-38 74-38 74 0v29" fill="none" stroke="url(#patientLockShackle)" stroke-width="20" stroke-linecap="round"/>
-            <rect x="24" y="79" width="112" height="91" rx="20" fill="url(#patientLockBody)"/>
-            <path class="bios-lock-highlight" d="M38 91h84c-9 13-25 20-46 20-17 0-30-5-38-20Z" fill="#fff"/>
-            <path d="M80 108c-7 0-12 5-12 12 0 4 2 8 6 10l-2 23h16l-2-23c4-2 6-6 6-10 0-7-5-12-12-12Z" fill="#dcd4ff"/>
-          </svg>
-        </div>
-      </div>
-    </section>
-
     <section class="care" aria-labelledby="care-title">
       <div class="wrap">
         <div class="care-head reveal">
@@ -1319,6 +1470,57 @@
             <h3>Непрерывная забота<br>о вас</h3>
             <p>Мониторинг и напоминания помогают сохранить фокус на здоровье каждый день.</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq" id="faq" aria-labelledby="faq-title">
+      <div class="wrap">
+        <div class="faq-head reveal">
+          <h2 id="faq-title">Часто задаваемые вопросы<span>.</span></h2>
+          <p>Всё, что обычно спрашивают перед началом работы с BIOS.</p>
+        </div>
+        <div class="faq-list">
+          <details class="faq-item reveal">
+            <summary><span class="faq-toggle" aria-hidden="true"></span><span class="faq-question">Что такое BIOS и чем он отличается от других приложений для здоровья?</span></summary>
+            <p class="faq-answer">BIOS объединяет медицинские данные в единую Health Memory, сохраняет их происхождение и контекст и помогает видеть изменения во времени, а не только отдельные показатели.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary><span class="faq-toggle" aria-hidden="true"></span><span class="faq-question">BIOS ставит диагноз?</span></summary>
+            <p class="faq-answer">Нет. BIOS структурирует данные и формирует гипотезы, которые требуют проверки. Диагноз может поставить только квалифицированный медицинский специалист.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary><span class="faq-toggle" aria-hidden="true"></span><span class="faq-question">Заменяет ли BIOS врача?</span></summary>
+            <p class="faq-answer">Нет. BIOS помогает подготовить контекст и заметить изменения, но не заменяет консультацию врача и принятие клинического решения.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary><span class="faq-toggle" aria-hidden="true"></span><span class="faq-question">Как BIOS помогает понять моё здоровье?</span></summary>
+            <p class="faq-answer">Система собирает историю данных, показывает динамику, возможные взаимосвязи и то, какой информации пока не хватает для проверки гипотез.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary><span class="faq-toggle" aria-hidden="true"></span><span class="faq-question">Какие данные можно добавить в BIOS?</span></summary>
+            <p class="faq-answer">Результаты исследований, медицинские документы, симптомы, назначения, сведения об образе жизни и данные устройств по мере подключения соответствующих интеграций.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary><span class="faq-toggle" aria-hidden="true"></span><span class="faq-question">Можно ли пользоваться BIOS без клиники?</span></summary>
+            <p class="faq-answer">Начать формировать профиль и добавлять доступные документы можно самостоятельно. Отдельные сценарии и интеграции могут требовать подключения клиники.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary><span class="faq-toggle" aria-hidden="true"></span><span class="faq-question">Кто может видеть мои медицинские данные?</span></summary>
+            <p class="faq-answer">Доступ предоставляется только авторизованным пользователям в пределах их роли и разрешений. Управление данными и согласиями остаётся у пользователя.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary><span class="faq-toggle" aria-hidden="true"></span><span class="faq-question">Насколько безопасно хранение данных?</span></summary>
+            <p class="faq-answer">BIOS использует разграничение доступа, шифрование и аудит действий. Подробнее подход описан на странице <a href="security.html">«Безопасность»</a>.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary><span class="faq-toggle" aria-hidden="true"></span><span class="faq-question">Что произойдёт, если BIOS обнаружит потенциально опасный сигнал?</span></summary>
+            <p class="faq-answer">BIOS может отметить сигнал, требующий внимания, и предложить следующий шаг для проверки. Сервис не является экстренной медицинской помощью; при острых симптомах необходимо обратиться за неотложной помощью.</p>
+          </details>
+          <details class="faq-item reveal">
+            <summary><span class="faq-toggle" aria-hidden="true"></span><span class="faq-question">Почему выводы и гипотезы могут меняться со временем?</span></summary>
+            <p class="faq-answer">Health Memory пополняется новыми наблюдениями. Когда меняются данные и контекст, BIOS обновляет гипотезы, чтобы они отражали актуальную картину.</p>
+          </details>
         </div>
       </div>
     </section>
@@ -1355,7 +1557,7 @@
           </div>
           <div class="bios-shell-footer-col">
             <h3>Компания</h3>
-            <nav><a href="index.html">О нас</a><a href="mailto:hello@bios.health?subject=Партнёрство с BIOS">Партнёрам</a><a href="index.html#security">Безопасность</a><a href="mailto:hello@bios.health?subject=Карьера в BIOS">Карьера</a></nav>
+            <nav><a href="index.html">О нас</a><a href="mailto:hello@bios.health?subject=Партнёрство с BIOS">Партнёрам</a><a href="security.html">Безопасность</a><a href="mailto:hello@bios.health?subject=Карьера в BIOS">Карьера</a></nav>
           </div>
           <div class="bios-shell-footer-col">
             <h3>Контакты</h3>
@@ -1654,6 +1856,10 @@
 
   <script>
     (function(){
+      const integrations=document.getElementById('integrations');
+      const care=document.querySelector('.care');
+      if(integrations&&care) care.insertAdjacentElement('afterend',integrations);
+
       const menuButton=document.getElementById('biosMenuButton');
       const nav=document.getElementById('biosNav');
       function closeMenu(){
