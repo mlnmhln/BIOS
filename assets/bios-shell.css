@@ -432,4 +432,10 @@
   .page-security .compliance h2{
     line-height:1.12;
   }
+
+  .page-home .demo-link,
+  .page-home .restart button{
+    min-height:44px;
+    padding:10px 8px;
+  }
 }
