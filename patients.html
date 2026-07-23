@@ -476,6 +476,9 @@
     .security-copy>p{margin:23px 0 0;color:#59637c;font-size:20px;line-height:1.55}
     .security-list{display:grid;gap:22px;margin-top:48px}
     .security-point{display:grid;grid-template-columns:40px 1fr;align-items:center;gap:16px;color:#59637c;font-size:18px;line-height:1.4}
+    .security-more{display:inline-flex;align-items:center;gap:12px;margin-top:34px;color:#5f43e6;font-size:16px;font-weight:700}
+    .security-more i{display:grid;width:34px;height:34px;place-items:center;border-radius:50%;background:#f0edff;font-style:normal;transition:transform .25s var(--ease)}
+    .security-more:hover i{transform:translateX(4px)}
     .security-check{
       display:grid;
       width:40px;
@@ -1073,6 +1076,7 @@
       .security-copy>p{order:2;margin-top:-8px}
       .security-visual{order:3;width:min(100%,360px);min-height:260px;justify-self:center;transform:none}
       .security-list{order:4;margin-top:4px}
+      .security-more{order:5;justify-self:start}
       .start-shell{grid-template-columns:1fr}
     }
     @media (max-width:620px){
@@ -1102,6 +1106,7 @@
       .insights{padding-top:56px}.device-stage{display:flex;min-height:590px;margin:0 auto 34px;align-items:flex-start;justify-content:center;transform:none}.device{width:min(100%,320px)}.device-back{display:none}.device-front{position:relative;right:auto;bottom:auto;min-height:590px}
       .insights-copy{text-align:left}.benefits{gap:16px;margin-top:30px}.benefit{grid-template-columns:42px 1fr;gap:13px}.benefit-icon{width:42px;height:42px}
       .security-shell{gap:18px;padding:34px 18px 28px;text-align:center}.security-copy>p{margin-top:-6px;font-size:16px}.security-list{margin-top:4px;text-align:left}.security-point{grid-template-columns:34px 1fr}.security-check{width:34px;height:34px}.bios-lock-orbit{width:100%;height:104px}.bios-lock-orbit.two{height:128px}.bios-lock-shield{width:160px}.bios-lock-core{width:92px}.bios-lock-dot{width:9px;height:9px}.bios-lock-glow{width:86%}
+      .security-more{justify-self:center}
       .care-grid{margin-top:32px}.care-card{grid-template-columns:54px 1fr;gap:14px;padding:20px 18px}.care-icon{width:54px;height:54px}.care-icon svg{width:27px;height:27px}
       .faq{padding:56px 0 76px}.faq-head h2{font-size:32px}.faq-head p{margin-top:14px;font-size:15px}.faq-list{margin-top:30px}.faq-item summary{grid-template-columns:42px 1fr;min-height:68px;padding:0 14px}.faq-toggle{width:36px;height:36px}.faq-question{min-height:38px;padding:14px 0 14px 14px;font-size:15px}.faq-answer{padding:0 16px 20px 70px;font-size:14px;line-height:1.6}
       .start-shell{gap:28px;padding:38px 18px}.start-action{width:100%}.start-action .button{width:100%;min-height:58px}
@@ -1470,6 +1475,45 @@
             <h3>Непрерывная забота<br>о вас</h3>
             <p>Мониторинг и напоминания помогают сохранить фокус на здоровье каждый день.</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="security" id="security" aria-labelledby="security-title">
+      <div class="wrap security-shell reveal">
+        <div class="security-copy">
+          <h2 id="security-title">Ваши данные под надёжной защитой</h2>
+          <p>Вы управляете доступом к своей Health Memory, а защита данных встроена в архитектуру BIOS.</p>
+          <div class="security-list">
+            <div class="security-point"><span class="security-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4 10-10"/></svg></span><span>Шифрование данных при хранении и передаче</span></div>
+            <div class="security-point"><span class="security-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4 10-10"/></svg></span><span>Ролевой доступ и аудит действий</span></div>
+            <div class="security-point"><span class="security-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4 10-10"/></svg></span><span>Управление согласиями и возможность отозвать доступ</span></div>
+            <div class="security-point"><span class="security-check" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4 10-10"/></svg></span><span>Исследовательское использование — отдельно и с обезличиванием</span></div>
+          </div>
+          <a class="security-more" href="security.html">Подробнее о безопасности <i aria-hidden="true">→</i></a>
+        </div>
+        <div class="security-visual bios-lock-art" aria-hidden="true">
+          <div class="bios-lock-glow"></div>
+          <div class="bios-lock-orbit one"><span class="bios-lock-dot a"></span><span class="bios-lock-dot b"></span></div>
+          <div class="bios-lock-orbit two"><span class="bios-lock-dot c"></span><span class="bios-lock-dot d"></span></div>
+          <svg class="bios-lock-shield" viewBox="0 0 240 300">
+            <defs>
+              <linearGradient id="patientShieldOuter" x1="42" y1="30" x2="204" y2="270" gradientUnits="userSpaceOnUse"><stop stop-color="#ffffff" stop-opacity=".82"/><stop offset=".55" stop-color="#d9d2ff" stop-opacity=".45"/><stop offset="1" stop-color="#9c88f7" stop-opacity=".3"/></linearGradient>
+              <linearGradient id="patientShieldInner" x1="120" y1="42" x2="120" y2="264" gradientUnits="userSpaceOnUse"><stop stop-color="#ffffff" stop-opacity=".4"/><stop offset="1" stop-color="#7253e9" stop-opacity=".16"/></linearGradient>
+            </defs>
+            <path d="M120 14 211 55v82c0 67-37 113-91 148-54-35-91-81-91-148V55l91-41Z" fill="url(#patientShieldOuter)" stroke="#fff" stroke-opacity=".74" stroke-width="3"/>
+            <path d="M120 43 185 72v63c0 48-25 84-65 113-40-29-65-65-65-113V72l65-29Z" fill="url(#patientShieldInner)" stroke="#8f78f1" stroke-opacity=".18"/>
+          </svg>
+          <svg class="bios-lock-core" viewBox="0 0 160 190">
+            <defs>
+              <linearGradient id="patientLockBody" x1="31" y1="76" x2="132" y2="173" gradientUnits="userSpaceOnUse"><stop stop-color="#7656f7"/><stop offset="1" stop-color="#4f28dd"/></linearGradient>
+              <linearGradient id="patientLockShackle" x1="43" y1="30" x2="118" y2="93" gradientUnits="userSpaceOnUse"><stop stop-color="#714ef0"/><stop offset="1" stop-color="#5530df"/></linearGradient>
+            </defs>
+            <path d="M43 87V60c0-38 74-38 74 0v29" fill="none" stroke="url(#patientLockShackle)" stroke-width="20" stroke-linecap="round"/>
+            <rect x="24" y="79" width="112" height="91" rx="20" fill="url(#patientLockBody)"/>
+            <path class="bios-lock-highlight" d="M38 91h84c-9 13-25 20-46 20-17 0-30-5-38-20Z" fill="#fff"/>
+            <path d="M80 108c-7 0-12 5-12 12 0 4 2 8 6 10l-2 23h16l-2-23c4-2 6-6 6-10 0-7-5-12-12-12Z" fill="#dcd4ff"/>
+          </svg>
         </div>
       </div>
     </section>
