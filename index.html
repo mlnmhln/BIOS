@@ -1830,6 +1830,10 @@
     const percentEl = root.querySelector("#memoryPercent");
     const progressEl = root.querySelector("#memoryProgress");
     const sourceRows = [...root.querySelectorAll(".source-row")];
+    root.querySelector(".parent-cards")?.remove();
+    host.style.minHeight = "auto";
+    section.style.position = "relative";
+    section.style.top = "auto";
     const circumference = 314;
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     let currentPercent = 0;
@@ -1881,31 +1885,6 @@
       setProgress(0);
     }
 
-    const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
-    const smooth = (value) => value * value * (3 - 2 * value);
-
-    function updateFamilyScroll() {
-      const rect = host.getBoundingClientRect();
-      const scrollable = Math.max(1, host.offsetHeight - window.innerHeight);
-      const progress = clamp(-rect.top / scrollable, 0, 1);
-      const clearProgress = prefersReducedMotion ? (progress > .24 ? 1 : 0) : smooth(clamp((progress - .14) / .16, 0, 1));
-      const annaProgress = prefersReducedMotion ? (progress > .43 ? 1 : 0) : smooth(clamp((progress - .34) / .16, 0, 1));
-      const parentsProgress = prefersReducedMotion ? (progress > .62 ? 1 : 0) : smooth(clamp((progress - .54) / .16, 0, 1));
-      section.style.setProperty("--clear-t", clearProgress.toFixed(4));
-      section.style.setProperty("--anna-t", annaProgress.toFixed(4));
-      section.style.setProperty("--parents-t", parentsProgress.toFixed(4));
-    }
-
-    let familyTicking = false;
-    function requestFamilyScrollUpdate() {
-      if (familyTicking) return;
-      familyTicking = true;
-      window.requestAnimationFrame(() => {
-        updateFamilyScroll();
-        familyTicking = false;
-      });
-    }
-
     async function runMemoryLoop(token) {
       resetMemory();
       await wait(prefersReducedMotion ? 80 : 520);
@@ -1942,17 +1921,12 @@
       }
     }
 
-    window.addEventListener("scroll", requestFamilyScrollUpdate, { passive: true });
-    window.addEventListener("resize", requestFamilyScrollUpdate);
-    updateFamilyScroll();
-
     if (!("IntersectionObserver" in window) || prefersReducedMotion) {
       setVisible(true);
     } else {
       const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
           setVisible(entry.isIntersecting);
-          requestFamilyScrollUpdate();
         });
       }, { threshold: .22, rootMargin: "-8% 0px -10% 0px" });
       observer.observe(host);
