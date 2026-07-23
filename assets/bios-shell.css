@@ -245,3 +245,191 @@
   .bios-shell-burger::before,
   .bios-shell-burger::after{transition:none!important}
 }
+
+/* Shared page rhythm and typography. */
+:root{
+  --bios-content-width:min(1280px,calc(100% - 80px));
+  --bios-display-size:clamp(44px,4.7vw,68px);
+  --bios-section-title-size:clamp(36px,3.4vw,52px);
+  --bios-compact-title-size:clamp(32px,2.8vw,42px);
+  --bios-lead-size:18px;
+  --bios-body-size:16px;
+  --bios-small-size:14px;
+}
+
+.page-home,
+.page-patients,
+.page-clinics,
+.page-security{
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  font-size:var(--bios-body-size);
+  line-height:1.6;
+}
+
+.page-home .wrap,
+.page-patients .wrap,
+.page-clinics .wrap,
+.page-security .wrap{
+  width:var(--bios-content-width);
+  max-width:1280px;
+  margin-right:auto;
+  margin-left:auto;
+  padding-right:0;
+  padding-left:0;
+}
+
+.page-home .hero h1,
+.page-patients .hero h1,
+.page-clinics .clinic-hero h1,
+.page-security .security-hero h1{
+  font-size:var(--bios-display-size);
+  font-weight:800;
+  line-height:1.06;
+  letter-spacing:0;
+}
+
+.page-home .bios-heading,
+.page-home .bios-accuracy-title,
+.page-patients .section-title,
+.page-patients .integrations-head h2,
+.page-patients .insights-copy h2,
+.page-patients .care-head h2,
+.page-patients .patient-security .bios-heading,
+.page-patients .faq-head h2,
+.page-patients .start-copy h2,
+.page-clinics .section-title,
+.page-clinics .solution h2,
+.page-clinics .pilot-head h2,
+.page-clinics .integrations-head h2,
+.page-clinics .results-head h2,
+.page-clinics .security h2,
+.page-clinics .articles-head h2,
+.page-security .section-head h2,
+.page-security .band-copy h2,
+.page-security .research-copy h2,
+.page-security .compliance h2{
+  font-size:var(--bios-section-title-size);
+  font-weight:800;
+  line-height:1.08;
+  letter-spacing:0;
+}
+
+.page-patients .how-start-head h2,
+.page-clinics .demo-shell h2{
+  font-size:var(--bios-compact-title-size);
+  font-weight:800;
+  line-height:1.12;
+  letter-spacing:0;
+}
+
+.page-home .lede,
+.page-home .bios-intro,
+.page-home .cta-sub,
+.page-patients .hero-lead,
+.page-patients .sources-intro,
+.page-patients .integrations-head p,
+.page-patients .insights-lead,
+.page-patients .care-head p,
+.page-patients .patient-security .bios-intro,
+.page-patients .faq-head p,
+.page-patients .start-copy p,
+.page-clinics .clinic-lead,
+.page-clinics .solution-lead,
+.page-clinics .pilot-head p,
+.page-clinics .integrations-head p,
+.page-clinics .results-head p,
+.page-clinics .security-copy>p,
+.page-clinics .demo-shell p,
+.page-security .hero-copy,
+.page-security .section-head p,
+.page-security .band-copy>p,
+.page-security .research-copy>p,
+.page-security .compliance p{
+  font-size:var(--bios-lead-size);
+  line-height:1.6;
+}
+
+.page-home .bios-kicker,
+.page-patients .how-start-kicker,
+.page-patients .patient-security .bios-kicker,
+.page-clinics .eyebrow,
+.page-security .eyebrow{
+  font-size:13px;
+  font-weight:700;
+  line-height:1.3;
+  letter-spacing:.18em;
+}
+
+.page-patients .care-card h3,
+.page-clinics .why-card h3,
+.page-clinics .article-card h3,
+.page-security .principle h3{
+  font-size:20px;
+  font-weight:700;
+  line-height:1.35;
+  letter-spacing:0;
+}
+
+.page-patients .care-card p,
+.page-clinics .why-card p,
+.page-clinics .article-card p,
+.page-security .principle p,
+.page-security .control-row p{
+  font-size:15px;
+  line-height:1.65;
+}
+
+.page-home .btn,
+.page-patients .button,
+.page-clinics .button-primary,
+.page-clinics .button-secondary,
+.page-security .bios-shell-primary{
+  font-size:16px;
+  font-weight:600;
+  line-height:1;
+}
+
+@media(max-width:920px){
+  :root{--bios-content-width:min(760px,calc(100% - 40px))}
+}
+
+@media(max-width:620px){
+  :root{
+    --bios-content-width:calc(100% - 32px);
+    --bios-display-size:36px;
+    --bios-section-title-size:32px;
+    --bios-compact-title-size:30px;
+    --bios-lead-size:16px;
+    --bios-body-size:15px;
+  }
+
+  .page-home .hero h1,
+  .page-patients .hero h1,
+  .page-clinics .clinic-hero h1,
+  .page-security .security-hero h1{
+    line-height:1.1;
+  }
+
+  .page-home .bios-heading,
+  .page-home .bios-accuracy-title,
+  .page-patients .section-title,
+  .page-patients .integrations-head h2,
+  .page-patients .insights-copy h2,
+  .page-patients .care-head h2,
+  .page-patients .patient-security .bios-heading,
+  .page-patients .faq-head h2,
+  .page-patients .start-copy h2,
+  .page-clinics .section-title,
+  .page-clinics .solution h2,
+  .page-clinics .pilot-head h2,
+  .page-clinics .integrations-head h2,
+  .page-clinics .results-head h2,
+  .page-clinics .security h2,
+  .page-clinics .articles-head h2,
+  .page-security .section-head h2,
+  .page-security .band-copy h2,
+  .page-security .research-copy h2,
+  .page-security .compliance h2{
+    line-height:1.12;
+  }
+}
