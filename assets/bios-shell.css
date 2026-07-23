@@ -389,6 +389,39 @@
   line-height:1;
 }
 
+/* Keep full sections on the page canvas; only repeated items remain card-like. */
+.page-patients .patient-security-shell{
+  padding:40px 0 34px;
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+}
+
+.page-patients .sources-shell,
+.page-patients .integrations-shell{
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+}
+
+.page-clinics .pilot-shell,
+.page-clinics .integrations-shell,
+.page-clinics .results-shell,
+.page-clinics .security-shell{
+  border:0;
+  border-radius:0;
+  background:transparent;
+  box-shadow:none;
+}
+
+.page-clinics .pilot-shell{padding:52px 0}
+.page-clinics .integrations-shell{padding:48px 0 32px}
+.page-clinics .results-shell{padding:52px 0 36px}
+.page-clinics .security-shell{padding:54px 0 48px;overflow:visible}
+.page-clinics .security-shell::before{display:none}
+
 @media(max-width:920px){
   :root{--bios-content-width:min(760px,calc(100% - 40px))}
 }
@@ -438,4 +471,10 @@
     min-height:44px;
     padding:10px 8px;
   }
+
+  .page-patients .patient-security-shell{padding:38px 0}
+  .page-clinics .pilot-shell{padding:34px 0}
+  .page-clinics .integrations-shell,
+  .page-clinics .results-shell{padding:34px 0 26px}
+  .page-clinics .security-shell{padding:34px 0 28px}
 }
