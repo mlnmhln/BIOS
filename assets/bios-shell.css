@@ -288,6 +288,14 @@
   letter-spacing:0;
 }
 
+.page-clinics .clinic-hero h1{
+  font-size:clamp(42px,4.15vw,58px);
+}
+
+@media(max-width:1180px) and (min-width:921px){
+  .page-clinics .clinic-hero h1{font-size:42px}
+}
+
 .page-home .bios-heading,
 .page-home .bios-accuracy-title,
 .page-patients .section-title,
@@ -442,6 +450,8 @@
   .page-security .security-hero h1{
     line-height:1.1;
   }
+
+  .page-clinics .clinic-hero h1{font-size:30px}
 
   .page-home .bios-heading,
   .page-home .bios-accuracy-title,

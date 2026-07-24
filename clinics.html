@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BIOS для клиник — лучшие результаты для пациентов</title>
-  <meta name="description" content="BIOS объединяет медицинские данные, формирует ИИ-гипотезы и помогает клиникам повышать качество лечения и эффективность работы.">
+  <title>BIOS для клиник — единый клинический контекст</title>
+  <meta name="description" content="BIOS объединяет медицинские данные в единый контекст и готовит проверяемые гипотезы для врачебного рассмотрения.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap&amp;subset=cyrillic,latin" rel="stylesheet">
@@ -298,7 +298,7 @@
 
     .clinic-hero{padding:40px 0 72px}
     .clinic-hero-grid{grid-template-columns:minmax(430px,.92fr) minmax(560px,1.08fr);min-height:640px;gap:44px}
-    .clinic-hero h1{font-size:clamp(42px,4.7vw,68px);line-height:1.06;font-weight:800}
+    .clinic-hero h1{font-size:clamp(42px,4.15vw,58px);line-height:1.06;font-weight:800}
     .clinic-lead{max-width:560px;margin-top:26px;font-size:18px;line-height:1.62}
     .hero-actions{gap:24px;margin-top:34px}
     .hero-actions .button-primary{min-width:220px;min-height:56px;font-size:16px}
@@ -478,6 +478,7 @@
     @media(max-width:1180px){
       :root{--wrap:min(100% - 48px,1120px)}
       .clinic-hero-grid{grid-template-columns:minmax(380px,.9fr) minmax(480px,1.1fr);min-height:600px;gap:28px}
+      .clinic-hero h1{font-size:42px}
       .clinic-dashboard{min-height:540px}.dash-main{min-height:444px}
       .why-card{min-height:280px}
       .architecture-shell{grid-template-columns:1fr;gap:38px}
@@ -593,7 +594,7 @@
     }
     @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
   </style>
-  <link rel="stylesheet" href="assets/bios-shell.css?v=20260724-3">
+  <link rel="stylesheet" href="assets/bios-shell.css?v=20260724-5">
 </head>
 <body class="page-clinics">
   <header class="bios-shell-header">
@@ -611,7 +612,7 @@
         <a href="index.html#contacts">Контакты</a>
       </nav>
       <div class="bios-shell-actions">
-        <a class="bios-shell-primary" href="index.html#demo">Попробовать BIOS</a>
+        <a class="bios-shell-primary" href="index.html#demo">Как работает BIOS</a>
         <a class="bios-shell-arrow" href="index.html#demo" aria-label="Перейти к демо">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
         </a>
@@ -624,14 +625,14 @@
     <section class="clinic-hero" aria-labelledby="clinic-title">
       <div class="wrap clinic-hero-grid">
         <div class="clinic-copy reveal">
-          <h1 id="clinic-title">Лучшие результаты <span class="gradient-text">для ваших пациентов</span></h1>
-          <p class="clinic-lead">AI-платформа, которая объединяет медицинские данные, помогает находить причины, прогнозировать риски и повышает эффективность работы клиники.</p>
-          <div class="hero-actions"><button class="button button-primary" type="button" data-clinic-form>Запросить демо</button><a class="text-link" href="#why">Посмотреть возможности <i aria-hidden="true">→</i></a></div>
+          <h1 id="clinic-title">Единый интеллектуальный слой <span class="gradient-text">для непрерывного ведения пациентов</span></h1>
+          <p class="clinic-lead">BIOS объединяет разрозненные данные пациента в единый клинический контекст, формирует проверяемые гипотезы с основаниями и неопределённостью и готовит их для врачебного рассмотрения.</p>
+          <div class="hero-actions"><button class="button button-primary" type="button" data-clinic-form>Обсудить пилот</button><a class="text-link" href="#solution">Посмотреть платформу <i aria-hidden="true">→</i></a></div>
           <div class="clinic-proof" aria-label="Преимущества BIOS для клиник">
-            <div class="proof-item"><span class="proof-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m12 3 7 3v5c0 4.8-2.8 8-7 10-4.2-2-7-5.2-7-10V6l7-3Z"/><path d="M9 12h6m-3-3v6"/></svg></span><span>AI-аналитика<br>и подсказки врачу</span></div>
-            <div class="proof-item"><span class="proof-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19h16M6 16l4-4 3 2 5-7"/><path d="M15 7h3v3"/></svg></span><span>Снижение<br>нагрузки на врачей</span></div>
-            <div class="proof-item"><span class="proof-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-4 2.5-6 6-6s6 2 6 6m0-5c3 0 5 1.8 5 5"/></svg></span><span>Лучший опыт<br>для пациентов</span></div>
-            <div class="proof-item"><span class="proof-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19h16M6 16l4-4 3 2 5-7"/><path d="M15 7h3v3"/></svg></span><span>Рост выручки<br>и повторных визитов</span></div>
+            <div class="proof-item"><span class="proof-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m12 3 7 3v5c0 4.8-2.8 8-7 10-4.2-2-7-5.2-7-10V6l7-3Z"/><path d="M9 12h6m-3-3v6"/></svg></span><span>Единый контекст<br>до приёма</span></div>
+            <div class="proof-item"><span class="proof-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19h16M6 16l4-4 3 2 5-7"/><path d="M15 7h3v3"/></svg></span><span>Гипотезы с основаниями<br>и неопределённостью</span></div>
+            <div class="proof-item"><span class="proof-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-4 2.5-6 6-6s6 2 6 6m0-5c3 0 5 1.8 5 5"/></svg></span><span>Динамика<br>между визитами</span></div>
+            <div class="proof-item"><span class="proof-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 19h16M6 16l4-4 3 2 5-7"/><path d="M15 7h3v3"/></svg></span><span>Пилот одного<br>клинического сценария</span></div>
           </div>
         </div>
 
@@ -651,8 +652,8 @@
                 <h2 class="dash-title">Сводка по пациенту</h2>
                 <div class="dash-path" aria-label="Рабочий маршрут врача"><span>Факты</span><span>Гипотеза</span><span>Что проверить</span><span>Решение врача</span></div>
                 <div class="dash-summary">
-                  <div class="score-pane"><h3>Health Memory</h3><div class="score-ring"><div class="score-value"><strong>82%</strong><span>Health Score</span></div></div><p class="score-caption">Готовность данных</p></div>
-                  <div class="hypotheses-pane"><h3>AI-гипотезы</h3><div class="hypothesis-list"><div class="hypothesis"><div><strong>Инсулинорезистентность</strong><small>Вероятность 72%</small></div><span class="risk high">Высокая</span></div><div class="hypothesis"><div><strong>Хроническое воспаление</strong><small>Вероятность 60%</small></div><span class="risk medium">Средняя</span></div><div class="hypothesis"><div><strong>Дефицит витамина D</strong><small>Вероятность 36%</small></div><span class="risk low">Низкая</span></div></div><a class="all-hypotheses" href="#solution">Показать все гипотезы</a></div>
+                  <div class="score-pane"><h3>Health Memory</h3><div class="score-ring"><div class="score-value"><strong>Данные</strong><span>для просмотра</span></div></div><p class="score-caption">Контекст для врача</p></div>
+                  <div class="hypotheses-pane"><h3>Гипотезы для проверки</h3><div class="hypothesis-list"><div class="hypothesis"><div><strong>Обмен глюкозы</strong><small>Основания собраны</small></div><span class="risk high">На рассмотрении</span></div><div class="hypothesis"><div><strong>Маркеры воспаления</strong><small>Нужны данные</small></div><span class="risk medium">Проверка</span></div><div class="hypothesis"><div><strong>Обмен витамина D</strong><small>Контекст неполный</small></div><span class="risk low">Черновик</span></div></div><a class="all-hypotheses" href="#solution">Открыть контекст</a></div>
                 </div>
                 <div class="dash-chart"><div class="chart-head"><h3>Динамика показателей</h3><div class="chart-legend"><span><i></i>Глюкоза</span><span><i class="alt"></i>Инсулин</span><span><i class="gray"></i>CRP</span></div></div><svg viewBox="0 0 520 120" preserveAspectRatio="none" aria-hidden="true"><path d="M8 104H515M8 63H515M8 22H515" stroke="#eef0f5"/><path d="M8 83C38 83 43 48 70 55s31 33 66 27 54-38 93-38 46 45 92 43 46-5 68-39 25 36 55 35 47-10 63-5" fill="none" stroke="#6540ef" stroke-width="3" stroke-linecap="round"/><text x="8" y="118" fill="#7b849a" font-size="11">Май</text><text x="235" y="118" fill="#7b849a" font-size="11">Июнь</text><text x="470" y="118" fill="#7b849a" font-size="11">Июль</text></svg></div>
               </div>
@@ -663,25 +664,25 @@
     </section>
 
     <section class="why" id="why" aria-labelledby="why-title">
-      <div class="wrap reveal"><h2 class="section-title" id="why-title">Почему клиники выбирают BIOS</h2><div class="why-grid">
-        <article class="why-card"><span class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m12 2 7 4v12l-7 4-7-4V6l7-4Z"/><path d="M5 9h4l3-3 3 3h4M5 15h4l3 3 3-3h4M12 6v12"/></svg></span><h3>Причинный подход</h3><p>BIOS ищет не симптомы, а причины. Формирует AI-гипотезы и связывает их с показателями.</p></article>
-        <article class="why-card"><span class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="3" stroke-dasharray="4 3"/><path d="M8 8h8M8 16h8M12 8v8"/></svg></span><h3>Экономия времени</h3><p>Автоматический сбор и анализ данных сокращает рутину и освобождает время врача.</p></article>
-        <article class="why-card"><span class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="12" r="7"/><circle cx="11" cy="12" r="3"/><path d="m15 8 6-6m-1 0h1v5"/></svg></span><h3>Точность<br>и доказательность</h3><p>Алгоритмы обучены на научных данных и клинических протоколах. Рекомендации обоснованы.</p></article>
-        <article class="why-card"><span class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m12 3 7 3v5c0 4.8-2.8 8-7 10-4.2-2-7-5.2-7-10V6l7-3Z"/><path d="m9 12 2 2 4-5"/></svg></span><h3>Безопасность<br>и комплаенс</h3><p>Данные шифруются и хранятся в соответствии с 152-ФЗ и международными стандартами.</p></article>
-        <article class="why-card"><span class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 19h16M6 16l4-4 3 2 5-7"/><path d="M15 7h3v3"/></svg></span><h3>Рост клиники</h3><p>Улучшайте исходы, увеличивайте лояльность пациентов и средний чек за счёт персонализации.</p></article>
+      <div class="wrap reveal"><h2 class="section-title" id="why-title">Ценность BIOS для команды клиники</h2><div class="why-grid">
+        <article class="why-card"><span class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m12 2 7 4v12l-7 4-7-4V6l7-4Z"/><path d="M5 9h4l3-3 3 3h4M5 15h4l3 3 3-3h4M12 6v12"/></svg></span><h3>Врачу</h3><p>Единый контекст, основания гипотезы и список того, что требует проверки.</p></article>
+        <article class="why-card"><span class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="16" rx="3" stroke-dasharray="4 3"/><path d="M8 8h8M8 16h8M12 8v8"/></svg></span><h3>Медицинскому директору</h3><p>Согласованный процесс проверки гипотез и критерии клинического контроля.</p></article>
+        <article class="why-card"><span class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="12" r="7"/><circle cx="11" cy="12" r="3"/><path d="m15 8 6-6m-1 0h1v5"/></svg></span><h3>ИТ-команде</h3><p>Понятный сценарий обмена данными, статусы интеграций и границы пилота.</p></article>
+        <article class="why-card"><span class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m12 3 7 3v5c0 4.8-2.8 8-7 10-4.2-2-7-5.2-7-10V6l7-3Z"/><path d="m9 12 2 2 4-5"/></svg></span><h3>Службе безопасности</h3><p>Роли, основания доступа, журналирование и требования к хранению данных.</p></article>
+        <article class="why-card"><span class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 19h16M6 16l4-4 3 2 5-7"/><path d="M15 7h3v3"/></svg></span><h3>Руководителю клиники</h3><p>Измеримый пилот с заранее согласованными критериями и решением о масштабировании.</p></article>
       </div></div>
     </section>
 
     <section class="solution" id="solution" aria-labelledby="solution-title">
       <div class="solution-shell architecture-shell reveal">
         <div class="solution-content">
-          <p class="eyebrow">Архитектура BIOS</p>
-          <h2 id="solution-title">От медицинских данных к врачебному решению</h2>
-          <p class="solution-lead">BIOS собирает клинический контекст, формирует проверяемые гипотезы и показывает врачу основания, недостающие данные и следующие шаги для рассмотрения.</p>
+          <p class="eyebrow">Архитектура и Clinical Governance</p>
+          <h2 id="solution-title">Контролируемая поддержка врачебного решения</h2>
+          <p class="solution-lead">Вывод AI должен оставаться гипотезой до врачебной проверки. В целевой архитектуре BIOS рядом с гипотезой показываются основания, неопределённость и недостающие данные.</p>
           <div class="solution-list">
-            <div class="solution-item"><span class="solution-check"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 8 3 3 7-7"/></svg></span><span>Каждый факт сохраняется вместе с источником, датой и контекстом</span></div>
-            <div class="solution-item"><span class="solution-check"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 8 3 3 7-7"/></svg></span><span>Гипотеза сопровождается evidence bundle и указанием неопределённости</span></div>
-            <div class="solution-item"><span class="solution-check"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 8 3 3 7-7"/></svg></span><span>Safety Gates и clinician review отделяют AI-подсказку от клинического решения</span></div>
+            <div class="solution-item"><span class="solution-check"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 8 3 3 7-7"/></svg></span><span>Факты, вычисленные признаки и гипотезы должны быть разделены</span></div>
+            <div class="solution-item"><span class="solution-check"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 8 3 3 7-7"/></svg></span><span>Основания, ограничения и версия гипотезы должны сохраняться для проверки</span></div>
+            <div class="solution-item"><span class="solution-check"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 8 3 3 7-7"/></svg></span><span>Автоматические проверки и clinician review отделяют подсказку от клинического решения</span></div>
           </div>
           <div class="solution-actions"><button class="button button-primary" type="button" data-clinic-form>Обсудить пилот</button><a class="text-link" href="#pilot">Как проходит пилот <i aria-hidden="true">→</i></a></div>
         </div>
@@ -795,7 +796,7 @@
     <section class="security" id="security" aria-labelledby="security-title">
       <div class="wrap security-shell reveal">
         <div class="security-content">
-          <h2 id="security-title">Данные пациентов под защитой</h2>
+          <h2 id="security-title">Контур защиты данных</h2>
           <p class="security-copy">Архитектура и процессы BIOS разрабатываются с учётом требований 152-ФЗ и GDPR. Конкретная схема хранения, доступа и интеграции определяется для сценария внедрения.</p>
           <div class="security-badges" aria-label="Меры защиты данных в BIOS">
             <span class="security-badge"><i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m12 3 7 3v5c0 4.8-2.8 8-7 10-4.2-2-7-5.2-7-10V6l7-3Z"/><path d="m9 12 2 2 4-5"/></svg></i>Ролевой доступ</span>
@@ -839,21 +840,21 @@
         </div>
         <div class="articles-grid">
           <article class="article-card">
-            <span class="article-tag">AI в медицине</span>
-            <h3>Как ИИ меняет превентивную медицину</h3>
-            <p>Как ИИ помогает структурировать медицинские данные и замечать сигналы, требующие внимания.</p>
+            <span class="article-tag">Клинические данные</span>
+            <h3>Почему медицинские данные остаются фрагментированными</h3>
+            <p>Разбираем источники, контекст и ограничения, которые важно учитывать до анализа.</p>
             <a class="article-link" href="#">Читать статью <i aria-hidden="true">→</i></a>
           </article>
           <article class="article-card">
-            <span class="article-tag">Здравоохранение</span>
-            <h3>Международный медицинский центр будущего</h3>
-            <p>Как непрерывный мониторинг помогает выстраивать сопровождение пациентов между визитами.</p>
+            <span class="article-tag">Clinical AI</span>
+            <h3>Как формируется проверяемая клиническая гипотеза</h3>
+            <p>Основания, неопределённость, недостающие данные и роль врачебного рассмотрения.</p>
             <a class="article-link" href="#">Читать статью <i aria-hidden="true">→</i></a>
           </article>
           <article class="article-card">
-            <span class="article-tag">Кардиология</span>
-            <h3>Сеть кардиологических клиник: новый уровень контроля</h3>
-            <p>Внедрение BIOS помогло снизить нагрузку на врачей и улучшить контроль пациентов.</p>
+            <span class="article-tag">Пилот</span>
+            <h3>Как измерять эффективность AI-пилота в клинике</h3>
+            <p>Какие критерии согласовать заранее и как отделить наблюдение от доказанного эффекта.</p>
             <a class="article-link" href="#">Читать статью <i aria-hidden="true">→</i></a>
           </article>
         </div>
@@ -863,10 +864,10 @@
     <section class="demo-cta" id="demo" aria-labelledby="demo-title">
       <div class="wrap demo-shell reveal">
         <div>
-          <h2 id="demo-title">Готовы вывести заботу о пациентах<br>и эффективность клиники на новый уровень?</h2>
-          <p>Оставьте заявку — мы покажем, как BIOS работает именно в вашей клинике.</p>
+          <h2 id="demo-title">Обсудим один клинический сценарий<br>для пилота BIOS</h2>
+          <p>Определим данные, процесс врачебной проверки и критерии оценки до запуска.</p>
         </div>
-        <button class="button button-primary" type="button" data-clinic-form>Запросить демо</button>
+        <button class="button button-primary" type="button" data-clinic-form>Обсудить пилот</button>
       </div>
     </section>
   </main>
@@ -911,8 +912,8 @@
       </button>
       <div id="clinicLeadContent">
         <p class="clinic-lead-eyebrow">BIOS для клиник</p>
-        <h2 id="clinicLeadTitle">Обсудить возможности BIOS</h2>
-        <p class="clinic-lead-intro" id="clinicLeadIntro">Оставьте контакты, чтобы команда BIOS могла связаться с вами.</p>
+        <h2 id="clinicLeadTitle">Обсудить пилот BIOS</h2>
+        <p class="clinic-lead-intro" id="clinicLeadIntro">Оставьте контакты, чтобы обсудить клинический сценарий, данные и критерии пилота.</p>
         <form class="clinic-lead-form" id="clinicLeadForm">
           <input type="hidden" name="source" id="clinicLeadSource" value="Страница для клиник">
           <div class="clinic-lead-field">

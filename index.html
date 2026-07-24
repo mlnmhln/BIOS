@@ -1478,7 +1478,7 @@
     }
 
 </style>
-<link rel="stylesheet" href="assets/bios-shell.css?v=20260724-3">
+  <link rel="stylesheet" href="assets/bios-shell.css?v=20260724-5">
 </head>
 <body class="page-home">
 <div class="bg"></div>
@@ -1502,7 +1502,7 @@
         <a href="index.html#contacts">Контакты</a>
       </nav>
       <div class="bios-shell-actions">
-        <a class="bios-shell-primary" href="index.html#demo">Попробовать BIOS</a>
+        <a class="bios-shell-primary" href="index.html#demo">Как работает BIOS</a>
         <a class="bios-shell-arrow" href="index.html#demo" aria-label="Перейти к демо">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
         </a>
@@ -1518,7 +1518,7 @@
       <div class="hero-left">
         <p class="eyebrow">AI-инфраструктура непрерывного управления здоровьем</p>
         <h1>Понимать.<br>Действовать.<br><span class="grad">Опережать.</span></h1>
-        <p class="lede">BIOS объединяет медицинские данные, искусственный интеллект и клиническую экспертизу, чтобы обеспечивать непрерывное и персонализированное сопровождение.</p>
+        <p class="lede">BIOS объединяет медицинские данные, клинические знания и искусственный интеллект в единый контекст здоровья, который развивается вместе с человеком.</p>
         <div class="cta">
           <a class="btn btn-dark" href="clinics.html">Для клиник
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
@@ -1578,8 +1578,8 @@
     <!-- step indicator -->
     <div class="steps" aria-hidden="true">
       <div class="step" data-step="upload"><div class="bar"></div><span>Загрузка</span></div>
-      <div class="step" data-step="analysis"><div class="bar"></div><span>Анализ</span></div>
-      <div class="step" data-step="insights"><div class="bar"></div><span>Инсайты</span></div>
+      <div class="step" data-step="analysis"><div class="bar"></div><span>Структура</span></div>
+      <div class="step" data-step="insights"><div class="bar"></div><span>Контекст</span></div>
     </div>
 
     <div class="morph-container" id="container">
@@ -1588,9 +1588,9 @@
       <div class="state state-upload" data-state="upload">
         <div class="cols">
           <div>
-            <p class="eyebrow">Шаг 1 — попробуйте бесплатно</p>
-            <h1 class="title">Получите первые<br><span class="g">AI-инсайты</span> за 1 минуту</h1>
-            <p class="sub">Загрузите анализ крови. Искусственный интеллект бесплатно покажет первые выводы.</p>
+            <p class="eyebrow">Интерактивная демонстрация</p>
+            <h1 class="title">Один из способов<br><span class="g">начать работу с BIOS</span></h1>
+            <p class="sub">Загрузите обезличенный лабораторный документ и посмотрите, как BIOS структурирует данные и формирует предварительный контекст. Результаты не являются медицинским заключением.</p>
 
             <div class="upload-area" id="dropzone" tabindex="0" role="button" aria-label="Загрузить PDF">
               <div class="up-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4"/><polyline points="7 9 12 4 17 9"/><path d="M5 20h14"/></svg></div>
@@ -1601,7 +1601,7 @@
 
             <div class="privacy">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
-              Ваши данные защищены.
+              Перед загрузкой удалите персональные данные.
             </div>
             <button class="demo-link" id="demoBtn">Нет файла под рукой? Запустить на демо-данных</button>
           </div>
@@ -1628,12 +1628,12 @@
           <div>
             <p class="eyebrow">Шаг 2 — обработка</p>
             <h1 class="title">Получили анализ</h1>
-            <p class="sub">AI анализирует ваши данные…</p>
+            <p class="sub">BIOS структурирует данные и формирует предварительный контекст…</p>
             <div class="status">
               <div class="spin"></div>
               <div>
-                <div class="st">AI анализирует ваши данные</div>
-                <div class="ss">Это займёт меньше минуты</div>
+                <div class="st">BIOS обрабатывает обезличенный документ</div>
+                <div class="ss">Сопоставляем показатели и доступный контекст</div>
               </div>
             </div>
           </div>
@@ -1685,26 +1685,26 @@
         <div class="cols">
           <div>
             <p class="eyebrow">Шаг 3 — предварительный результат</p>
-            <h1 class="title ins-head">Обнаружено</h1>
+            <h1 class="title ins-head">Обнаруженные данные</h1>
             <div class="insights-list" id="insList">
               <div class="ins-card"><span class="dot" style="background:#f0a93b"></span><span class="tx">Низкий ферритин</span></div>
               <div class="ins-card"><span class="dot" style="background:#e85d6e"></span><span class="tx">Высокий CRP</span></div>
               <div class="ins-card"><span class="dot" style="background:#7c4dff"></span><span class="tx">Нарушение липидного профиля</span></div>
-              <div class="ins-card"><span class="dot" style="background:#2f5bff"></span><span class="tx">Возможные причины хронической усталости</span></div>
+              <div class="ins-card"><span class="dot" style="background:#2f5bff"></span><span class="tx">Недостаточно данных для оценки причин усталости</span></div>
             </div>
             <div class="note" id="insNote">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01" stroke-linecap="round"/></svg>
-              <p>Это предварительный AI-анализ. Для полной интерпретации необходимы дополнительные данные.</p>
+              <p>Это предварительный контекст, а не медицинское заключение. Для проверки нужны дополнительные данные, анамнез и врачебная оценка.</p>
             </div>
           </div>
 
           <div class="reg" id="regCard">
-            <h3>Получите полный профиль</h3>
-              <p class="desc">Зарегистрируйтесь, чтобы получить расширенную интерпретацию, персональные выводы и динамику здоровья.</p>
+            <h3>Ранний доступ к BIOS</h3>
+              <p class="desc">Оставьте контакты, чтобы узнать о доступных сценариях и присоединиться к раннему доступу.</p>
             <div class="field"><input type="text" placeholder="Имя" autocomplete="name"></div>
             <div class="field"><input type="email" placeholder="Email" autocomplete="email"></div>
             <div class="field"><input type="tel" placeholder="Телефон" autocomplete="tel"></div>
-            <button class="btn-primary" id="regBtn">Получить полный профиль
+            <button class="btn-primary" id="regBtn">Оставить заявку
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg>
             </button>
             <div class="reg-done" id="regDone">Спасибо! Мы готовим ваш расширенный профиль.</div>
@@ -1830,6 +1830,10 @@
     const percentEl = root.querySelector("#memoryPercent");
     const progressEl = root.querySelector("#memoryProgress");
     const sourceRows = [...root.querySelectorAll(".source-row")];
+    root.querySelector(".intro > .lead").textContent = "Health Memory связывает данные из разных периодов в единую историю здоровья.";
+    root.querySelector(".statement p").innerHTML = "Один анализ показывает момент.<span>BIOS помогает видеть историю организма.</span>";
+    root.querySelector(".memory-copy").textContent = "Контекст уточняется по мере появления новых данных.";
+    root.querySelector(".memory-note p").textContent = "Каждое новое наблюдение дополняет контекст.";
     root.querySelector(".parent-cards")?.remove();
     host.style.minHeight = "auto";
     section.style.position = "relative";
@@ -1942,40 +1946,40 @@
     <section class="bios-section reveal" aria-labelledby="bios-process-title">
       <div class="wrap">
         <p class="bios-kicker">Как работает BIOS</p>
-        <h2 class="bios-heading" id="bios-process-title">Технология, которая помогает<br>находить <span class="accent">причины</span></h2>
-        <p class="bios-intro">Мы превращаем разрозненные данные в понимание вашего организма.</p>
+        <h2 class="bios-heading" id="bios-process-title">От данных<br>к проверяемым <span class="accent">гипотезам</span></h2>
+        <p class="bios-intro">BIOS связывает разрозненные наблюдения, показывает возможные взаимосвязи и отделяет факты от гипотез.</p>
 
         <div class="bios-process">
           <article class="bios-process-step">
             <div class="bios-process-icon" aria-hidden="true"></div>
             <h3>Память</h3>
-            <p>Все ваши данные собираются в единую Health Memory.</p>
+            <p>Данные объединяются с указанием источника, даты и контекста.</p>
           </article>
           <article class="bios-process-step">
             <div class="bios-process-icon" aria-hidden="true"></div>
             <h3>Анализ</h3>
-            <p>Алгоритмы и AI находят связи и скрытые паттерны.</p>
+            <p>BIOS показывает возможные связи в пределах доступного контекста.</p>
           </article>
           <article class="bios-process-step">
             <div class="bios-process-icon" aria-hidden="true"></div>
             <h3>Гипотезы</h3>
-            <p>Формируются гипотезы, объясняющие возможные причины состояния.</p>
+            <p>Предварительный вывод отмечается как гипотеза, а не как диагноз.</p>
           </article>
           <article class="bios-process-step">
             <div class="bios-process-icon" aria-hidden="true"></div>
             <h3>Проверка</h3>
-            <p>Система подсказывает, какие данные получить дальше.</p>
+            <p>BIOS показывает, каких данных не хватает и что требует врачебной оценки.</p>
           </article>
           <article class="bios-process-step">
             <div class="bios-process-icon" aria-hidden="true"></div>
             <h3>Понимание</h3>
-            <p>Картина организма становится точнее, причина — ближе.</p>
+            <p>Проверенные факты постепенно формируют более полный контекст здоровья.</p>
           </article>
         </div>
 
         <div class="bios-process-note">
           <div class="bios-hex-pair" aria-hidden="true"><span></span><span></span></div>
-          <p>Каждое новое наблюдение делает понимание глубже.<br>Мы видим не отдельные показатели, а ваш организм целиком.</p>
+          <p>Новые данные могут подтвердить, уточнить или опровергнуть гипотезу.<br>BIOS сохраняет это различие видимым.</p>
         </div>
       </div>
     </section>
@@ -1984,7 +1988,7 @@
     <section class="bios-section reveal" aria-labelledby="bios-patterns-title">
       <div class="wrap">
         <p class="bios-kicker">Технология BIOS</p>
-        <h2 class="bios-heading" id="bios-patterns-title">И определяет<br>устойчивые <span class="accent">паттерны</span></h2>
+        <h2 class="bios-heading" id="bios-patterns-title">И помогает замечать<br>значимые <span class="accent">закономерности</span></h2>
 
         <div class="bios-patterns-grid">
           <article class="bios-pattern-card">
@@ -1994,7 +1998,7 @@
               </div>
             </div>
             <h3>У вас лично</h3>
-            <p>Анализируем вашу историю<br>и динамику во времени.</p>
+            <p>Сопоставляем наблюдения<br>и их динамику во времени.</p>
           </article>
           <article class="bios-pattern-card">
             <div class="bios-pattern-visual" aria-hidden="true">
@@ -2012,14 +2016,14 @@
               </div>
             </div>
             <h3>Семья</h3>
-            <p>Выявляем наследственные<br>и семейные закономерности.</p>
+            <p>Учитываем семейную историю,<br>если она добавлена в профиль.</p>
           </article>
           <article class="bios-pattern-card">
             <div class="bios-pattern-visual" aria-hidden="true">
               <div class="bios-peer-cloud"><span class="peer-orbit-inner"></span><span class="center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3"/><path d="M7 20a5 5 0 0 1 10 0"/></svg></span><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
             </div>
             <h3>Пользователи<br>с похожими профилями</h3>
-            <p>Сравниваем с обезличенными<br>данными, чтобы видеть больше.</p>
+            <p>Сравнение возможно только с обезличенными данными и при наличии законного основания.</p>
           </article>
         </div>
       </div>
@@ -2031,12 +2035,12 @@
         <div class="bios-accuracy">
           <div class="bios-accuracy-grid">
             <div>
-              <p class="bios-kicker">Как мы становимся точнее</p>
-              <h2 class="bios-accuracy-title" id="bios-accuracy-title">BIOS не просто<br>анализирует данные.<br><span class="accent">Он учится понимать<br>именно ваш организм.</span></h2>
+              <p class="bios-kicker">Как уточняется контекст</p>
+              <h2 class="bios-accuracy-title" id="bios-accuracy-title">BIOS связывает<br>новые наблюдения<br><span class="accent">с вашей историей здоровья.</span></h2>
               <div class="bios-accuracy-foot">
                 <span class="spark" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2c.8 5.4 4.6 9.2 10 10-5.4.8-9.2 4.6-10 10-.8-5.4-4.6-9.2-10-10 5.4-.8 9.2-4.6 10-10Z"/></svg></span>
                 <span class="line" aria-hidden="true"></span>
-                <p>Чем больше данных и контекста —<br>тем глубже понимание, тем точнее поддержка.</p>
+                <p>Качество вывода зависит от полноты данных, их источника, даты и врачебной оценки.</p>
               </div>
             </div>
             <div class="bios-accuracy-profile" aria-hidden="true">
@@ -2145,7 +2149,7 @@
 
       <div class="cta-band reveal">
         <h2 class="cta-title">Готовы увидеть здоровье <span class="g">целиком</span>?</h2>
-        <p class="cta-sub">Подключите BIOS — для клиники или для себя. Первые AI-инсайты доступны бесплатно, без регистрации.</p>
+        <p class="cta-sub">Выберите подходящий сценарий: обсудите пилот для клиники или оставьте заявку на ранний доступ для себя.</p>
         <div class="cta-row">
           <a class="btn btn-dark" href="clinics.html">Для клиник <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
           <a class="btn btn-light" href="patients.html">Для пациентов <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="13 6 19 12 13 18"/></svg></a>
