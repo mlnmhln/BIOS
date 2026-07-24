@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="preload" as="image" href="assets/patients-digital-twin-clean.png">
   <title>BIOS для пациентов — понимание здоровья на новом уровне</title>
   <meta name="description" content="BIOS объединяет медицинские данные в Health Memory, помогает видеть динамику и готовить гипотезы для проверки вместе с врачом.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1200,6 +1199,48 @@
       .care-card h3{margin-top:0}
       .care-card p{margin-top:12px}
     }
+    .hero .hero-visual{
+      position:relative;
+      inset:auto;
+      z-index:1;
+      display:grid;
+      grid-column:2;
+      width:100%;
+      min-height:620px;
+      place-items:center;
+      align-self:center;
+      overflow:hidden;
+      border:1px solid #e5e3ef;
+      border-radius:8px;
+      background:#f7f7fb;
+      pointer-events:none;
+    }
+    .hero .hero-visual::before{display:none}
+    .hero-placeholder{
+      display:grid;
+      width:min(72%,420px);
+      aspect-ratio:4 / 3;
+      place-items:center;
+      border:1px dashed #d4d1e2;
+      border-radius:8px;
+      color:#858b9b;
+      background:#fbfbfd;
+      font-size:15px;
+      font-weight:600;
+    }
+    @media (max-width:920px){
+      .hero .hero-visual{
+        grid-column:1;
+        width:100%;
+        min-height:320px;
+        margin:34px auto 0;
+      }
+      .hero-placeholder{width:min(72%,420px)}
+    }
+    @media (max-width:620px){
+      .hero .hero-visual{min-height:240px;margin-top:28px}
+      .hero-placeholder{width:76%;font-size:14px}
+    }
     @media (prefers-reduced-motion:reduce){
       html{scroll-behavior:auto}
       *,*::before,*::after{animation:none!important;transition:none!important}
@@ -1260,28 +1301,9 @@
           </div>
         </div>
 
-        <div class="hero-visual reveal" aria-label="Цифровой профиль здоровья BIOS">
-          <div class="patient-three-stage">
-            <div class="patient-three-composition" aria-hidden="true">
-              <img class="patient-hero-photo" src="assets/patients-digital-twin-clean.png" alt="">
-
-              <div class="vector-panel panel-status">
-              <svg viewBox="0 0 148 48" fill="none"><path d="M2 33 18 31l9-18 10 27 10-17 10 8 11-23 10 30 12-16 10 8 12-15 12 12 12-5" stroke="#7251e9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M2 43h144" stroke="#ddd8f8"/></svg>
-              <strong>Состояние</strong><small>Анализ данных в динамике</small>
-            </div>
-              <div class="vector-panel panel-analytics">
-              <svg viewBox="0 0 148 48" fill="none"><rect x="8" y="29" width="10" height="15" rx="2" fill="#b9a8f7"/><rect x="27" y="20" width="10" height="24" rx="2" fill="#987ef0"/><rect x="46" y="10" width="10" height="34" rx="2" fill="#7050e7"/><rect x="65" y="16" width="10" height="28" rx="2" fill="#8669ec"/><rect x="84" y="5" width="10" height="39" rx="2" fill="#5a34dc"/><rect x="103" y="22" width="10" height="22" rx="2" fill="#957bed"/><rect x="122" y="14" width="10" height="30" rx="2" fill="#7451e8"/></svg>
-              <strong>Глубокая аналитика</strong><small>Связи и устойчивые паттерны</small>
-            </div>
-              <div class="vector-panel panel-memory">
-              <svg viewBox="0 0 148 48" fill="none"><circle cx="30" cy="24" r="18" stroke="#ddd7fa" stroke-width="7"/><path d="M30 6a18 18 0 1 1-17 24" stroke="#7450e8" stroke-width="7" stroke-linecap="round"/><path d="M74 14h10l6 10-6 10H74l-6-10 6-10Zm21 0h10l6 10-6 10H95l-6-10 6-10Zm21 0h10l6 10-6 10h-10l-6-10 6-10Z" stroke="#8c72ee" stroke-width="2"/></svg>
-              <strong>Health Memory</strong><small>Единая память организма</small>
-            </div>
-              <div class="vector-panel panel-hypothesis">
-              <svg viewBox="0 0 148 48" fill="none" stroke="#7250e8" stroke-width="2"><circle cx="74" cy="24" r="6"/><circle cx="32" cy="13" r="5"/><circle cx="45" cy="39" r="5"/><circle cx="111" cy="10" r="5"/><circle cx="121" cy="37" r="5"/><path d="m37 15 31 7M49 37l20-10m11-6 26-9M80 27l36 9"/></svg>
-              <strong>Гипотезы</strong><small>Что требует проверки</small>
-              </div>
-            </div>
+        <div class="hero-visual reveal" aria-label="Место для будущего визуала">
+          <div class="hero-placeholder" role="img" aria-label="Визуал готовится">
+            <span>Визуал готовится</span>
           </div>
         </div>
       </div>
