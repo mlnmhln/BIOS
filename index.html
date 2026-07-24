@@ -1281,25 +1281,14 @@
     letter-spacing:0;
   }
   .bios-accuracy-foot{
-    display:grid;
-    grid-template-columns:60px 1px 1fr;
-    gap:24px;
-    align-items:center;
-    margin-top:70px;
+    display:block;
+    max-width:520px;
+    margin-top:42px;
     color:#737887;
     font-size:15px;
     line-height:1.5;
   }
-  .bios-accuracy-foot .spark{
-    display:grid;
-    width:54px;
-    height:54px;
-    place-items:center;
-    border:1px solid rgba(214,217,228,.9);
-    border-radius:50%;
-    color:#6559e8;
-  }
-  .bios-accuracy-foot .line{width:1px;height:54px;background:#dfe2eb}
+  .bios-accuracy-foot p{margin:0}
   .bios-accuracy-profile{
     position:relative;
     display:grid;
@@ -2038,8 +2027,6 @@
               <p class="bios-kicker">Как уточняется контекст</p>
               <h2 class="bios-accuracy-title" id="bios-accuracy-title">BIOS связывает<br>новые наблюдения<br><span class="accent">с вашей историей здоровья.</span></h2>
               <div class="bios-accuracy-foot">
-                <span class="spark" aria-hidden="true"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2c.8 5.4 4.6 9.2 10 10-5.4.8-9.2 4.6-10 10-.8-5.4-4.6-9.2-10-10 5.4-.8 9.2-4.6 10-10Z"/></svg></span>
-                <span class="line" aria-hidden="true"></span>
                 <p>Качество вывода зависит от полноты данных, их источника, даты и врачебной оценки.</p>
               </div>
             </div>
