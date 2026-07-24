@@ -468,11 +468,38 @@
     .connection-methods span{padding:9px 13px;border:1px solid #e4e1f3;border-radius:6px;background:#fff;color:#4b5570;font-size:13px;font-weight:600}
     .integration-disclaimer{max-width:850px;margin:34px auto 0;color:#7b84a2;font-size:14px;line-height:1.55;text-align:center}
 
-    .results-grid.metrics-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
-    .metrics-grid .result-card{min-height:210px;padding:26px 18px}
-    .metrics-grid .result-number{width:58px;height:58px;font-size:24px}
-    .metrics-grid .result-card h3{margin-top:22px;font-size:17px}
-    .metrics-grid .result-card p{margin-top:10px;font-size:14px}
+    .results-grid.metrics-grid{
+      display:grid;
+      max-width:920px;
+      margin:42px auto 0;
+      padding:0;
+      gap:10px;
+      list-style:none;
+      grid-template-columns:1fr;
+    }
+    .metrics-grid .result-card{
+      display:grid;
+      min-height:0;
+      grid-template-columns:34px 1fr;
+      gap:16px;
+      align-items:start;
+      padding:14px 0 16px;
+      border:0;
+      border-bottom:1px solid #e5e7f0;
+      border-radius:0;
+      background:transparent;
+      box-shadow:none;
+      text-align:left;
+    }
+    .metrics-grid .result-card:last-child{border-bottom:0}
+    .metrics-grid .result-number{
+      width:34px;
+      height:34px;
+      font-size:15px;
+      box-shadow:inset 0 0 12px rgba(103,64,237,.06);
+    }
+    .metrics-grid .result-card h3{margin:2px 0 0;font-size:18px;line-height:1.35}
+    .metrics-grid .result-card p{margin:5px 0 0;font-size:15px;line-height:1.5;text-align:left}
 
     @media(max-width:1180px){
       :root{--wrap:min(100% - 48px,1120px)}
@@ -483,7 +510,7 @@
       .architecture-shell{grid-template-columns:1fr;gap:38px}
       .architecture-shell .solution-content{max-width:760px}
       .pilot-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-      .results-grid.metrics-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .results-grid.metrics-grid{grid-template-columns:1fr}
     }
     @media(max-width:920px){
       :root{--wrap:min(100% - 40px,760px)}
@@ -527,7 +554,7 @@
       .solution-shell{padding-top:280px}.solution-photo{height:310px}.solution-content{width:100%;padding:36px 18px 46px}.solution-list{margin-top:26px}.solution-actions{width:100%;margin-top:30px}
       .architecture-shell{padding:34px 16px}.architecture-shell .solution-content{padding:0}.architecture-flow{grid-template-columns:1fr}.architecture-tier{padding:18px}.architecture-tags span{font-size:11px}.pilot-shell{padding:34px 16px}.pilot-head h2{font-size:30px}.pilot-head p{font-size:16px}.pilot-grid{grid-template-columns:1fr;gap:10px;margin-top:28px}.pilot-step{min-height:0;padding:18px}.pilot-step h3{margin-top:14px}.pilot-meta{justify-content:flex-start}.results-grid.metrics-grid{grid-template-columns:1fr}
       .integrations-shell,.results-shell{padding:34px 16px 26px}.integration-grid{grid-auto-columns:96px}.integration-logo{height:82px}.integration-trust{gap:10px;font-size:14px}
-      .results-grid{margin-top:30px}.result-card{padding:24px 16px}.results-note{font-size:13px}
+      .results-grid{margin-top:30px}.metrics-grid .result-card{padding:13px 0 15px;grid-template-columns:32px 1fr;gap:13px}.metrics-grid .result-number{width:32px;height:32px;font-size:14px}.metrics-grid .result-card h3{font-size:16px}.metrics-grid .result-card p{font-size:14px}.results-note{font-size:13px}
       .security-shell{gap:18px;padding:34px 18px 28px;text-align:center}.security-copy{max-width:none;margin-top:-6px;font-size:16px}.security-badges{display:grid;grid-template-columns:1fr;gap:12px;margin-top:4px;text-align:left}.security-badge{white-space:normal}.bios-lock-orbit{width:100%;height:104px}.bios-lock-orbit.two{height:128px}.bios-lock-shield{width:160px}.bios-lock-core{width:92px}.bios-lock-dot{width:9px;height:9px}.bios-lock-glow{width:86%}
       .security-more{justify-self:center}
       .articles-head{gap:16px}.articles-grid{gap:14px}.article-card{padding:24px 18px}.article-card h3{font-size:20px}.article-card p{font-size:15px}
@@ -746,48 +773,48 @@
           <h2 id="results-title">Метрики, которые мы оцениваем в пилоте</h2>
           <p>Набор показателей зависит от выбранного клинического сценария и задач клиники</p>
         </div>
-        <div class="results-grid metrics-grid">
-          <article class="result-card">
+        <ol class="results-grid metrics-grid">
+          <li class="result-card">
             <span class="result-number">1</span>
             <h3>Подготовка врача</h3>
             <p>время подготовки к приёму</p>
-          </article>
-          <article class="result-card">
+          </li>
+          <li class="result-card">
             <span class="result-number">2</span>
             <h3>Обработка документов</h3>
             <p>время ручной работы с данными</p>
-          </article>
-          <article class="result-card">
+          </li>
+          <li class="result-card">
             <span class="result-number">3</span>
             <h3>Полнота контекста</h3>
             <p>достаточность данных для рассмотрения</p>
-          </article>
-          <article class="result-card">
+          </li>
+          <li class="result-card">
             <span class="result-number">4</span>
             <h3>Завершённый follow-up</h3>
             <p>доля пациентов с продолженным наблюдением</p>
-          </article>
-          <article class="result-card">
+          </li>
+          <li class="result-card">
             <span class="result-number">5</span>
             <h3>Возврат пациентов</h3>
             <p>после назначенных обследований</p>
-          </article>
-          <article class="result-card">
+          </li>
+          <li class="result-card">
             <span class="result-number">6</span>
             <h3>План наблюдения</h3>
             <p>соблюдение согласованных следующих шагов</p>
-          </article>
-          <article class="result-card">
+          </li>
+          <li class="result-card">
             <span class="result-number">7</span>
             <h3>Проверенные сигналы</h3>
             <p>число сигналов, прошедших clinician review</p>
-          </article>
-          <article class="result-card">
+          </li>
+          <li class="result-card">
             <span class="result-number">8</span>
             <h3>Удовлетворённость</h3>
             <p>оценка врачей и пациентов</p>
-          </article>
-        </div>
+          </li>
+        </ol>
         <p class="results-note">Исходные и целевые значения определяются совместно с клиникой до запуска пилота.</p>
       </div>
     </section>
