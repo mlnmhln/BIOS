@@ -362,40 +362,6 @@
       place-items:center;
       overflow:visible;
     }
-    .bios-lock-glow{
-      position:absolute;
-      z-index:0;
-      width:78%;
-      aspect-ratio:1;
-      border-radius:50%;
-      background:radial-gradient(circle,rgba(111,76,243,.19) 0%,rgba(111,76,243,.08) 36%,transparent 69%);
-      filter:blur(18px);
-      animation:biosLockGlow 5.4s ease-in-out infinite;
-    }
-    .bios-lock-orbit{
-      position:absolute;
-      z-index:2;
-      width:min(98%,520px);
-      height:156px;
-      border:1.5px solid rgba(111,82,244,.34);
-      border-radius:50%;
-      box-shadow:inset 0 0 22px rgba(112,79,244,.025);
-    }
-    .bios-lock-orbit.one{transform:rotate(16deg);animation:biosOrbitOne 13s linear infinite}
-    .bios-lock-orbit.two{height:190px;transform:rotate(-18deg);animation:biosOrbitTwo 16s linear infinite}
-    .bios-lock-dot{
-      position:absolute;
-      width:12px;
-      height:12px;
-      border-radius:50%;
-      background:linear-gradient(145deg,#9b80ff,#6740ed);
-      box-shadow:0 0 15px rgba(103,64,237,.42);
-      animation:biosDotPulse 2.8s ease-in-out infinite;
-    }
-    .bios-lock-dot.a{top:50%;left:-6px}
-    .bios-lock-dot.b{top:50%;right:-6px;animation-delay:-1.2s}
-    .bios-lock-dot.c{top:-6px;left:29%;animation-delay:-.7s}
-    .bios-lock-dot.d{right:22%;bottom:-6px;animation-delay:-1.8s}
     .bios-lock-shield{
       position:relative;
       z-index:1;
@@ -403,7 +369,6 @@
       height:auto;
       overflow:visible;
       filter:drop-shadow(0 26px 32px rgba(88,62,205,.13));
-      animation:biosShieldBreathe 5.4s ease-in-out infinite;
     }
     .bios-lock-core{
       position:absolute;
@@ -412,16 +377,7 @@
       height:auto;
       overflow:visible;
       filter:drop-shadow(0 20px 20px rgba(78,43,211,.25));
-      animation:biosLockFloat 4.2s ease-in-out infinite;
     }
-    .bios-lock-highlight{animation:biosLockHighlight 3.4s ease-in-out infinite}
-    @keyframes biosOrbitOne{from{transform:rotate(16deg)}to{transform:rotate(376deg)}}
-    @keyframes biosOrbitTwo{from{transform:rotate(-18deg)}to{transform:rotate(-378deg)}}
-    @keyframes biosDotPulse{0%,100%{opacity:.68;transform:scale(.82)}50%{opacity:1;transform:scale(1.14)}}
-    @keyframes biosShieldBreathe{0%,100%{opacity:.82;transform:translateY(3px) scale(.985)}50%{opacity:1;transform:translateY(-3px) scale(1.02)}}
-    @keyframes biosLockFloat{0%,100%{transform:translateY(5px)}50%{transform:translateY(-7px)}}
-    @keyframes biosLockGlow{0%,100%{opacity:.65;transform:scale(.92)}50%{opacity:1;transform:scale(1.08)}}
-    @keyframes biosLockHighlight{0%,100%{opacity:.18}50%{opacity:.58}}
 
     .articles-head{margin-bottom:36px}
     .articles-all,.article-link{font-size:16px}
@@ -555,7 +511,7 @@
       .architecture-shell{padding:34px 16px}.architecture-shell .solution-content{padding:0}.architecture-flow{grid-template-columns:1fr}.architecture-tier{padding:18px}.architecture-tags span{font-size:11px}.pilot-shell{padding:34px 16px}.pilot-head h2{font-size:30px}.pilot-head p{font-size:16px}.pilot-grid{grid-template-columns:1fr;gap:10px;margin-top:28px}.pilot-step{min-height:0;padding:18px}.pilot-step h3{margin-top:14px}.pilot-meta{justify-content:flex-start}.results-grid.metrics-grid{grid-template-columns:1fr}
       .integrations-shell,.results-shell{padding:34px 16px 26px}.integration-grid{grid-auto-columns:96px}.integration-logo{height:82px}.integration-trust{gap:10px;font-size:14px}
       .results-grid{margin-top:30px}.metrics-grid .result-card{padding:13px 0 15px;grid-template-columns:32px 1fr;gap:13px}.metrics-grid .result-number{width:32px;height:32px;font-size:14px}.metrics-grid .result-card h3{font-size:16px}.metrics-grid .result-card p{font-size:14px}.results-note{font-size:13px}
-      .security-shell{gap:18px;padding:34px 18px 28px;text-align:center}.security-copy{max-width:none;margin-top:-6px;font-size:16px}.security-badges{display:grid;grid-template-columns:1fr;gap:12px;margin-top:4px;text-align:left}.security-badge{white-space:normal}.bios-lock-orbit{width:100%;height:104px}.bios-lock-orbit.two{height:128px}.bios-lock-shield{width:160px}.bios-lock-core{width:92px}.bios-lock-dot{width:9px;height:9px}.bios-lock-glow{width:86%}
+      .security-shell{gap:18px;padding:34px 18px 28px;text-align:center}.security-copy{max-width:none;margin-top:-6px;font-size:16px}.security-badges{display:grid;grid-template-columns:1fr;gap:12px;margin-top:4px;text-align:left}.security-badge{white-space:normal}.bios-lock-shield{width:160px}.bios-lock-core{width:92px}
       .security-more{justify-self:center}
       .articles-head{gap:16px}.articles-grid{gap:14px}.article-card{padding:24px 18px}.article-card h3{font-size:20px}.article-card p{font-size:15px}
       .demo-shell{padding:36px 18px;gap:24px;text-align:center}.demo-shell p{font-size:15px}.demo-shell .button-primary{width:100%;min-width:0;min-height:58px}
@@ -833,9 +789,6 @@
           <a class="security-more" href="security.html">Открыть Security Center <i aria-hidden="true">→</i></a>
         </div>
         <div class="security-art bios-lock-art" aria-hidden="true">
-          <div class="bios-lock-glow"></div>
-          <div class="bios-lock-orbit one"><span class="bios-lock-dot a"></span><span class="bios-lock-dot b"></span></div>
-          <div class="bios-lock-orbit two"><span class="bios-lock-dot c"></span><span class="bios-lock-dot d"></span></div>
           <svg class="bios-lock-shield" viewBox="0 0 240 300">
             <defs>
               <linearGradient id="clinicShieldOuter" x1="42" y1="30" x2="204" y2="270" gradientUnits="userSpaceOnUse"><stop stop-color="#ffffff" stop-opacity=".82"/><stop offset=".55" stop-color="#d9d2ff" stop-opacity=".45"/><stop offset="1" stop-color="#9c88f7" stop-opacity=".3"/></linearGradient>

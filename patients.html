@@ -871,40 +871,6 @@
       place-items:center;
       overflow:visible;
     }
-    .bios-lock-glow{
-      position:absolute;
-      z-index:0;
-      width:78%;
-      aspect-ratio:1;
-      border-radius:50%;
-      background:radial-gradient(circle,rgba(111,76,243,.19) 0%,rgba(111,76,243,.08) 36%,transparent 69%);
-      filter:blur(18px);
-      animation:biosLockGlow 5.4s ease-in-out infinite;
-    }
-    .bios-lock-orbit{
-      position:absolute;
-      z-index:2;
-      width:min(98%,520px);
-      height:156px;
-      border:1.5px solid rgba(111,82,244,.34);
-      border-radius:50%;
-      box-shadow:inset 0 0 22px rgba(112,79,244,.025);
-    }
-    .bios-lock-orbit.one{transform:rotate(16deg);animation:biosOrbitOne 13s linear infinite}
-    .bios-lock-orbit.two{height:190px;transform:rotate(-18deg);animation:biosOrbitTwo 16s linear infinite}
-    .bios-lock-dot{
-      position:absolute;
-      width:12px;
-      height:12px;
-      border-radius:50%;
-      background:linear-gradient(145deg,#9b80ff,#6740ed);
-      box-shadow:0 0 15px rgba(103,64,237,.42);
-      animation:biosDotPulse 2.8s ease-in-out infinite;
-    }
-    .bios-lock-dot.a{top:50%;left:-6px}
-    .bios-lock-dot.b{top:50%;right:-6px;animation-delay:-1.2s}
-    .bios-lock-dot.c{top:-6px;left:29%;animation-delay:-.7s}
-    .bios-lock-dot.d{right:22%;bottom:-6px;animation-delay:-1.8s}
     .bios-lock-shield{
       position:relative;
       z-index:1;
@@ -912,7 +878,6 @@
       height:auto;
       overflow:visible;
       filter:drop-shadow(0 26px 32px rgba(88,62,205,.13));
-      animation:biosShieldBreathe 5.4s ease-in-out infinite;
     }
     .bios-lock-core{
       position:absolute;
@@ -921,16 +886,7 @@
       height:auto;
       overflow:visible;
       filter:drop-shadow(0 20px 20px rgba(78,43,211,.25));
-      animation:biosLockFloat 4.2s ease-in-out infinite;
     }
-    .bios-lock-highlight{animation:biosLockHighlight 3.4s ease-in-out infinite}
-    @keyframes biosOrbitOne{from{transform:rotate(16deg)}to{transform:rotate(376deg)}}
-    @keyframes biosOrbitTwo{from{transform:rotate(-18deg)}to{transform:rotate(-378deg)}}
-    @keyframes biosDotPulse{0%,100%{opacity:.68;transform:scale(.82)}50%{opacity:1;transform:scale(1.14)}}
-    @keyframes biosShieldBreathe{0%,100%{opacity:.82;transform:translateY(3px) scale(.985)}50%{opacity:1;transform:translateY(-3px) scale(1.02)}}
-    @keyframes biosLockFloat{0%,100%{transform:translateY(5px)}50%{transform:translateY(-7px)}}
-    @keyframes biosLockGlow{0%,100%{opacity:.65;transform:scale(.92)}50%{opacity:1;transform:scale(1.08)}}
-    @keyframes biosLockHighlight{0%,100%{opacity:.18}50%{opacity:.58}}
 
     .care{padding:84px 0 96px}
     .care-head p{margin-top:20px;font-size:18px}
@@ -1140,7 +1096,7 @@
       .integration-logos{grid-auto-columns:96px}.integration-logo{height:82px}
       .insights{padding-top:56px}.device-stage{display:flex;min-height:590px;margin:0 auto 34px;align-items:flex-start;justify-content:center;transform:none}.device{width:min(100%,320px)}.device-back{display:none}.device-front{position:relative;right:auto;bottom:auto;min-height:590px}
       .insights-copy{text-align:left}.benefits{gap:16px;margin-top:30px}.benefit{grid-template-columns:42px 1fr;gap:13px}.benefit-icon{width:42px;height:42px}
-      .security-shell{gap:18px;padding:34px 18px 28px;text-align:center}.security-copy>p{margin-top:-6px;font-size:16px}.security-list{margin-top:4px;text-align:left}.security-point{grid-template-columns:34px 1fr}.security-check{width:34px;height:34px}.bios-lock-orbit{width:100%;height:104px}.bios-lock-orbit.two{height:128px}.bios-lock-shield{width:160px}.bios-lock-core{width:92px}.bios-lock-dot{width:9px;height:9px}.bios-lock-glow{width:86%}
+      .security-shell{gap:18px;padding:34px 18px 28px;text-align:center}.security-copy>p{margin-top:-6px;font-size:16px}.security-list{margin-top:4px;text-align:left}.security-point{grid-template-columns:34px 1fr}.security-check{width:34px;height:34px}.bios-lock-shield{width:160px}.bios-lock-core{width:92px}
       .security-more{justify-self:center}
       .care-grid{margin-top:32px}.care-card{grid-template-columns:54px 1fr;gap:14px;padding:20px 18px}.care-icon{width:54px;height:54px}.care-icon svg{width:27px;height:27px}
       .faq{padding:56px 0 76px}.faq-head h2{font-size:32px}.faq-head p{margin-top:14px;font-size:15px}.faq-list{margin-top:30px}.faq-item summary{grid-template-columns:42px 1fr;min-height:68px;padding:0 14px}.faq-toggle{width:36px;height:36px}.faq-question{min-height:38px;padding:14px 0 14px 14px;font-size:15px}.faq-answer{padding:0 16px 20px 70px;font-size:14px;line-height:1.6}
