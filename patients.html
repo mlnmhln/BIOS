@@ -1192,6 +1192,14 @@
       opacity:1;
       transform:translate(-50%,-50%) rotate(-45deg);
     }
+    .care-card{min-height:260px;transition:none}
+    .care-card:hover{transform:none;border-color:#e6e8f0;box-shadow:none}
+    .care-card h3{margin-top:0}
+    @media (max-width:920px){
+      .care-card{display:block;min-height:0}
+      .care-card h3{margin-top:0}
+      .care-card p{margin-top:12px}
+    }
     @media (prefers-reduced-motion:reduce){
       html{scroll-behavior:auto}
       *,*::before,*::after{animation:none!important;transition:none!important}
@@ -1285,17 +1293,6 @@
           <p class="how-start-kicker">Как начать</p>
           <h2 id="how-start-title">Начните за 5 простых шагов</h2>
           <p>BIOS помогает вам лучше понять своё здоровье и двигаться к вашим целям.</p>
-        </div>
-        <div class="how-start-art" aria-hidden="true">
-          <svg viewBox="0 0 270 150" fill="none">
-            <ellipse cx="152" cy="72" rx="103" ry="40" stroke="currentColor" stroke-opacity=".26" transform="rotate(8 152 72)"/>
-            <ellipse cx="152" cy="72" rx="103" ry="40" stroke="currentColor" stroke-opacity=".18" transform="rotate(-24 152 72)"/>
-            <circle cx="152" cy="72" r="32" fill="currentColor" fill-opacity=".13"/>
-            <circle cx="152" cy="72" r="18" fill="currentColor" fill-opacity=".23"/>
-            <circle cx="55" cy="48" r="5" fill="currentColor" fill-opacity=".55"/>
-            <circle cx="236" cy="52" r="5" fill="currentColor" fill-opacity=".45"/>
-            <circle cx="215" cy="112" r="4" fill="currentColor" fill-opacity=".35"/>
-          </svg>
         </div>
         <div class="how-start-grid">
           <article class="how-start-step">
@@ -1495,23 +1492,19 @@
           <p>Единый контекст помогает подготовиться к приёму и обсуждать решения на понятном основании.</p>
         </div>
         <div class="care-grid">
-          <article class="care-card reveal">
-            <span class="care-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="14" height="18" rx="2"/><path d="M8 7h6M8 11h4M18 9h2v10H8v2m5-7 3 3 4-5"/></svg></span>
+          <article class="care-card">
             <h3>Контекст<br>до приёма</h3>
             <p>Доступные данные собраны в одном месте для предварительного просмотра врачом.</p>
           </article>
-          <article class="care-card reveal">
-            <span class="care-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="12" r="2.4"/><circle cx="12" cy="5" r="2.4"/><circle cx="19" cy="12" r="2.4"/><circle cx="12" cy="19" r="2.4"/><path d="m6.7 10.3 3.6-3.6m3.4 0 3.6 3.6m0 3.4-3.6 3.6m-3.4 0-3.6-3.6"/></svg></span>
+          <article class="care-card">
             <h3>Приоритеты<br>для обсуждения</h3>
             <p>BIOS помогает выделить изменения и вопросы, которые стоит проверить.</p>
           </article>
-          <article class="care-card reveal">
-            <span class="care-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 7 3v5c0 4.8-2.8 8-7 10-4.2-2-7-5.2-7-10V6l7-3Z"/></svg></span>
+          <article class="care-card">
             <h3>Понятные<br>основания</h3>
             <p>Факты, гипотезы и ограничения показываются раздельно.</p>
           </article>
-          <article class="care-card reveal">
-            <span class="care-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 8c-2 0-3.5 1.5-3.5 3.5S6 15 8 15c3 0 5-6 8-6 2 0 3.5 1.5 3.5 3.5S18 16 16 16c-3 0-5-6-8-6Z"/></svg></span>
+          <article class="care-card">
             <h3>План следующего<br>шага</h3>
             <p>Врач определяет, что действительно требует проверки или наблюдения.</p>
           </article>
